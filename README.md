@@ -2,7 +2,7 @@
 
 The idea behind csvw is that all metadata fields (and all the columns of the csv) are fully described using web based vocabularies see [https://www.w3.org/standards/semanticweb/ontology](https://www.w3.org/standards/semanticweb/ontology) for an overview of linked data vocabularies).
 
-For the cogs project, we've successfully explored taking this as a step further, using these fully described csvw files as a direct (and relatively straight forward) entry point to the world of five start linked open data.
+For the cogs project, we've successfully explored taking this as a step further, using these fully described csvw files as a direct (and relatively straight forward) entry point to the world of five star linked open data.
 
 The following is a walk through of how we've been doing this. For the sake of practicality, I've built towards this via five discreet steps/examples with each example expanding on the previous (and with information sections dispersed throughout as needed).
 
