@@ -4,8 +4,16 @@ The idea behind csvw is that all metadata fields (and all the columns of the csv
 
 For the cogs project, we've successfully explored taking this as a step further, using these fully described csvw files as a direct (and relatively straight forward) entry point to the world of five start linked open data.
 
-The following is a walk through of how we've been doing this. For the sake of practicality, I've built towards this via five discreet steps/examples, with each example expanding on the previous.
+The following is a walk through of how we've been doing this. For the sake of practicality, I've built towards this via five discreet steps/examples with each example expanding on the previous (and with information sections dispersed throughout as needed).
 
+------ TODO: linkify these
+- Info: Prefixes
+- Example 1: Data Validation
+- Example 2. Codelists as external files
+- Info: Urls as CSVW
+- Example 3: Conversion to Linked Data
+- Example 4: Additional Metadata
+- Example 5: Formatting the Observation file
 
 
 ### Info: Prefixes
