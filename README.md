@@ -50,6 +50,9 @@ You can use a `format` field within those `dataType` entry to create validation 
             "base": "string",
             "format": "^(Male|Female)$"
           }
+        ]}
+      }
+    ]
 ```
 
 The datatype can be a simple variables type (integer, string) and (in the case of strings) also include a `format` field, allowing you to pattern match using regular expressions (more information on these can be found at [https://blog.usejournal.com/regular-expressions-a-complete-beginners-tutorial-c7327b9fd8eb](https://blog.usejournal.com/regular-expressions-a-complete-beginners-tutorial-c7327b9fd8eb)).
