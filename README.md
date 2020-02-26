@@ -1,4 +1,4 @@
-## SDG CSVW Examples
+## CSVW Walkthrough
 
 The idea behind csvw is that all metadata fields (and all the columns of the csv) are fully described using web based vocabularies see [https://www.w3.org/standards/semanticweb/ontology](https://www.w3.org/standards/semanticweb/ontology) for an overview of linked data vocabularies).
 
