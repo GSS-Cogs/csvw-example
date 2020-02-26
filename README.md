@@ -145,10 +145,10 @@ And if you're following along, you already have!
 
 ### Example 3: Conversion to Linked Data
 
-So we've touched on codelists and how we can go from csvw to RDf, but what about the dataset itself? Where and how do we defined the "linked" in linked data? Thos shared definitions that lie behind each thing we're describing?
+So we've touched on codelists and how we can go from csvw to RDF, but what about the dataset itself? Where and how do we define the "linked" in linked data? Those shared definitions that lie behind each thing we're describing?
 
 ### -----
-### ----- TODO: explain the mechanics of dimensional url references via csvw ----
+### ----- TODO: explain the mechanics of concept url references via csvw ----
 ### -----  
 
 
