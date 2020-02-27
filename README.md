@@ -104,9 +104,9 @@ The above example is a small part of a COGS schema I've cut out illustrate the p
 
 *note - suppressOutput is a boolean switch that hides output when transforming the contents of said table (this will be relevant later). A description of this and other csvw namespaced terms can be found at [https://www.w3.org/ns/csvw](https://www.w3.org/ns/csvw).*
 
-So to include this information for our example there's two tasks:
+So to include this information for our example there's three tasks:
 - define a simple schema for the additional codelist csvs.
-- add the additional codelist csvs.
+- create the additional codelist csvs.
 - create the link between the principle csvw schema, and the additional codelist csvs using 'Foreign Keys'
 
 The definition of `Foreign Keys` as provided by [https://www.w3.org/ns/csvw](https://www.w3.org/ns/csvw) is "*Describes relationships between Columns in one or more Tables*."
@@ -151,6 +151,8 @@ If you think back to example one, we had the field `dc:title`, representing `htt
 They don't need one, as the [https://www.w3.org/ns/csvw](https://www.w3.org/ns/csvw) standard is _itself_ a namespace. So where a field doesn't have an prefix (for example `columns`), that just indicates it's defined by eg `https://www.w3.org/ns/csvw#columns`
 
 **Ok, so all that's basically done for me - what about urls for any new resources I need to add? (a column unique to your dataset perhaps?)**
+
+---- TODO: this bit is basically waffle
 
 As part of the COGS project we're creating these resources using the codelists csvs (which we've already linked to via the csvw - see example 2) which gives us the information we need to generate a large part of the semantic resources (codes, labels and their definitions) needed for our dataset.
 
