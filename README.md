@@ -1,4 +1,6 @@
-## CSVW Walkthrough
+TODO - replace examples and snippets with those specific to SDG, MOJ etc
+
+### CSVW Walkthrough
 
 The idea behind csvw is that all metadata fields (and all the columns of the csv) are fully described using web based vocabularies see [https://www.w3.org/standards/semanticweb/ontology](https://www.w3.org/standards/semanticweb/ontology) for an overview of linked data vocabularies).
 
@@ -74,6 +76,8 @@ docker run -v /:/workspace -w /workspace gsscogs/csvlint csvlint <PATH_TO_YOUR_S
 
 ### Example 2. Codelists as external files
 
+*TODO - confusing, why do we include everything twice? Understand it, explain it.*
+
 All columns in a flattened dataset represent items from a list of concepts (or a subset of), these are typically represented by a codelist mapping a code or machine readable name to a human readable label.
 
 One advantage of csvw is you can use it represent more than one csv - allowing you to link directly to a csvs codelists by including them as additional tables in the datasets metadata.
@@ -81,7 +85,7 @@ One advantage of csvw is you can use it represent more than one csv - allowing y
 Example:
 
 ```json
-tables: [
+"tables": [
 {
 "url": "https://gss-cogs.github.io/ref_alcohol/codelists/underlying-cause-of-death.csv",
 "tableSchema": "https://gss-cogs.github.io/ref_common/codelist-schema.json",
@@ -91,7 +95,7 @@ tables: [
 "url": "https://gss-cogs.github.io/ref_alcohol/codelists/health-social-care-trusts.csv",
 "tableSchema": "https://gss-cogs.github.io/ref_common/codelist-schema.json",
 "suppressOutput": true
-},
+}]
 ```
 The above snippet shows a csvw entry holding metadata for two csv files. You'll notice the `tableSchema` field is just pointing to another schema (the same schema for both in fact). This is common practice where mutiple csvs have an identical or repeating structure. In the case of our actual observation csv, we'll still be defining the tableSchema in-line, as the metadata structures for datasets very rarely repeated exactly (as individual datasets are unique by definition).
 
@@ -102,12 +106,30 @@ The above example is a small part of a COGS schema I've cut out illustrate the p
 So to include this information for our example there's two tasks:
 - define a simple schema for the additional codelist csvs.
 - add the additional codelist csvs.
+- create the link between the principle csvw schema, and the additional codelist csvs using 'Foreign Keys'
 
-For the sake of this example I've included these in `/resources` within the `example2` repo, but in actuality you'd aim to host them somewhere directly accessible online (so you can easily reuse schemas etc across multiple datasets).
+The definition of `Foreign Keys` as provided by [https://www.w3.org/ns/csvw](https://www.w3.org/ns/csvw) is "*Describes relationships between Columns in one or more Tables*."
 
-### -----
-### ----- TODO: explain foreign key references ----
-### -----  
+Consider the following example:
+
+```json
+"foreignKeys": [
+{
+  "columnReference": "example_column",
+  "reference": {
+    "resource": "https://my-domain.com/codelists/codes-for-example-column.csv",
+    "columnReference": "notation"
+  }
+}]
+```
+
+This is actually telling us the following:
+- we're importing the `resource` https://my-domain.com/codelists/codes-for-example-column.csv
+- the `example_column` of our observation file (denoted by the first `columnReference` field)
+- maps to the `notation` column of the imported resource (as denoted by the **indented** `columnReference` field).
+
+---- TODO: either clarify the reason the csv urls are appearing twice, or rewrite to be less confusing.
+
 
 ### Info: Urls as CSVW
 
