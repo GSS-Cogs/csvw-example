@@ -151,11 +151,9 @@ We'll cover this in the next section.
 
 ### Example 3: Conversion to Linked Data
 
-So we've touched on codelists and how we can go from csvw to RDF, but what about the dataset itself? Where and how do we define the "linked" in linked data? Those shared definitions that lie behind each thing we're describing?
+We'll cover this as two distinct processes.
 
 #### 3.1 Concepts
-
-We'll cover this as two distinct processes.
 
 Let's look at a `column` entry (as touched on in example 1: validation) that's been extended with this additional information:
 
