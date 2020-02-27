@@ -88,14 +88,14 @@ Example:
 ```json
 "tables": [
 {
-"url": "https://gss-cogs.github.io/ref_alcohol/codelists/underlying-cause-of-death.csv",
-"tableSchema": "https://gss-cogs.github.io/ref_common/codelist-schema.json",
-"suppressOutput": true
+  "url": "https://gss-cogs.github.io/ref_alcohol/codelists/underlying-cause-of-death.csv",
+  "tableSchema": "https://gss-cogs.github.io/ref_common/codelist-schema.json",
+  "suppressOutput": true
 },
 {
-"url": "https://gss-cogs.github.io/ref_alcohol/codelists/health-social-care-trusts.csv",
-"tableSchema": "https://gss-cogs.github.io/ref_common/codelist-schema.json",
-"suppressOutput": true
+  "url": "https://gss-cogs.github.io/ref_alcohol/codelists/health-social-care-trusts.csv",
+  "tableSchema": "https://gss-cogs.github.io/ref_common/codelist-schema.json",
+  "suppressOutput": true
 }]
 ```
 The above snippet shows a csvw entry holding metadata for two csv files. You'll notice the `tableSchema` field is just pointing to another schema (the same schema for both in fact). This is common practice where mutiple csvs have an identical or repeating structure. In the case of our actual observation csv, we'll still be defining the tableSchema in-line, as the metadata structures for datasets very rarely repeated exactly (as individual datasets are unique by definition).
