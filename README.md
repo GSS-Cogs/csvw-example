@@ -13,7 +13,7 @@ The following is a walk through of how we've been doing this. For the sake of pr
 - Example 1: Data Validation
 - Example 2. Codelists as external files
 - Info: Urls as CSVW
-- Example 3: Conversion to Linked Data
+- Example 3: Converting to Linked Data
 - Example 4: Additional Metadata
 - Example 5: Formatting the Observation file
 - Info: Future Considerations
@@ -100,10 +100,6 @@ Example:
 ```
 The above snippet shows a csvw entry holding metadata for two csv files. You'll notice the `tableSchema` field is just pointing to another schema (the same schema for both in fact). This is common practice where mutiple csvs have an identical or repeating structure. In the case of our actual observation csv, we'll still be defining the tableSchema in-line, as the metadata structures for datasets very rarely repeated exactly (as individual datasets are unique by definition).
 
-The above example is a small part of a COGS schema I've cut out illustrate the point, you can view this schema in full at [https://ci.floop.org.uk/job/GSS_data/job/Health/job/NISRA_alcohol_deaths/lastSuccessfulBuild/artifact/out/observations.csv-schema.json](https://ci.floop.org.uk/job/GSS_data/job/Health/job/NISRA_alcohol_deaths/lastSuccessfulBuild/artifact/out/observations.csv-schema.json).
-
-*note - suppressOutput is a boolean switch that hides output when transforming the contents of said table (this will be relevant later). A description of this and other csvw namespaced terms can be found at [https://www.w3.org/ns/csvw](https://www.w3.org/ns/csvw).*
-
 So to include this information for our example there's three tasks:
 - define a simple schema for the additional codelist csvs.
 - create the additional codelist csvs.
@@ -129,8 +125,6 @@ This is actually telling us the following:
 - the `example_column` of our observation file (denoted by the first `columnReference` field)
 - maps to the `notation` column of the imported resource (as denoted by the **indented** `columnReference` field).
 
----- TODO: either clarify the reason the csv urls are appearing twice, or rewrite to be less confusing.
-
 
 ### Info: Urls as CSVW
 
@@ -152,29 +146,36 @@ They don't need one, as the [https://www.w3.org/ns/csvw](https://www.w3.org/ns/c
 
 **Ok, so all that's basically done for me - what about urls for any new resources I need to add? (a column unique to your dataset perhaps?)**
 
----- TODO: this bit is basically waffle
-
-As part of the COGS project we're creating these resources using the codelists csvs (which we've already linked to via the csvw - see example 2) which gives us the information we need to generate a large part of the semantic resources (codes, labels and their definitions) needed for our dataset.
-
-Think of what we'll have at this point:
-- we have a csv represention of each codelist
-- we have the `foreign key` entry linking each of these csv codelists to a column in our observation file.
-- we have a the base url of whichever domain we intend to host these web resources on (if you don't and you're producing government statistical data then contact us and we'll gladly do that for you).
-
-Taken together, the above is all the information required to generate any supporting reference data your datasets would require (for example `www.my-organisations-domain.gov.uk/data/my-codelist/code1`) directly from your csvw.
-
-I won't go into the technical implementation here (but please do contact us at us@gsscogs.uk you want to discuss) but to repeat how we opened this section **if you establish the relevant links via your csvw metadata, you've created a resource that can be used to convert csv data directly to RDF triples in a deterministic and repeatable fashion**.
-
-And if you're following along, you already have!
+We'll cover this in the next section.
 
 
 ### Example 3: Conversion to Linked Data
 
 So we've touched on codelists and how we can go from csvw to RDF, but what about the dataset itself? Where and how do we define the "linked" in linked data? Those shared definitions that lie behind each thing we're describing?
 
-### -----
-### ----- TODO: explain the mechanics of concept url references via csvw ----
-### -----  
+#### 3.1 Concepts
+
+We'll cover this as two distinct processes.
+
+Let's look at a `column` entry (as touched on in example 1: validation) that's been extended with this additional information:
+
+```json
+{
+    "titles": "ashe working pattern",
+    "required": true,
+    "name": "ashe_working_pattern",
+    "datatype": "string",
+    "propertyUrl": "http://gss-data.org.uk/def/dimension/ashe-working-pattern",
+    "valueUrl": "http://gss-data.org.uk/def/concept/ashe-working-pattern/{ashe_working_pattern}"
+    },
+```
+
+You can see we've added two additional fields:
+
+- propertyUrl: the "thing" that we're describing.
+- valueUrl: the location of the "codes that define that thing"
+
+#### 3.2 The DSD (Data Structure Definition)
 
 
 ### Example 4: Additional Metadata
