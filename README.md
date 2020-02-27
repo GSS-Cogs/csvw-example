@@ -16,6 +16,7 @@ The following is a walk through of how we've been doing this. For the sake of pr
 - Example 3: Conversion to Linked Data
 - Example 4: Additional Metadata
 - Example 5: Formatting the Observation file
+- Info: Future Considerations
 
 
 ### Info: Prefixes
@@ -197,9 +198,17 @@ One of the advantages of linked data is that it's almost infinitely extendable (
 
 Again, I'm not going to go into the full technical implementation (and again, happy to if anyone wants to get in contact) but you're basically aiming to write a text file and upload alongside your data cube - as long as you include relevant fields (if unsure, see the included example 3) you can generally pick whatever method works best with your current processes.
 
-### Example 5: Formatting the Observation file
 
-We've spoken previously about how we can convert the whole observation file to linked open data (which is true), but what we haven't spoken about yet, is how this goal will effect the required structure and formatting of that observation file (don't worry, it's pretty minimal).
+### Example 5: Formatting the observation file
+
+To create RDF in the way, we will need to make some basic adjustments to the observation file.
+
+Firstly, everything in linked data world will eventually becomes a url - so **make your column values url friendly**. This principally means don't use special characters or spaces.
+
+
+### Info: Future Considerations
+
+--- TODO: useful or waffle? decide.
 
 #### The Golden Rule
 
