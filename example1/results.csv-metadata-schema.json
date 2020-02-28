@@ -35,7 +35,7 @@
         "titles": "Sex",
         "required": true,
         "name": "sex",
-        "dc:description": ""
+        "dc:description": "",
         "datatype": {
           "base": "string",
           "format": "^(M|F|T)$"

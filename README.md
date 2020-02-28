@@ -41,7 +41,7 @@ Consider the included example 1.
 - Each `tableSchema` has a number of `columns`
 - Each `column` has a `datatype`.
 
-You can use a `format` field within those `dataType` entry to create validation statements. Example follows:
+You can validate using simple types within the datatype filed (i.e "number", "string") as well as use an additional `format` field for basic pattern matching (as per the following example: where we are confirming all codes in the Sex column to are either M, F or T).
 
 ```json
 "tableSchema": {
@@ -56,7 +56,7 @@ You can use a `format` field within those `dataType` entry to create validation 
       "titles": "Sex",
       "required": true,
       "name": "sex",
-      "dc:description": ""
+      "dc:description": "",
       "datatype": {
         "base": "string",
         "format": "^(M|F|T)$"
@@ -65,7 +65,7 @@ You can use a `format` field within those `dataType` entry to create validation 
   }
 ```
 
-The datatype can be a simple variables type (integer, string) and (in the case of strings) also include a `format` field, allowing you to pattern match using regular expressions (more information on these can be found at [https://blog.usejournal.com/regular-expressions-a-complete-beginners-tutorial-c7327b9fd8eb](https://blog.usejournal.com/regular-expressions-a-complete-beginners-tutorial-c7327b9fd8eb)).
+The above pattern matching is done using regular expressions (more information on these can be found at [https://blog.usejournal.com/regular-expressions-a-complete-beginners-tutorial-c7327b9fd8eb](https://blog.usejournal.com/regular-expressions-a-complete-beginners-tutorial-c7327b9fd8eb)).
 
 There are a few tools you can use to validate your csvw using these datatype entries (and the csvw on the whole). For the COGS project we're using csvlint via a docker image.
 
