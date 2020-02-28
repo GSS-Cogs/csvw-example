@@ -200,13 +200,13 @@ So how does this work in practice?
 #### 3.2 Implementation
 
 ---
---- TODO - is this gssutils create_transform?
+- TODO - is this gssutils create_transform?
 ---
 
 ### Info: The DSD
 
 ---
---- TODO - some conceptual explanations. Nothing too heavy as it should be automated out anyyway.
+- TODO - some conceptual explanations. Nothing too heavy as it should be automated out anyyway.
 ---
 
 ### Example 4: Additional Metadata
