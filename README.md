@@ -8,17 +8,17 @@ Simply put, the idea behind using csvw is that all metadata fields (and all the 
 
 The following is a walk through of how to do this.
 
------- TODO: linkify these
+---
+- TODO: linkify headings
+- swap 4 and 5? figure out where to we explain obs file changes?
+---
 - Info: Prefixes
 - Example 1: Data Validation
 - Example 2. Codelists as external files
 - Info: Urls as CSVW
 - Example 3: Transformation
-  - 3.1 Concepts
-  - 3.2 Implementation
-- Info: the DSD
 - Example 4: Additional Metadata
-- Example 5: Formatting the Observation file
+- Example 5: The DSD
 - Info: Future Considerations
 
 
