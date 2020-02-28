@@ -76,6 +76,10 @@ To run this locally you need to have [docker](https://docs.docker.com/install/) 
 docker run -v /:/workspace -w /workspace gsscogs/csvlint csvlint <PATH_TO_YOUR_SCHEMA_JSON>
 ```
 
+---
+- TODO: will need to explain the tweaks (measure type vs unit of measure) in here somewhere.
+---
+
 ### Example 2. Codelists as external files
 
 All columns in a flattened dataset represent items from a list of concepts (or a subset of), these are typically represented by a codelist mapping a code or machine readable name to a human readable label.
@@ -227,7 +231,10 @@ Again, I'm not going to go into the full technical implementation (and again, ha
 
 ### Info: Future Considerations
 
---- TODO: useful or waffle? decide.
+---
+- TODO: useful or waffle? confusing either way, cannibalise or remove.
+---
+
 
 #### The Golden Rule
 
