@@ -13,7 +13,10 @@ The following is a walk through of how we've been doing this. For the sake of pr
 - Example 1: Data Validation
 - Example 2. Codelists as external files
 - Info: Urls as CSVW
-- Example 3: Converting to Linked Data
+- Example 3: Transformation
+  - 3.1 Concepts
+  - 3.2 Implementation
+- Info: the DSD
 - Example 4: Additional Metadata
 - Example 5: Formatting the Observation file
 - Info: Future Considerations
@@ -149,9 +152,9 @@ They don't need one, as the [https://www.w3.org/ns/csvw](https://www.w3.org/ns/c
 We'll cover this in the next section.
 
 
-### Example 3: Conversion to Linked Data
+### Example 3: Transformation
 
-We'll cover this as two distinct processes.
+We'll cover this as two distinct steps. First we'll explain the concepts and what's happening (the complicated bit) then we'll explain how to do it (the easy bit).
 
 #### 3.1 Concepts
 
@@ -173,8 +176,38 @@ You can see we've added two additional fields:
 - propertyUrl: the "thing" that we're describing.
 - valueUrl: the location of the "codes that define that thing"
 
-#### 3.2 The DSD (Data Structure Definition)
+If you consider the `valueUrl`, it's literally just information from a codelist.csv made available on the web.
 
+The `propertyUrl` is broader, in that it's the mechanism to bring in shared definitions.
+
+Consider the example above where I'm using two "home grown" references,  in that example I'm defining both the property (the thing itself) and the values (the codes/concepts within that thing). If I wanted to define (for example) bandings of age I could instead do the following:
+
+```json
+{
+    "titles": "my age groups",
+    "required": true,
+    "name": "my_age_groups",
+    "datatype": "string",
+    "propertyUrl": "http://purl.org/linked-data/sdmx/2009/dimension#age",
+    "valueUrl": "http://gss-data.org.uk/def/concept/ages/{age}"
+    },
+```
+
+So even though I need to provide custom age ranges via the `valueUrl` I'm still able to use a common SDMX propertyUrl for the age dimension (http://purl.org/linked-data/sdmx/2009/dimension#age) - which will link my dataset to any other data sets using this property.
+
+So how does this work in practice?
+
+#### 3.2 Implementation
+
+---
+--- TODO - is this gssutils create_transform?
+---
+
+### Info: The DSD
+
+---
+--- TODO - some conceptual explanations. Nothing too heavy as it should be automated out anyyway.
+---
 
 ### Example 4: Additional Metadata
 
