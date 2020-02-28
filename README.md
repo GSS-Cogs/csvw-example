@@ -1,12 +1,12 @@
 TODO - replace examples and snippets with those specific to SDG, MOJ etc
 
-### CSVW Walkthrough
+### SDG: 5 Star Linked Open Data
 
-The idea behind csvw is that all metadata fields (and all the columns of the csv) are fully described using web based vocabularies see [https://www.w3.org/standards/semanticweb/ontology](https://www.w3.org/standards/semanticweb/ontology) for an overview of linked data vocabularies).
+This document is a walkthrough of how we can create five star linked open data using SDG (sustainable development goals) data. We'll do this by utilising the CSV2RDF library (https://github.com/Swirrl/csv2rdf)[https://github.com/Swirrl/csv2rdf), in compliance with the specification for CSV on the web ([https://w3c.github.io/csvw/](https://w3c.github.io/csvw/)).
 
-For the cogs project, we've successfully explored taking this as a step further, using these fully described csvw files as a direct (and relatively straight forward) entry point to the world of five star linked open data.
+Simply put, the idea behind using csvw is that all metadata fields (and all the columns of the csv) should be fully described using web based vocabularies see [https://www.w3.org/standards/semanticweb/ontology](https://www.w3.org/standards/semanticweb/ontology) for an overview of linked data vocabularies).
 
-The following is a walk through of how we've been doing this. For the sake of practicality, I've built towards this via five discreet steps/examples with each example expanding on the previous (and with information sections dispersed throughout as needed).
+The following is a walk through of how to do this.
 
 ------ TODO: linkify these
 - Info: Prefixes
@@ -80,8 +80,6 @@ docker run -v /:/workspace -w /workspace gsscogs/csvlint csvlint <PATH_TO_YOUR_S
 
 ### Example 2. Codelists as external files
 
-*TODO - confusing, why do we include everything twice? Understand it, explain it.*
-
 All columns in a flattened dataset represent items from a list of concepts (or a subset of), these are typically represented by a codelist mapping a code or machine readable name to a human readable label.
 
 One advantage of csvw is you can use it represent more than one csv - allowing you to link directly to a csvs codelists by including them as additional tables in the datasets metadata.
@@ -131,7 +129,7 @@ This is actually telling us the following:
 
 ### Info: Urls as CSVW
 
-In this section we're going to de-mystify the semantic "all resources should appear on the web" part of linked open data. The goal here is simple - if you establish the relevant links via your csvw metadata, you've created a resource that can be used to convert csv data directly to RDF triples in a deterministic and repeatable fashion.
+In this section we're going to de-mystify the semantic "all resources should appear on the web" part of linked open data.
 
 The first thing to note - linked data isn't really about the web, not really. It's all about **name spaces**. Every resource in the world of linked data should be **uniquely identifiable** and transparently available to everyone.
 
@@ -154,9 +152,7 @@ We'll cover this in the next section.
 
 ### Example 3: Transformation
 
-We'll cover this as two distinct steps. First we'll explain the concepts and what's happening (the complicated bit) then we'll explain how to do it (the easy bit).
-
-#### 3.1 Concepts
+To make our data transformable (by which we mean, )
 
 Let's look at a `column` entry (as touched on in example 1: validation) that's been extended with this additional information:
 
@@ -195,19 +191,7 @@ Consider the example above where I'm using two "home grown" references,  in that
 
 So even though I need to provide custom age ranges via the `valueUrl` I'm still able to use a common SDMX propertyUrl for the age dimension (http://purl.org/linked-data/sdmx/2009/dimension#age) - which will link my dataset to any other data sets using this property.
 
-So how does this work in practice?
-
-#### 3.2 Implementation
-
----
-- TODO - is this gssutils create_transform?
----
-
-### Info: The DSD
-
----
-- TODO - some conceptual explanations. Nothing too heavy as it should be automated out anyyway.
----
+In the case of the attached example 3, I've used a mixture of both these approaches.
 
 ### Example 4: Additional Metadata
 
@@ -226,6 +210,10 @@ dcat:keyword
 dcat:landingPage
 ```
 
+---
+- TODO : show some RDF as well
+---
+
 *By now, I suspect you'll recognise our old friend the prefix appearing again.*
 
 One of the advantages of linked data is that it's almost infinitely extendable (you want to describe further aspects of something? add more triples). So in the case of linked data cubes, our current best practice is to create supplementary metadata fields of the sort listed above as a `.trig` file (a trig file is just a simple text file for representing graph/rdf data, see [https://en.wikipedia.org/wiki/TriG_(syntax)](https://en.wikipedia.org/wiki/TriG_(syntax)) for additional details).
@@ -233,12 +221,11 @@ One of the advantages of linked data is that it's almost infinitely extendable (
 Again, I'm not going to go into the full technical implementation (and again, happy to if anyone wants to get in contact) but you're basically aiming to write a text file and upload alongside your data cube - as long as you include relevant fields (if unsure, see the included example 3) you can generally pick whatever method works best with your current processes.
 
 
-### Example 5: Formatting the observation file
+### Example 5: The DSD
 
-To create RDF in the way, we will need to make some basic adjustments to the observation file.
-
-Firstly, everything in linked data world will eventually becomes a url - so **make your column values url friendly**. This principally means don't use special characters or spaces.
-
+---
+- TODO - this will be fun
+---
 
 ### Info: Future Considerations
 
