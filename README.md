@@ -44,26 +44,25 @@ Consider the included example 1.
 You can use a `format` field within those `dataType` entry to create validation statements. Example follows:
 
 ```json
-"tables": [
-  {
-    "url": "indicator_1-2-1.csv",
-    "tableSchema": {
-      "columns": [
-        {
-          "titles": "Year",
-          "required": true,
-          "name": "year",
-          "datatype": "integer"
-        }, {
-          "titles": "Sex",
-          "required": false,
-          "name": "sex",
-          "datatype": {
-            "base": "string",
-            "format": "^(Male|Female)$"
-          }}
-        ]}
+"tableSchema": {
+  "columns": [
+    {
+      "titles": "Value",
+      "required": false,
+      "name": "value",
+      "datatype": "number"
+    },
+    {
+      "titles": "Sex",
+      "required": true,
+      "name": "sex",
+      "dc:description": ""
+      "datatype": {
+        "base": "string",
+        "format": "^(M|F|T)$"
+      }
     }]
+  }
 ```
 
 The datatype can be a simple variables type (integer, string) and (in the case of strings) also include a `format` field, allowing you to pattern match using regular expressions (more information on these can be found at [https://blog.usejournal.com/regular-expressions-a-complete-beginners-tutorial-c7327b9fd8eb](https://blog.usejournal.com/regular-expressions-a-complete-beginners-tutorial-c7327b9fd8eb)).
