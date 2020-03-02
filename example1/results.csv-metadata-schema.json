@@ -49,6 +49,13 @@
         "datatype": "number"
       },
       {
+        "titles": "Year",
+        "required": true,
+        "name": "year"
+        "dc:description": "",
+        "datatype": "number"
+      },
+      {
         "titles": "Observation Status",
         "required": true,
         "name": "observation_status"

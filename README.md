@@ -12,12 +12,13 @@ The goal is to create a resource where all metadata fields (and all the columns 
 ---
 - Info: Prefixes
 - Example 1: Data Validation
+- Info: Observation File Changes
 - Example 2. Codelists as external files
 - Info: Urls as CSVW
 - Example 3: Transformation
 - Example 4: Additional Metadata
 - Example 5: The DSD
-- Info: Future Considerations
+- Info: Further Information
 
 
 ### Info: Prefixes
@@ -78,6 +79,13 @@ docker run -v /:/workspace -w /workspace gsscogs/csvlint csvlint <PATH_TO_YOUR_S
 ---
 - TODO: will need to explain the tweaks (measure type vs unit of measure) in here somewhere.
 ---
+
+### Info: Observation File Changes
+
+To make our data transformable we need to make a few basic formatting changes to the data on the observation file (we'll explain the rationale as we go), as follows:
+
+- SexColumn: we're switching Male, Female, <Blank> entries to M, F, T respectively (to match the common SDMX definition: http://purl.org/linked-data/sdmx/2009/code)
+
 
 ### Example 2. Codelists as external files
 
@@ -153,8 +161,6 @@ We'll cover this in the next section.
 
 ### Example 3: Transformation
 
-To make our data transformable (by which we mean, )
-
 Let's look at a `column` entry (as touched on in example 1: validation) that's been extended with this additional information:
 
 ```json
@@ -228,7 +234,7 @@ Again, I'm not going to go into the full technical implementation (and again, ha
 - TODO - this will be fun
 ---
 
-### Info: Future Considerations
+### Info: Further Information
 
 ---
 - TODO: useful or waffle? confusing either way, cannibalise or remove.
