@@ -1,5 +1,3 @@
-TODO - replace examples and snippets with those specific to SDG, MOJ etc
-
 ### SDG: 5 Star Linked Open Data
 
 This document is a walkthrough of how we can create five star linked open data using SDG (sustainable development goals) data.
@@ -21,7 +19,6 @@ This document will also be broken up with additional information sections as nee
 - Example 3: Transformation
 - Example 4: The DSD
 - Example 5: Additional Metadata
-- Info: Further Information
 
 
 ### Info: Prefixes
@@ -247,6 +244,7 @@ Nest, let's look at an `Attribute` property:
           "@id": "qb:MeasureProperty"
         },
         "qb:componentRequired": true
+      }
 ```
 
 With this, all we're really doing is pointing to the standard SDMX 2009 unit multiplier definition.
@@ -343,58 +341,3 @@ Joe <http://www.example.org/vocabulary#name> "Joe";
 You'll notice that the second triple has only two statements. That's because the `;` character is indicating that an element of the previous line will be reused (in this case, the variable defined by `Joe`)
 
 These techniques should provide the basics to understand the .trig file included in example 5.
-
-### Info: Further Information
-
----
-- TODO: useful or waffle? confusing either way, cannibalise or remove.
----
-
-
-#### The Golden Rule
-
-Everything in linked data world will eventually becomes a url - so **make your column values url friendly**. This principally means don't use special characters or spaces.
-
-..but....my label has spaces in it?!
-
-Remember the codelists we've previously defined? (see example 2). Those codelists have two main columns:
-
-- 1.) The Code - the url friendly, no spaces, no special characters representation of a thing.
-
-- 2.) The Label - where you can do whatever you want to make a nice readable plain english label for us humans.
-
-So just remember: **the code goes in the observation file, then you add each codes user friendly label via the codelist** and you can't go far wrong.
-
-#### Common problems and things that are good to known
-
-There's quite a few solved problems (and ongoing discussions) that'll inevitably crop up for everyone, so we'll finish with a bit of a knowledge share:
-
-
-**Time.** Everyone has to include details on time, and traditionally nobody knows quite how to express it. Thankfully in five star linked open data world we have [https://github.com/epimorphics/IntervalServer/blob/master/interval-uris.md](https://github.com/epimorphics/IntervalServer/blob/master/interval-uris.md) as a common reference point in regards to this.
-
-By way of some quick examples:
-
-| Time as plain text | The same time as a url  |
-|-----|-----------|
-| 2005   | http://reference.data.gov.uk/id/year/2005
-| 2006 Q2 | http://reference.data.gov.uk/id/quarter/2006-Q2
-| A three month interval, starting on 1st February 2004  | http://reference.data.gov.uk/id/gregorian-interval/2004-02-01T00:00:00/P3M
-
-
-**Sex.** There is an old and very commonly used SDMX definition of sex at [http://purl.org/linked-data/sdmx/2009/code](http://purl.org/linked-data/sdmx/2009/code) that uses M, F, T (Male, Female, Total).
-
-Given the commonality and wide spread use of this reference, we would recommend converting your observation file to use use the M,F,T codes wherever possible.
-
-**Age.** is an ongoing discussion (as everyone seems to handle it slightly differently). At a minimum make sure there are no spaces in your codes for age, beyond that please do contact us@gsscogs.uk and get involved in that discussion (we genuinely want to hear from you!)
-
-**Measure Type.** For the cogs project we’ve been laying things out in CSV with multiple rows for each measure, by including a `Measure Type` column in each observation csv.
-
-So if (for example) you were measuring both "mass" and "volume" for a given combination of dimensions, you'd include each on it's own row and differentiate via literally recording either "mass" or "volume" in the `Measure Type` column.
-
-**Unit Multiplier**
-
-Where a unit multipler is required to express the data, a `Unit` column needs to be included in the observation csv.
-
-This allows the creation of (again, SDMX based) URIs of the form of http://purl.org/linked-data/sdmx/2009/code#unitMult-0(where the last bit is replaced with the unit multiplier, i.e. 10 to the power of).
-
-It's just that final number that you'd need to include in the observation csv.
