@@ -1,0 +1,274 @@
+Year,Sex,Age,Observation status,Unit multiplier,Unit measure,Value
+2005,T,,Undefined,1,Percentage (%),19.0
+2005,T,15 and under,Undefined,1,Percentage (%),23.3
+2005,T,16 to 24,Undefined,1,Percentage (%),23.4
+2005,T,25 to 49,Undefined,1,Percentage (%),14.4
+2005,T,50 to 64,Undefined,1,Percentage (%),15.6
+2005,T,65 to 74,Undefined,1,Percentage (%),21.4
+2005,T,75 and over,Undefined,1,Percentage (%),28.7
+2005,M,,Undefined,1,Percentage (%),18.6
+2005,M,15 and under,Undefined,1,Percentage (%),24.4
+2005,M,16 to 24,Undefined,1,Percentage (%),24.3
+2005,M,25 to 49,Undefined,1,Percentage (%),13.5
+2005,M,50 to 64,Undefined,1,Percentage (%),15.8
+2005,M,65 to 74,Undefined,1,Percentage (%),19.4
+2005,M,75 and over,Undefined,1,Percentage (%),25.2
+2005,F,,Undefined,1,Percentage (%),19.4
+2005,F,15 and under,Undefined,1,Percentage (%),22.3
+2005,F,16 to 24,Undefined,1,Percentage (%),22.4
+2005,F,25 to 49,Undefined,1,Percentage (%),15.3
+2005,F,50 to 64,Undefined,1,Percentage (%),15.4
+2005,F,65 to 74,Undefined,1,Percentage (%),23.2
+2005,F,75 and over,Undefined,1,Percentage (%),31.0
+2006,T,,Undefined,1,Percentage (%),19.0
+2006,T,15 and under,Undefined,1,Percentage (%),24.5
+2006,T,16 to 24,Undefined,1,Percentage (%),21.0
+2006,T,25 to 49,Undefined,1,Percentage (%),13.8
+2006,T,50 to 64,Undefined,1,Percentage (%),15.8
+2006,T,65 to 74,Undefined,1,Percentage (%),21.7
+2006,T,75 and over,Undefined,1,Percentage (%),31.1
+2006,M,,Undefined,1,Percentage (%),18.0
+2006,M,15 and under,Undefined,1,Percentage (%),25.4
+2006,M,16 to 24,Undefined,1,Percentage (%),19.6
+2006,M,25 to 49,Undefined,1,Percentage (%),13.0
+2006,M,50 to 64,Undefined,1,Percentage (%),15.4
+2006,M,65 to 74,Undefined,1,Percentage (%),18.6
+2006,M,75 and over,Undefined,1,Percentage (%),27.5
+2006,F,,Undefined,1,Percentage (%),19.9
+2006,F,15 and under,Undefined,1,Percentage (%),23.7
+2006,F,16 to 24,Undefined,1,Percentage (%),22.6
+2006,F,25 to 49,Undefined,1,Percentage (%),14.5
+2006,F,50 to 64,Undefined,1,Percentage (%),16.3
+2006,F,65 to 74,Undefined,1,Percentage (%),24.5
+2006,F,75 and over,Undefined,1,Percentage (%),33.4
+2007,T,,Undefined,1,Percentage (%),18.6
+2007,T,15 and under,Undefined,1,Percentage (%),23.2
+2007,T,16 to 24,Undefined,1,Percentage (%),19.7
+2007,T,25 to 49,Undefined,1,Percentage (%),14.0
+2007,T,50 to 64,Undefined,1,Percentage (%),15.3
+2007,T,65 to 74,Undefined,1,Percentage (%),22.4
+2007,T,75 and over,Undefined,1,Percentage (%),31.2
+2007,M,,Undefined,1,Percentage (%),17.6
+2007,M,15 and under,Undefined,1,Percentage (%),23.1
+2007,M,16 to 24,Undefined,1,Percentage (%),18.4
+2007,M,25 to 49,Undefined,1,Percentage (%),13.2
+2007,M,50 to 64,Undefined,1,Percentage (%),15.4
+2007,M,65 to 74,Undefined,1,Percentage (%),19.1
+2007,M,75 and over,Undefined,1,Percentage (%),29.0
+2007,F,,Undefined,1,Percentage (%),19.6
+2007,F,15 and under,Undefined,1,Percentage (%),23.4
+2007,F,16 to 24,Undefined,1,Percentage (%),21.0
+2007,F,25 to 49,Undefined,1,Percentage (%),14.8
+2007,F,50 to 64,Undefined,1,Percentage (%),15.3
+2007,F,65 to 74,Undefined,1,Percentage (%),25.3
+2007,F,75 and over,Undefined,1,Percentage (%),32.7
+2008,T,,Undefined,1,Percentage (%),18.7
+2008,T,15 and under,Undefined,1,Percentage (%),24.4
+2008,T,16 to 24,Undefined,1,Percentage (%),18.8
+2008,T,25 to 49,Undefined,1,Percentage (%),13.5
+2008,T,50 to 64,Undefined,1,Percentage (%),15.3
+2008,T,65 to 74,Undefined,1,Percentage (%),23.9
+2008,T,75 and over,Undefined,1,Percentage (%),31.2
+2008,M,,Undefined,1,Percentage (%),17.4
+2008,M,15 and under,Undefined,1,Percentage (%),23.5
+2008,M,16 to 24,Undefined,1,Percentage (%),16.9
+2008,M,25 to 49,Undefined,1,Percentage (%),12.6
+2008,M,50 to 64,Undefined,1,Percentage (%),15.0
+2008,M,65 to 74,Undefined,1,Percentage (%),21.3
+2008,M,75 and over,Undefined,1,Percentage (%),28.6
+2008,F,,Undefined,1,Percentage (%),20.0
+2008,F,15 and under,Undefined,1,Percentage (%),25.4
+2008,F,16 to 24,Undefined,1,Percentage (%),20.9
+2008,F,25 to 49,Undefined,1,Percentage (%),14.5
+2008,F,50 to 64,Undefined,1,Percentage (%),15.5
+2008,F,65 to 74,Undefined,1,Percentage (%),26.4
+2008,F,75 and over,Undefined,1,Percentage (%),33.1
+2009,T,,Undefined,1,Percentage (%),17.3
+2009,T,15 and under,Undefined,1,Percentage (%),20.6
+2009,T,16 to 24,Undefined,1,Percentage (%),20.1
+2009,T,25 to 49,Undefined,1,Percentage (%),13.7
+2009,T,50 to 64,Undefined,1,Percentage (%),14.4
+2009,T,65 to 74,Undefined,1,Percentage (%),19.2
+2009,T,75 and over,Undefined,1,Percentage (%),25.8
+2009,M,,Undefined,1,Percentage (%),16.7
+2009,M,15 and under,Undefined,1,Percentage (%),20.1
+2009,M,16 to 24,Undefined,1,Percentage (%),19.5
+2009,M,25 to 49,Undefined,1,Percentage (%),13.4
+2009,M,50 to 64,Undefined,1,Percentage (%),14.9
+2009,M,65 to 74,Undefined,1,Percentage (%),16.9
+2009,M,75 and over,Undefined,1,Percentage (%),24.2
+2009,F,,Undefined,1,Percentage (%),17.8
+2009,F,15 and under,Undefined,1,Percentage (%),21.3
+2009,F,16 to 24,Undefined,1,Percentage (%),20.7
+2009,F,25 to 49,Undefined,1,Percentage (%),14.0
+2009,F,50 to 64,Undefined,1,Percentage (%),13.8
+2009,F,65 to 74,Undefined,1,Percentage (%),21.3
+2009,F,75 and over,Undefined,1,Percentage (%),27.0
+2010,T,,Undefined,1,Percentage (%),17.1
+2010,T,15 and under,Undefined,1,Percentage (%),20.0
+2010,T,16 to 24,Undefined,1,Percentage (%),21.2
+2010,T,25 to 49,Undefined,1,Percentage (%),13.7
+2010,T,50 to 64,Undefined,1,Percentage (%),14.3
+2010,T,65 to 74,Undefined,1,Percentage (%),17.8
+2010,T,75 and over,Undefined,1,Percentage (%),25.5
+2010,M,,Undefined,1,Percentage (%),16.4
+2010,M,15 and under,Undefined,1,Percentage (%),20.6
+2010,M,16 to 24,Undefined,1,Percentage (%),21.0
+2010,M,25 to 49,Undefined,1,Percentage (%),12.7
+2010,M,50 to 64,Undefined,1,Percentage (%),15.1
+2010,M,65 to 74,Undefined,1,Percentage (%),15.4
+2010,M,75 and over,Undefined,1,Percentage (%),20.6
+2010,F,,Undefined,1,Percentage (%),17.8
+2010,F,15 and under,Undefined,1,Percentage (%),19.3
+2010,F,16 to 24,Undefined,1,Percentage (%),21.3
+2010,F,25 to 49,Undefined,1,Percentage (%),14.8
+2010,F,50 to 64,Undefined,1,Percentage (%),13.6
+2010,F,65 to 74,Undefined,1,Percentage (%),20.0
+2010,F,75 and over,Undefined,1,Percentage (%),29.0
+2011,T,,Undefined,1,Percentage (%),16.2
+2011,T,15 and under,Undefined,1,Percentage (%),17.6
+2011,T,16 to 24,Undefined,1,Percentage (%),20.1
+2011,T,25 to 49,Undefined,1,Percentage (%),12.3
+2011,T,50 to 64,Undefined,1,Percentage (%),14.5
+2011,T,65 to 74,Undefined,1,Percentage (%),17.3
+2011,T,75 and over,Undefined,1,Percentage (%),27.2
+2011,M,,Undefined,1,Percentage (%),14.8
+2011,M,15 and under,Undefined,1,Percentage (%),17.7
+2011,M,16 to 24,Undefined,1,Percentage (%),16.7
+2011,M,25 to 49,Undefined,1,Percentage (%),11.5
+2011,M,50 to 64,Undefined,1,Percentage (%),14.1
+2011,M,65 to 74,Undefined,1,Percentage (%),14.8
+2011,M,75 and over,Undefined,1,Percentage (%),22.7
+2011,F,,Undefined,1,Percentage (%),17.6
+2011,F,15 and under,Undefined,1,Percentage (%),17.5
+2011,F,16 to 24,Undefined,1,Percentage (%),23.7
+2011,F,25 to 49,Undefined,1,Percentage (%),13.2
+2011,F,50 to 64,Undefined,1,Percentage (%),15.0
+2011,F,65 to 74,Undefined,1,Percentage (%),19.5
+2011,F,75 and over,Undefined,1,Percentage (%),30.5
+2012,T,,Undefined,1,Percentage (%),16.0
+2012,T,15 and under,Undefined,1,Percentage (%),17.6
+2012,T,16 to 24,Undefined,1,Percentage (%),23.2
+2012,T,25 to 49,Undefined,1,Percentage (%),12.9
+2012,T,50 to 64,Undefined,1,Percentage (%),15.2
+2012,T,65 to 74,Undefined,1,Percentage (%),13.6
+2012,T,75 and over,Undefined,1,Percentage (%),19.8
+2012,M,,Undefined,1,Percentage (%),15.8
+2012,M,15 and under,Undefined,1,Percentage (%),16.8
+2012,M,16 to 24,Undefined,1,Percentage (%),24.5
+2012,M,25 to 49,Undefined,1,Percentage (%),12.6
+2012,M,50 to 64,Undefined,1,Percentage (%),15.6
+2012,M,65 to 74,Undefined,1,Percentage (%),12.9
+2012,M,75 and over,Undefined,1,Percentage (%),17.7
+2012,F,,Undefined,1,Percentage (%),16.3
+2012,F,15 and under,Undefined,1,Percentage (%),18.4
+2012,F,16 to 24,Undefined,1,Percentage (%),21.8
+2012,F,25 to 49,Undefined,1,Percentage (%),13.3
+2012,F,50 to 64,Undefined,1,Percentage (%),14.8
+2012,F,65 to 74,Undefined,1,Percentage (%),14.3
+2012,F,75 and over,Undefined,1,Percentage (%),21.4
+2013,T,,Undefined,1,Percentage (%),15.9
+2013,T,15 and under,Undefined,1,Percentage (%),18.1
+2013,T,16 to 24,Undefined,1,Percentage (%),22.4
+2013,T,25 to 49,Undefined,1,Percentage (%),12.9
+2013,T,50 to 64,Undefined,1,Percentage (%),14.5
+2013,T,65 to 74,Undefined,1,Percentage (%),13.2
+2013,T,75 and over,Undefined,1,Percentage (%),20.7
+2013,M,,Undefined,1,Percentage (%),15.4
+2013,M,15 and under,Undefined,1,Percentage (%),18.0
+2013,M,16 to 24,Undefined,1,Percentage (%),21.7
+2013,M,25 to 49,Undefined,1,Percentage (%),12.3
+2013,M,50 to 64,Undefined,1,Percentage (%),15.1
+2013,M,65 to 74,Undefined,1,Percentage (%),12.2
+2013,M,75 and over,Undefined,1,Percentage (%),18.0
+2013,F,,Undefined,1,Percentage (%),16.4
+2013,F,15 and under,Undefined,1,Percentage (%),18.3
+2013,F,16 to 24,Undefined,1,Percentage (%),23.1
+2013,F,25 to 49,Undefined,1,Percentage (%),13.6
+2013,F,50 to 64,Undefined,1,Percentage (%),13.9
+2013,F,65 to 74,Undefined,1,Percentage (%),14.2
+2013,F,75 and over,Undefined,1,Percentage (%),22.7
+2014,T,,Undefined,1,Percentage (%),16.8
+2014,T,15 and under,Undefined,1,Percentage (%),19.1
+2014,T,16 to 24,Undefined,1,Percentage (%),23.2
+2014,T,25 to 49,Undefined,1,Percentage (%),14.0
+2014,T,50 to 64,Undefined,1,Percentage (%),15.1
+2014,T,65 to 74,Undefined,1,Percentage (%),13.6
+2014,T,75 and over,Undefined,1,Percentage (%),22.7
+2014,M,,Undefined,1,Percentage (%),16.0
+2014,M,15 and under,Undefined,1,Percentage (%),19.2
+2014,M,16 to 24,Undefined,1,Percentage (%),21.2
+2014,M,25 to 49,Undefined,1,Percentage (%),13.8
+2014,M,50 to 64,Undefined,1,Percentage (%),14.7
+2014,M,65 to 74,Undefined,1,Percentage (%),12.0
+2014,M,75 and over,Undefined,1,Percentage (%),18.8
+2014,F,,Undefined,1,Percentage (%),17.6
+2014,F,15 and under,Undefined,1,Percentage (%),19.0
+2014,F,16 to 24,Undefined,1,Percentage (%),25.3
+2014,F,25 to 49,Undefined,1,Percentage (%),14.1
+2014,F,50 to 64,Undefined,1,Percentage (%),15.5
+2014,F,65 to 74,Undefined,1,Percentage (%),15.0
+2014,F,75 and over,Undefined,1,Percentage (%),25.5
+2015,T,,Undefined,1,Percentage (%),16.6
+2015,T,15 and under,Undefined,1,Percentage (%),19.5
+2015,T,16 to 24,Undefined,1,Percentage (%),24.9
+2015,T,25 to 49,Undefined,1,Percentage (%),13.6
+2015,T,50 to 64,Undefined,1,Percentage (%),14.5
+2015,T,65 to 74,Undefined,1,Percentage (%),13.1
+2015,T,75 and over,Undefined,1,Percentage (%),20.8
+2015,M,,Undefined,1,Percentage (%),16.1
+2015,M,15 and under,Undefined,1,Percentage (%),18.3
+2015,M,16 to 24,Undefined,1,Percentage (%),24.4
+2015,M,25 to 49,Undefined,1,Percentage (%),13.6
+2015,M,50 to 64,Undefined,1,Percentage (%),14.1
+2015,M,65 to 74,Undefined,1,Percentage (%),12.7
+2015,M,75 and over,Undefined,1,Percentage (%),18.1
+2015,F,,Undefined,1,Percentage (%),17.2
+2015,F,15 and under,Undefined,1,Percentage (%),20.9
+2015,F,16 to 24,Undefined,1,Percentage (%),25.5
+2015,F,25 to 49,Undefined,1,Percentage (%),13.6
+2015,F,50 to 64,Undefined,1,Percentage (%),14.9
+2015,F,65 to 74,Undefined,1,Percentage (%),13.4
+2015,F,75 and over,Undefined,1,Percentage (%),22.9
+2016,T,,Undefined,1,Percentage (%),15.9
+2016,T,15 and under,Undefined,1,Percentage (%),18.1
+2016,T,16 to 24,Undefined,1,Percentage (%),19.9
+2016,T,25 to 49,Undefined,1,Percentage (%),13.3
+2016,T,50 to 64,Undefined,1,Percentage (%),14.7
+2016,T,65 to 74,Undefined,1,Percentage (%),13.7
+2016,T,75 and over,Undefined,1,Percentage (%),21.4
+2016,M,,Undefined,1,Percentage (%),15.2
+2016,M,15 and under,Undefined,1,Percentage (%),18.1
+2016,M,16 to 24,Undefined,1,Percentage (%),18.2
+2016,M,25 to 49,Undefined,1,Percentage (%),12.9
+2016,M,50 to 64,Undefined,1,Percentage (%),15.1
+2016,M,65 to 74,Undefined,1,Percentage (%),11.3
+2016,M,75 and over,Undefined,1,Percentage (%),18.8
+2016,F,,Undefined,1,Percentage (%),16.5
+2016,F,15 and under,Undefined,1,Percentage (%),18.1
+2016,F,16 to 24,Undefined,1,Percentage (%),21.6
+2016,F,25 to 49,Undefined,1,Percentage (%),13.6
+2016,F,50 to 64,Undefined,1,Percentage (%),14.2
+2016,F,65 to 74,Undefined,1,Percentage (%),16.0
+2016,F,75 and over,Undefined,1,Percentage (%),23.4
+2017,T,,Undefined,1,Percentage (%),17.0
+2017,T,15 and under,Undefined,1,Percentage (%),21.1
+2017,T,16 to 24,Undefined,1,Percentage (%),20.8
+2017,T,25 to 49,Undefined,1,Percentage (%),13.7
+2017,T,50 to 64,Undefined,1,Percentage (%),16.6
+2017,T,65 to 74,Undefined,1,Percentage (%),13.4
+2017,T,75 and over,Undefined,1,Percentage (%),21.3
+2017,M,,Undefined,1,Percentage (%),16.1
+2017,M,15 and under,Undefined,1,Percentage (%),21.1
+2017,M,16 to 24,Undefined,1,Percentage (%),19.8
+2017,M,25 to 49,Undefined,1,Percentage (%),12.2
+2017,M,50 to 64,Undefined,1,Percentage (%),16.8
+2017,M,65 to 74,Undefined,1,Percentage (%),12.6
+2017,M,75 and over,Undefined,1,Percentage (%),17.6
+2017,F,,Undefined,1,Percentage (%),17.9
+2017,F,15 and under,Undefined,1,Percentage (%),21.0
+2017,F,16 to 24,Undefined,1,Percentage (%),21.8
+2017,F,25 to 49,Undefined,1,Percentage (%),15.2
+2017,F,50 to 64,Undefined,1,Percentage (%),16.3
+2017,F,65 to 74,Undefined,1,Percentage (%),14.3
+2017,F,75 and over,Undefined,1,Percentage (%),24.1

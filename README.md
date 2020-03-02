@@ -75,10 +75,6 @@ To run this locally you need to have [docker](https://docs.docker.com/install/) 
 docker run -v /:/workspace -w /workspace gsscogs/csvlint csvlint <PATH_TO_YOUR_SCHEMA_JSON>
 ```
 
----
-- TODO: will need to explain the tweaks (measure type vs unit of measure) in here somewhere.
----
-
 ### Info: Observation File Changes
 
 To make our data transformable we need to make a few basic formatting changes to the data on the observation file (we'll explain the rationale as we go), as follows:
