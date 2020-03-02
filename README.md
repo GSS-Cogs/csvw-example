@@ -162,16 +162,19 @@ We'll cover this in the next section.
 
 ### Example 3: Transformation
 
+Please note: Linked open data needs to inlcude a base url (so, where you're linked data is going to live). For the sale of these example I'm using http://gss-data.org.uk and our standard patterns. You can freely substitute for your own domain and
+patterns (or better yet get in contact and use ours!).
+
 Let's look at a `column` entry (as touched on in example 1: validation) that's been extended with this additional information:
 
 ```json
 {
-    "titles": "ashe working pattern",
+    "titles": "Observation Status",
     "required": true,
-    "name": "ashe_working_pattern",
+    "name": "observation_status",
     "datatype": "string",
-    "propertyUrl": "http://gss-data.org.uk/def/dimension/ashe-working-pattern",
-    "valueUrl": "http://gss-data.org.uk/def/concept/ashe-working-pattern/{ashe_working_pattern}"
+    "propertyUrl": "http://gss-data.org.uk/def/dimension/observation-status",
+    "valueUrl": "http://gss-data.org.uk/def/concept/observation-status/{observation_status}"
     },
 ```
 
@@ -180,24 +183,24 @@ You can see we've added two additional fields:
 - propertyUrl: the "thing" that we're describing.
 - valueUrl: the location of the "codes that define that thing"
 
-If you consider the `valueUrl`, it's literally just information from a codelist.csv made available on the web.
+If you consider the `valueUrl`, it's literally just information from a codelist.csv we would just make available on the web.
 
-The `propertyUrl` is broader, in that it's the mechanism to bring in shared definitions.
+The `propertyUrl` is broader, in that it's the mechanism to bring in shared definitions. In this example it's an ad-hoc definition that we may or may not broaden so it can be used across multiple datasets.
 
-Consider the example above where I'm using two "home grown" references,  in that example I'm defining both the property (the thing itself) and the values (the codes/concepts within that thing). If I wanted to define (for example) bandings of age I could instead do the following:
+As an alternate approach, let's look at the same information but for the age dimension.
 
 ```json
 {
-    "titles": "my age groups",
+    "titles": "Age",
     "required": true,
-    "name": "my_age_groups",
+    "name": "age",
     "datatype": "string",
     "propertyUrl": "http://purl.org/linked-data/sdmx/2009/dimension#age",
-    "valueUrl": "http://gss-data.org.uk/def/concept/ages/{age}"
+    "valueUrl": "http://gss-data.org.uk/def/concept/age/{age}"
     },
 ```
 
-So even though I need to provide custom age ranges via the `valueUrl` I'm still able to use a common SDMX propertyUrl for the age dimension (http://purl.org/linked-data/sdmx/2009/dimension#age) - which will link my dataset to any other data sets using this property.
+So even though I need to provide custom age codes via the `valueUrl` I'm still able to use a common SDMX propertyUrl for the age dimension (http://purl.org/linked-data/sdmx/2009/dimension#age) - which will create better linkage between my dataset and other other data sets using this property.
 
 In the case of the attached example 3, I've used a mixture of both these approaches.
 
