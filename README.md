@@ -126,7 +126,7 @@ Consider the following example:
   "columnReference": "Age",
   "reference": {
     "resource": "age.csv",
-    "columnReference": "age"
+    "columnReference": "Notation"
   }
 }]
 ```

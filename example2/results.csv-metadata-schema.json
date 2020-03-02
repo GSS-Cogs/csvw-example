@@ -17,6 +17,26 @@
         "suppressOutput": true
       },
       {
+        "url": "year.csv",
+        "tableSchema": "codelist-schema.json",
+        "suppressOutput": true
+      },
+      {
+        "url": "observation-status.csv",
+        "tableSchema": "codelist-schema.json",
+        "suppressOutput": true
+      },
+      {
+        "url": "unit-multiplier.csv",
+        "tableSchema": "codelist-schema.json",
+        "suppressOutput": true
+      },
+      {
+        "url": "unit-measure.csv",
+        "tableSchema": "codelist-schema.json",
+        "suppressOutput": true
+      },
+      {
         "url": "indicator_1-2-1.csv",
         "dc:title": "SDG One to one indicators",
         "dcat:keyword": [
@@ -92,5 +112,49 @@
         "primaryKey": "GID",
         "aboutUrl": "#gid-{GID}"
         }
-    }]
+    }],
+    "ForeignKeys": [
+      {
+        "columnReference": "Age",
+        "reference": {
+          "resource": "age.csv",
+          "columnReference": "Notation"
+        }
+      },
+      {
+        "columnReference": "Sex",
+        "reference": {
+          "resource": "sex.csv",
+          "columnReference": "Notation"
+        }
+      },
+      {
+        "columnReference": "Year",
+        "reference": {
+          "resource": "year.csv",
+          "columnReference": "Notation"
+        }
+      },
+      {
+        "columnReference": "Observation Status",
+        "reference": {
+          "resource": "age.csv",
+          "columnReference": "Notation"
+        }
+      },
+      {
+        "columnReference": "Unit Multiplier",
+        "reference": {
+          "resource": "unit-multiplier.csv",
+          "columnReference": "Notation"
+        }
+      },
+      {
+        "columnReference": "Unit Measure",
+        "reference": {
+          "resource": "unit-measure.csv",
+          "columnReference": "Notation"
+        }
+      },
+]},
 }
