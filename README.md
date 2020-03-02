@@ -181,7 +181,7 @@ Let's look at a `column` entry (as touched on in example 1: validation) that's b
 You can see we've added two additional fields:
 
 - propertyUrl: the "thing" that we're describing.
-- valueUrl: the location of the "codes that define that thing"
+- valueUrl: the location of the individual codes & labels (collectively, the concepts) that sit within that "thing".
 
 If you consider the `valueUrl`, it's literally just information from a codelist.csv we would just make available on the web.
 
