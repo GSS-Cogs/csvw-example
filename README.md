@@ -8,7 +8,6 @@ The goal is to create a resource where all metadata fields (and all the columns 
 
 ---
 - TODO: linkify headings
-- swap 4 and 5? figure out where to we explain obs file changes?
 ---
 - Info: Prefixes
 - Example 1: Data Validation
@@ -84,7 +83,7 @@ docker run -v /:/workspace -w /workspace gsscogs/csvlint csvlint <PATH_TO_YOUR_S
 
 To make our data transformable we need to make a few basic formatting changes to the data on the observation file (we'll explain the rationale as we go), as follows:
 
-- SexColumn: we're switching Male, Female, <Blank> entries to M, F, T respectively (to match the common SDMX definition: http://purl.org/linked-data/sdmx/2009/code)
+- Sex Column: we're switching Male, Female, <Blank> entries to M, F, T respectively (to match the common SDMX definition: http://purl.org/linked-data/sdmx/2009/code)
 
 
 ### Example 2. Codelists as external files
