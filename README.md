@@ -340,4 +340,4 @@ Joe <http://www.example.org/vocabulary#name> "Joe";
 
 You'll notice that the second triple has only two statements. That's because the `;` character is indicating that an element of the previous line will be reused (in this case, the variable defined by `Joe`)
 
-These techniques should provide the basics to understand the .trig file included in example 5.
+These techniques should provide the basics to understand the .trig file included with example 5.
