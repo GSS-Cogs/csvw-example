@@ -79,9 +79,11 @@ docker run -v /:/workspace -w /workspace gsscogs/csvlint csvlint <PATH_TO_YOUR_S
 
 To make our data transformable we need to make a few basic formatting changes to the data on the observation file (we'll explain the rationale as we go), as follows:
 
-- Sex Column: we're switching Male, Female, <Blank> entries to M, F, T respectively (to match the common SDMX definition: http://purl.org/linked-data/sdmx/2009/code)
+- Sex Column: we're switching Male, Female, "" () entries to M, F, T respectively (to match the common SDMX definition: http://purl.org/linked-data/sdmx/2009/code)
 
 - Age Column: we'll replace the blank entries (denoting all ages) with 'Total'.
+
+- I'm going to change the column name `Time` to the more common (for linked data) `Reference Period`.
 
 
 ### Example 2. Codelists as external files
@@ -202,9 +204,25 @@ In the case of the attached example 3, I've used a mixture of both these approac
 
 ### Example 4: The DSD
 
----
-- TODO - this will be fun
----
+The DSD (Data Structure Definition) is probably the most confusing looking part of the csvw - but - also probably the simplest to do, consisting as it does of simple repeating patterns.
+
+As such it's a relatively simple thing to automate as (other than explicitly stating a few things a human could just infer from the earlier example) we're only actually adding a small amount of additional information.
+
+There are effectively three types of component that make up your linked data cube (`Dimension`, `Measure`, `Attribute`), so our main goal is to differentiate which of those the columns of our csv actually are.
+
+Lets's look an example `Dimension` component as it appears in the dsd:
+
+```json
+{
+  "qb:dimension": {
+    "@id": "http://purl.org/linked-data/sdmx/2009/dimension#refPeriod",
+    "@type": "qb:DimensionProperty",
+    "rdfs:label": "Reference Period",
+    "rdfs:range": {"@id": "http://www.w3.org/2006/time#Interval"},
+    "qb:codeList": {"@id": "http://gss-data.org.uk/def/concept-scheme/refPeriod" }
+    }
+},
+```
 
 ### Example 5: Additional Metadata
 
@@ -261,7 +279,7 @@ Joe <http://www.example.org/vocabulary#name> "Joe";
 
 You'll notice that the second triple has only two statements. That's because the `;` character is indicating that an element of the previous line will be reused (in this case, the variable defined by `Joe`)
 
-These techiques should provide the basics to understand the .trig file included in example 5.
+These techniques should provide the basics to understand the .trig file included in example 5.
 
 ### Info: Further Information
 

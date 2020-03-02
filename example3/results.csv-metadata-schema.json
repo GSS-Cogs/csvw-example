@@ -17,7 +17,7 @@
         "suppressOutput": true
       },
       {
-        "url": "year.csv",
+        "url": "reference-period.csv",
         "tableSchema": "codelist-schema.json",
         "suppressOutput": true
       },
@@ -85,13 +85,13 @@
               "valueUrl": "http://gss-data.org.uk/def/concept/age/{age}"
             },
             {
-              "titles": "Year",
+              "titles": "Reference Period",
               "required": true,
-              "name": "year",
+              "name": "reference_period",
               "dc:description": "",
               "datatype": "number",
-              "propertyUrl": "http://gss-data.org.uk/def/dimension/year",
-              "valueUrl": "http://gss-data.org.uk/def/concept/year/{year}"
+              "propertyUrl": "http://gss-data.org.uk/def/dimension/reference-period",
+              "valueUrl": "http://gss-data.org.uk/def/concept/year/{reference_period}"
             },
             {
               "titles": "Observation Status",
@@ -141,9 +141,9 @@
         }
       },
       {
-        "columnReference": "Year",
+        "columnReference": "Reference Period",
         "reference": {
-          "resource": "year.csv",
+          "resource": "reference-period.csv",
           "columnReference": "Notation"
         }
       },

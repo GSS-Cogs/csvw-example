@@ -51,9 +51,9 @@
             "datatype": "number"
           },
           {
-            "titles": "Year",
+            "titles": "Reference Period",
             "required": true,
-            "name": "year",
+            "name": "reference_period",
             "dc:description": "",
             "datatype": "number"
           },
