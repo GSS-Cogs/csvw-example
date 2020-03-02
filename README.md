@@ -6,6 +6,10 @@ This document is a walkthrough of how we can create five star linked open data u
 
 To do this we're going to create a csvw representation of the dataset (in compliance with the specification for CSV on the web https://w3c.github.io/csvw/](https://w3c.github.io/csvw/). This CSVW will then be used to generate the RDF.
 
+We're approaching this on step by step basis, with the intention to create a learning resource as much as an example. As such, each example is included in it's own self contained directory, while this document will walk through how we've expanded our initial CSVW file with additional detail each time (anyone already familiar with CSVW and RDF can skip straight to example 5).
+
+This document will also be broken up with additional information sections as needed.
+
 ---
 - TODO: linkify headings
 ---
@@ -280,6 +284,8 @@ Next let's look at an `Measure` component as it appears in the DSD.
 ```
 
 As per the previous example I've used a common RDF SDMX definition (for measure type) combined with our "home grown" resources to define the range.
+
+These choices, combined with some boiler plate gets you to a fully described DSD (please see the included example 4).
 
 ### Example 5: Additional Metadata
 
