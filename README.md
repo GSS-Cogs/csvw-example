@@ -11,7 +11,7 @@ This document will also be broken up with additional information sections as nee
 ---
 - TODO: linkify headings
 ---
-- Info: Prefixes
+- [Info: Prefixes](#info-prefixes)
 - Example 1: Data Validation
 - Info: Observation File Changes
 - Example 2. Codelists as external files
