@@ -67,7 +67,7 @@
           {
             "titles": "Unit Multiplier",
             "required": true,
-            "name": "unit_multiplier"
+            "name": "unit_multiplier",
             "dc:description": "",
             "datatype": "string"
           },
