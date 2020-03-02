@@ -32,7 +32,7 @@
         "suppressOutput": true
       },
       {
-        "url": "unit-measure.csv",
+        "url": "Measure Type.csv",
         "tableSchema": "codelist-schema.json",
         "suppressOutput": true
       },
@@ -102,9 +102,9 @@
               "datatype": "string"
             },
             {
-              "titles": "Unit Measure",
+              "titles": "Measure Type",
               "required": true,
-              "name": "unit_measure",
+              "name": "measure_type",
               "dc:description": "",
               "datatype": "string"
             }
@@ -150,9 +150,9 @@
         }
       },
       {
-        "columnReference": "Unit Measure",
+        "columnReference": "Measure Type",
         "reference": {
-          "resource": "unit-measure.csv",
+          "resource": "measure-type.csv",
           "columnReference": "Notation"
         }
       },

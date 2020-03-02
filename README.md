@@ -228,12 +228,58 @@ First, lets's look an example `Dimension` component as it appears in the dsd:
 
 In terms of what we've needed to do here:
 
-- We need to declare it's a dimension.
-- We need to declare a a range and codelist for that dimension. In this case I've just used common definitions. Though in cases where it's a resource you yourself have created you can typically infer both of these from the information we already have (so for example, if your id is eg `/dimension/example`, your range would be `/classes/example` and your codelist would be `/concept-schema/example`). See the included example 4 to see this idea in action.
+We need to declare it's a dimension.
+We need to declare a a range and codelist for that dimension. In this case I've just used common definitions. Though in cases where it's a resource you yourself have created you can typically infer both of these from the information we already have (so for example, if your id is eg /dimension/example, your range would be /classes/example and your codelist would be /concept-schema/example). See the included example 4 to see this idea in action.
 
-Next let's look at an `Attribute` component as it appears in the DSD.
+Nest, let's look at an `Attribute` property:
 
+```json
+"qb:attribute": {
+          "@id": "http://purl.org/linked-data/sdmx/2009/code#unitMult",
+          "@type": "qb:AttributeProperty",
+          "rdfs:label": "Unit Multiplier"
+        },
+        "qb:componentAttachment": {
+          "@id": "qb:MeasureProperty"
+        },
+        "qb:componentRequired": true
+```
 
+With this, all we're really doing is pointing to the standard SDMX 2009 unit multiplier definition.
+
+Next let's look at an `Measure` component as it appears in the DSD.
+
+- *Note: the linked data cube specification has special handling for measures. So first you define a 'Measure Type' dimension, then you can populate it with individual measures as required. Example follows.*
+
+```json
+{
+  "qb:dimension": {
+  "@id": "http://purl.org/linked-data/cube#measureType",
+  "@type": "qb:MeasureType",
+  "rdfs:range": {"@id": "qb:MeasureProperty"}
+    },
+  "skos:notation": ""
+},
+{
+  "qb:measure": {
+      "@id": "http://gss-data.org.uk/def/measure/percentage",
+      "@type": [
+          "owl:DatatypeProperty",
+          "qb:MeasureProperty"
+      ],
+      "http://purl.org/linked-data/sdmx/2009/code#unitMeasure": {
+          "@id": "http://gss-data.org.uk/def/percentage"
+          },
+      "rdfs:label": "Percentage",
+      "rdfs:range": {
+          "@id": "http://gss-data.org.uk/def/percentage"
+      },
+      "skos:notation": "percentage"
+    }
+},
+```
+
+As per the previous example I've used a common RDF SDMX definition (for measure type) combined with our "home grown" resources to define the range.
 
 ### Example 5: Additional Metadata
 

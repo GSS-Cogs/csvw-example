@@ -32,7 +32,7 @@
         "suppressOutput": true
       },
       {
-        "url": "unit-measure.csv",
+        "url": "measure-type.csv",
         "tableSchema": "codelist-schema.json",
         "suppressOutput": true
       },
@@ -112,9 +112,9 @@
               "valueUrl": "http://gss-data.org.uk/def/concept/unit-multiplier/{unit_multiplier}"
             },
             {
-              "titles": "Unit Measure",
+              "titles": "Measure Type",
               "required": true,
-              "name": "unit_measure",
+              "name": "measure_type",
               "dc:description": "",
               "datatype": "string",
               "propertyUrl": "http://gss-data.org.uk/def/dimension/measure-type",
@@ -162,9 +162,9 @@
         }
       },
       {
-        "columnReference": "Unit Measure",
+        "columnReference": "Measure Type",
         "reference": {
-          "resource": "unit-measure.csv",
+          "resource": "measure-type.csv",
           "columnReference": "Notation"
         }
       },
