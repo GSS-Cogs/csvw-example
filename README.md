@@ -206,11 +206,13 @@ In the case of the attached example 3, I've used a mixture of both these approac
 
 The DSD (Data Structure Definition) is probably the most confusing looking part of the csvw - but - also probably the simplest to do, consisting as it does of simple repeating patterns.
 
-As such it's a relatively simple thing to automate as (other than explicitly stating a few things a human could just infer from the earlier example) we're only actually adding a small amount of additional information.
+As such, other than explicitly stating a few things a human could just infer from the earlier example, we're only actually adding a small amount of additional information.
 
-There are effectively three types of component that make up your linked data cube (`Dimension`, `Measure`, `Attribute`), so our main goal is to differentiate which of those the columns of our csv actually are.
+There are effectively three types of component that make up your linked data cube (`Dimension`, `Measure`, `Attribute`), so our main goal is to differentiate which of those components each column of our csv actually represents.
 
-Lets's look an example `Dimension` component as it appears in the dsd:
+For more information on the differences between these three component types, please see [https://www.w3.org/TR/vocab-data-cube/#cubes-model](https://www.w3.org/TR/vocab-data-cube/#cubes-model).
+
+First, lets's look an example `Dimension` component as it appears in the dsd:
 
 ```json
 {
@@ -223,6 +225,15 @@ Lets's look an example `Dimension` component as it appears in the dsd:
     }
 },
 ```
+
+In terms of what we've needed to do here:
+
+- We need to declare it's a dimension.
+- We need to declare a a range and codelist for that dimension. In this case I've just used common definitions. Though in cases where it's a resource you yourself have created you can typically infer both of these from the information we already have (so for example, if your id is eg `/dimension/example`, your range would be `/classes/example` and your codelist would be `/concept-schema/example`). See the included example 4 to see this idea in action.
+
+Next let's look at an `Attribute` component as it appears in the DSD.
+
+
 
 ### Example 5: Additional Metadata
 
