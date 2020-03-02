@@ -85,6 +85,8 @@ To make our data transformable we need to make a few basic formatting changes to
 
 - Sex Column: we're switching Male, Female, <Blank> entries to M, F, T respectively (to match the common SDMX definition: http://purl.org/linked-data/sdmx/2009/code)
 
+- Age Column: we'll replace the blank entries (denoting all ages) with 'Total'.
+
 
 ### Example 2. Codelists as external files
 
@@ -92,20 +94,20 @@ All columns in a flattened dataset represent items from a list of concepts (or a
 
 One advantage of csvw is you can use it represent more than one csv - allowing you to link directly to a csvs codelists by including them as additional tables in the datasets metadata.
 
-Example:
+Example snippet (please note, as the example are all local files in the same directory our "urls" are just a filename, usually these would be full urls pointing to real web resources):
 
 ```json
 "tables": [
 {
-  "url": "https://gss-cogs.github.io/ref_alcohol/codelists/underlying-cause-of-death.csv",
-  "tableSchema": "https://gss-cogs.github.io/ref_common/codelist-schema.json",
+  "url": "age.csv",
+  "tableSchema": "codelist-schema.json",
   "suppressOutput": true
 },
 {
-  "url": "https://gss-cogs.github.io/ref_alcohol/codelists/health-social-care-trusts.csv",
-  "tableSchema": "https://gss-cogs.github.io/ref_common/codelist-schema.json",
+  "url": "sex.csv",
+  "tableSchema": "codelist-schema.json",
   "suppressOutput": true
-}]
+},]
 ```
 The above snippet shows a csvw entry holding metadata for two csv files. You'll notice the `tableSchema` field is just pointing to another schema (the same schema for both in fact). This is common practice where mutiple csvs have an identical or repeating structure. In the case of our actual observation csv, we'll still be defining the tableSchema in-line, as the metadata structures for datasets very rarely repeated exactly (as individual datasets are unique by definition).
 
@@ -121,18 +123,18 @@ Consider the following example:
 ```json
 "foreignKeys": [
 {
-  "columnReference": "example_column",
+  "columnReference": "Age",
   "reference": {
-    "resource": "https://my-domain.com/codelists/codes-for-example-column.csv",
-    "columnReference": "notation"
+    "resource": "age.csv",
+    "columnReference": "age"
   }
 }]
 ```
 
 This is actually telling us the following:
-- we're importing the `resource` https://my-domain.com/codelists/codes-for-example-column.csv
-- the `example_column` of our observation file (denoted by the first `columnReference` field)
-- maps to the `notation` column of the imported resource (as denoted by the **indented** `columnReference` field).
+- we're importing the `resource` age.csv (again this would a full url in practice)
+- the `Age` of our observation file (denoted by the first `columnReference` field)
+- maps to the `age` column of the imported resource (as denoted by the **indented** `columnReference` field).
 
 
 ### Info: Urls as CSVW
