@@ -2,9 +2,7 @@ TODO - replace examples and snippets with those specific to SDG, MOJ etc
 
 ### SDG: 5 Star Linked Open Data
 
-This document is a walkthrough of how we can create five star linked open data using SDG (sustainable development goals) data. We'll do this by utilising the CSV2RDF library https://github.com/Swirrl/csv2rdf, in compliance with the specification for CSV on the web https://w3c.github.io/csvw/](https://w3c.github.io/csvw/.
-
-The goal is to create a resource where all metadata fields (and all the columns of the csv) can be fully described using web based vocabularies (see [https://www.w3.org/standards/semanticweb/ontology](https://www.w3.org/standards/semanticweb/ontology) for an overview of linked data vocabularies), allowing us to create a repeatable transformation process.
+This document is a walkthrough of how we can create five star linked open data using SDG (sustainable development goals) data. We'll do this by utilising the CSV2RDF library https://github.com/Swirrl/csv2rdf to create the RDF from a csvw representation of the dataset in question (in compliance with the specification for CSV on the web https://w3c.github.io/csvw/](https://w3c.github.io/csvw/).
 
 ---
 - TODO: linkify headings
