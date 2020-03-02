@@ -103,7 +103,7 @@ Example snippet (please note, as the example are all local files in the same dir
   "url": "sex.csv",
   "tableSchema": "codelist-schema.json",
   "suppressOutput": true
-},]
+}]
 ```
 The above snippet shows a csvw entry holding metadata for two csv files. You'll notice the `tableSchema` field is just pointing to another schema (the same schema for both in fact). This is common practice where mutiple csvs have an identical or repeating structure. In the case of our actual observation csv, we'll still be defining the tableSchema in-line, as the metadata structures for datasets very rarely repeated exactly (as individual datasets are unique by definition).
 
