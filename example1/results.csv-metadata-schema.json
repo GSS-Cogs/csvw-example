@@ -78,10 +78,9 @@
             "dc:description": "A description of this thing.",
             "datatype": "string"
           }
-        }
-      ],
+        ],
       "primaryKey": "GID",
       "aboutUrl": "#gid-{GID}"
-      },
-    }]
+      }
+  }]
 }
