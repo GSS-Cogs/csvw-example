@@ -112,13 +112,13 @@
               "valueUrl": "http://gss-data.org.uk/def/concept/unit-multiplier/{unit_multiplier}"
             },
             {
-              "titles": "Measure Type",
+              "titles": "Unit Measure",
               "required": true,
               "name": "unit_measure",
-              "dc:description": "A description of this thing.",
+              "dc:description": "",
               "datatype": "string",
               "propertyUrl": "http://gss-data.org.uk/def/dimension/measure-type",
-              "valueUrl": "http://gss-data.org.uk/def/concept/measure-type/{measure-type}"
+              "valueUrl": "http://gss-data.org.uk/def/concept/measure-type/{unit_measure}"
             }
           ],
         "primaryKey": "GID",

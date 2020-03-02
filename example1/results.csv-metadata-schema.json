@@ -72,7 +72,7 @@
             "datatype": "string"
           },
           {
-            "titles": "Measure Type",
+            "titles": "Unit Measure",
             "required": true,
             "name": "unit_measure",
             "dc:description": "A description of this thing.",
