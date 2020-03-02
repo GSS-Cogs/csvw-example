@@ -8,17 +8,14 @@ We're approaching this on step by step basis, with the intention to create a lea
 
 This document will also be broken up with additional information sections as needed.
 
----
-- TODO: linkify headings
----
 - [Info: Prefixes](#info-prefixes)
-- Example 1: Data Validation
-- Info: Observation File Changes
-- Example 2. Codelists as external files
-- Info: Urls as CSVW
-- Example 3: Transformation
-- Example 4: The DSD
-- Example 5: Additional Metadata
+- [Example 1: Data Validation](#example-1-data-validation)
+- [Info: Observation File Changes](#info-observation-file-changes)
+- [Example 2. Codelists as external files](#example-2-codelists-as-external-files)
+- [Info: Urls as CSVW](#info-urls-as-csvw)
+- [Example 3: Transformation](#example-3-transformation)
+- [Example 4: The DSD](#example-4-the-dsd)
+- [Example 5: Additional Metadata](#example-5-additional-metadata)
 
 
 ### Info: Prefixes
