@@ -133,7 +133,7 @@ Consider the following example:
 
 This is actually telling us the following:
 - we're importing the `resource` age.csv (again this would a full url in practice)
-- the `Age` column of our observation file (denoted by the first `columnReference` field)
+- the `Age` column of our observation file (denoted by the first `columnReference` field) ...
 - maps to the `Notation` column of the imported resource (as denoted by the **indented** `columnReference` field).
 
 
