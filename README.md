@@ -325,7 +325,7 @@ Mike <http://www.example.org/vocabulary#name> "Mike" .
 Mike <http://www.w3.org/1999/02/22-rdf-syntax-ns#Type> <http://www.example.org/vocabulary#Person> .
 ```
 
-#### Understanding Continuations (TODO - not the right word, whats the real one?)
+#### Understanding RDF Continuations
 
 Consider this alternate way of writing the same thing:
 
