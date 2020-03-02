@@ -262,7 +262,7 @@ Next let's look at an `Measure` component as it appears in the DSD.
   "@type": "qb:MeasureType",
   "rdfs:range": {"@id": "qb:MeasureProperty"}
     },
-  "skos:notation": ""
+  "skos:notation": "measure-type"
 },
 {
   "qb:measure": {
@@ -285,7 +285,7 @@ Next let's look at an `Measure` component as it appears in the DSD.
 
 As per the previous example I've used a common RDF SDMX definition (for measure type) combined with our "home grown" resources to define the range.
 
-These choices, combined with some boiler plate gets you to a fully described DSD (please see the included example 4).
+These component definitions, combined with some boiler plate gets you to a fully described DSD (please see the included example 4).
 
 ### Example 5: Additional Metadata
 
