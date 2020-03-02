@@ -183,7 +183,7 @@ You can see we've added two additional fields:
 - propertyUrl: the "thing" that we're describing.
 - valueUrl: the location of the individual codes & labels (collectively, the concepts) that sit within that "thing".
 
-If you consider the `valueUrl`, it's literally just information from a codelist.csv we would just make available on the web.
+If you consider the `valueUrl`, it's literally just information from a codelist.csv we would just make available on the web. Ideally we would reuse them, but the principle point of definition is the `propertyUrl` field.
 
 The `propertyUrl` is broader, in that it's the mechanism to bring in shared definitions. In this example it's an ad-hoc definition (ideally, where these are created they are also curated and reused across multiple resources).
 
