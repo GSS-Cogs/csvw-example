@@ -223,10 +223,6 @@ dcat:keyword
 dcat:landingPage
 ```
 
----
-- TODO : show some RDF as well
----
-
 One of the advantages of linked data is that it's almost infinitely extendable (you want to describe further aspects of something? add more triples). So in the case of linked data cubes, our current best practice is to create supplementary metadata fields of the sort listed above as a `.trig` file (a trig file is just a simple text file for representing graph/rdf data, see [https://en.wikipedia.org/wiki/TriG_(syntax)](https://en.wikipedia.org/wiki/TriG_(syntax)) for additional details).
 
 The writing of RDF is a little beyond the scope of these examples, but we'll touch briefly on two main principles.
@@ -239,8 +235,8 @@ Consider this snippet:
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 @prefix ex: <http://www.example.org/vocabulary#> .
 
-Mike ex:name "Mike"
-Mike rdf:Type ex:Person
+Joe ex:name "Joe"
+Joe rdf:Type ex:Person
 ```
 
 The main thing to understand is the prefixes that are (always) included at the top of the file. If you substritute them in (for rdf and ex repsectively) you get two basic RDF triples.
@@ -252,9 +248,13 @@ Mike <http://www.w3.org/1999/02/22-rdf-syntax-ns#Type> <http://www.example.org/v
 
 #### Understanding Continuations (TODO - not the right word, whats the real one?)
 
-Consider this example instead:
+Consider this alternate way of writing the same thing:
 
 ```
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+@prefix ex: <http://www.example.org/vocabulary#> .
+
 Joe <http://www.example.org/vocabulary#name> "Joe";
       <http://www.w3.org/1999/02/22-rdf-syntax-ns#> <http://www.example.org/vocabulary#Person> .
 ```
