@@ -15,8 +15,8 @@ The goal is to create a resource where all metadata fields (and all the columns 
 - Example 2. Codelists as external files
 - Info: Urls as CSVW
 - Example 3: Transformation
-- Example 4: Additional Metadata
-- Example 5: The DSD
+- Example 4: The DSD
+- Example 5: Additional Metadata
 - Info: Further Information
 
 
@@ -200,7 +200,13 @@ So even though I need to provide custom age codes via the `valueUrl` I'm still a
 
 In the case of the attached example 3, I've used a mixture of both these approaches.
 
-### Example 4: Additional Metadata
+### Example 4: The DSD
+
+---
+- TODO - this will be fun
+---
+
+### Example 5: Additional Metadata
 
 Anyone that's worked with datasets a lot will already know that their value is often defined by the accompanying metadata (doesn't matter how great your data is if no one can find it).
 
@@ -221,18 +227,41 @@ dcat:landingPage
 - TODO : show some RDF as well
 ---
 
-*By now, I suspect you'll recognise our old friend the prefix appearing again.*
-
 One of the advantages of linked data is that it's almost infinitely extendable (you want to describe further aspects of something? add more triples). So in the case of linked data cubes, our current best practice is to create supplementary metadata fields of the sort listed above as a `.trig` file (a trig file is just a simple text file for representing graph/rdf data, see [https://en.wikipedia.org/wiki/TriG_(syntax)](https://en.wikipedia.org/wiki/TriG_(syntax)) for additional details).
 
-Again, I'm not going to go into the full technical implementation (and again, happy to if anyone wants to get in contact) but you're basically aiming to write a text file and upload alongside your data cube - as long as you include relevant fields (if unsure, see the included example 3) you can generally pick whatever method works best with your current processes.
+The writing of RDF is a little beyond the scope of these examples, but we'll touch briefly on two main principles.
 
+#### Understanding Prefixing
 
-### Example 5: The DSD
+Consider this snippet:
 
----
-- TODO - this will be fun
----
+```rdf
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+@prefix ex: <http://www.example.org/vocabulary#> .
+
+Mike ex:name "Mike"
+Mike rdf:Type ex:Person
+```
+
+The main thing to understand is the prefixes that are (always) included at the top of the file. If you substritute them in (for rdf and ex repsectively) you get two basic RDF triples.
+
+```RDF
+Mike <http://www.example.org/vocabulary#name> "Mike" .
+Mike <http://www.w3.org/1999/02/22-rdf-syntax-ns#Type> <http://www.example.org/vocabulary#Person> .
+```
+
+#### Understanding Continuations (TODO - not the right word, whats the real one?)
+
+Consider this example instead:
+
+```
+Joe <http://www.example.org/vocabulary#name> "Joe";
+      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> <http://www.example.org/vocabulary#Person> .
+```
+
+You'll notice that the second triple has only two statements. That's because the `;` character is indicating that an element of the previous line will be reused (in this case, the variable defined by `Joe`)
+
+These techiques should provide the basics to understand the .trig file included in example 5.
 
 ### Info: Further Information
 
