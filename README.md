@@ -321,8 +321,8 @@ Joe rdf:Type ex:Person
 The main thing to understand is the prefixes that are (always) included at the top of the file. If you substritute them in (for rdf and ex repsectively) you get two basic RDF triples.
 
 ```RDF
-Mike <http://www.example.org/vocabulary#name> "Mike" .
-Mike <http://www.w3.org/1999/02/22-rdf-syntax-ns#Type> <http://www.example.org/vocabulary#Person> .
+Joe <http://www.example.org/vocabulary#name> "Joe" .
+Joe <http://www.w3.org/1999/02/22-rdf-syntax-ns#Type> <http://www.example.org/vocabulary#Person> .
 ```
 
 #### Understanding RDF Continuations
