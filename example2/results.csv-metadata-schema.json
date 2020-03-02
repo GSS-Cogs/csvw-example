@@ -76,35 +76,35 @@
             {
               "titles": "Age",
               "required": true,
-              "name": "age"
+              "name": "age",
               "dc:description": "",
               "datatype": "number"
             },
             {
               "titles": "Year",
               "required": true,
-              "name": "year"
+              "name": "year",
               "dc:description": "",
               "datatype": "number"
             },
             {
               "titles": "Observation Status",
               "required": true,
-              "name": "observation_status"
+              "name": "observation_status",
               "dc:description": "",
               "datatype": "string"
             },
             {
               "titles": "Unit Multiplier",
               "required": true,
-              "name": "unit_multiplier"
+              "name": "unit_multiplier",
               "dc:description": "",
               "datatype": "string"
             },
             {
               "titles": "Measure Type",
               "required": true,
-              "name": "unit_measure"
+              "name": "unit_measure",
               "dc:description": "A description of this thing.",
               "datatype": "string"
             }
