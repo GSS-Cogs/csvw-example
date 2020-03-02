@@ -162,7 +162,7 @@ We'll cover this in the next section.
 
 ### Example 3: Transformation
 
-Please note: Linked open data needs to inlcude a base url (so, where you're linked data is going to live). For the sale of these example I'm using http://gss-data.org.uk and our standard patterns. You can freely substitute for your own domain and
+Please note: Linked open data needs to inlcude a base url (so, where you're linked data is going to live). For the sake of these example I'm using http://gss-data.org.uk and our standard patterns. You can freely substitute for your own domain and
 patterns (or better yet get in contact and use ours!).
 
 Let's look at a `column` entry (as touched on in example 1: validation) that's been extended with this additional information:
@@ -185,9 +185,9 @@ You can see we've added two additional fields:
 
 If you consider the `valueUrl`, it's literally just information from a codelist.csv we would just make available on the web.
 
-The `propertyUrl` is broader, in that it's the mechanism to bring in shared definitions. In this example it's an ad-hoc definition that we may or may not broaden so it can be used across multiple datasets.
+The `propertyUrl` is broader, in that it's the mechanism to bring in shared definitions. In this example it's an ad-hoc definition (ideally, where these are created they are also curated and reused across multiple resources).
 
-As an alternate approach, let's look at the same information but for the age dimension.
+As an alternate approach, let's see about bringing in an pre-existing property definition.
 
 ```json
 {
