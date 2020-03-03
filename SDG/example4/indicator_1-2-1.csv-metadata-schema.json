@@ -1,0 +1,251 @@
+{
+  "@context": [
+      "http://www.w3.org/ns/csvw",
+      {
+        "@language": "en"
+      }
+  ],
+  "tables": [
+      {
+        "url": "age.csv",
+        "tableSchema": "codelist-schema.json",
+        "suppressOutput": true
+      },
+      {
+        "url": "sex.csv",
+        "tableSchema": "codelist-schema.json",
+        "suppressOutput": true
+      },
+      {
+        "url": "reference-period.csv",
+        "tableSchema": "codelist-schema.json",
+        "suppressOutput": true
+      },
+      {
+        "url": "observation-status.csv",
+        "tableSchema": "codelist-schema.json",
+        "suppressOutput": true
+      },
+      {
+        "url": "unit-multiplier.csv",
+        "tableSchema": "codelist-schema.json",
+        "suppressOutput": true
+      },
+      {
+        "url": "measure-type.csv",
+        "tableSchema": "codelist-schema.json",
+        "suppressOutput": true
+      },
+      {
+        "url": "indicator_1-2-1.csv",
+        "dc:title": "SDG One to one indicators",
+        "dcat:keyword": [
+          "prison", "estate", "register", "MOJ"
+        ],
+        "dc:publisher": {
+          "schema:name": "SDG Example",
+          "schema:url": {
+            "@id": "http://example.org"
+          }
+        },
+        "dc:license": {
+          "@id": "http://opendefinition.org/licenses/cc-by/"
+        },
+        "dc:modified": {
+          "@value": "2020-02-20",
+          "@type": "xsd:date"
+        },
+        "tableSchema": {
+          "columns": [
+            {
+              "titles": "Value",
+              "required": false,
+              "name": "value",
+              "datatype": "number"
+            },
+            {
+              "titles": "Sex",
+              "required": true,
+              "name": "sex",
+              "dc:description": "",
+              "datatype": {
+                "base": "string",
+                "format": "^(M|F|T)$"
+              }
+            },
+            {
+              "titles": "Age",
+              "required": true,
+              "name": "age",
+              "dc:description": "",
+              "datatype": "number"
+            },
+            {
+              "titles": "Reference Period",
+              "required": true,
+              "name": "reference_period",
+              "dc:description": "",
+              "datatype": "number"
+            },
+            {
+              "titles": "Observation Status",
+              "required": true,
+              "name": "observation_status",
+              "dc:description": "",
+              "datatype": "string"
+            },
+            {
+              "titles": "Unit Multiplier",
+              "required": true,
+              "name": "unit_multiplier",
+              "dc:description": "",
+              "datatype": "string"
+            },
+            {
+              "titles": "Measure Type",
+              "required": true,
+              "name": "measure_type",
+              "dc:description": "",
+              "datatype": "string"
+            }
+          ],
+        "primaryKey": "GID",
+        "aboutUrl": "#gid-{GID}"
+        }
+    }],
+    "ForeignKeys": [
+      {
+        "columnReference": "Age",
+        "reference": {
+          "resource": "age.csv",
+          "columnReference": "Notation"
+        }
+      },
+      {
+        "columnReference": "Sex",
+        "reference": {
+          "resource": "sex.csv",
+          "columnReference": "Notation"
+        }
+      },
+      {
+        "columnReference": "Reference Period",
+        "reference": {
+          "resource": "reference-period.csv",
+          "columnReference": "Notation"
+        }
+      },
+      {
+        "columnReference": "Observation Status",
+        "reference": {
+          "resource": "age.csv",
+          "columnReference": "Notation"
+        }
+      },
+      {
+        "columnReference": "Unit Multiplier",
+        "reference": {
+          "resource": "unit-multiplier.csv",
+          "columnReference": "Notation"
+        }
+      },
+      {
+        "columnReference": "Measure Type",
+        "reference": {
+          "resource": "measure-type.csv",
+          "columnReference": "Notation"
+        }
+      },
+    ],
+    "qb:structure": {
+        "@id": "http://purl.org/linked-data/cube",
+        "@type": "qb:DataStructureDefinition",
+        "rdfs:comment": "indicates the structure to which this data set conforms",
+        "qb:component": [
+            {
+              "qb:dimension": {
+                "@id": "http://gss-data.org.uk/def/dimension/sex",
+                "@type": "qb:DimensionProperty",
+                "rdfs:label": "Sex",
+                "rdfs:range": { "@id": "http://gss-data.org.uk/def/classes/sex"},
+                "qb:codeList": {"@id": "http://gss-data.org.uk/def/concept-scheme/sex" },
+                "skos:notation": "sex"
+                }
+            },
+            {
+              "qb:dimension": {
+                "@id": "http://purl.org/linked-data/sdmx/2009/dimension#refArea",
+                "@type": "qb:DimensionProperty",
+                "rdfs:label": "Reference Area",
+                "rdfs:range": {"@id": "rdfs:Resource"},
+                "qb:codeList": {"@id": "TODO WHEN WE'VE FIGURED OUT NEW URL STRUCTURE" }
+                }
+            },
+            {
+              "qb:dimension": {
+                "@id": "http://gss-data.org.uk/def/dimension/age",
+                "@type": "qb:DimensionProperty",
+                "rdfs:label": "Age",
+                "rdfs:range": { "@id": "http://gss-data.org.uk/def/classes/age"},
+                "rdfs:subPropertyOf": "http://purl.org/linked-data/sdmx/2009/dimension#age",
+                "qb:codeList": {"@id": "http://gss-data.org.uk/def/concept-scheme/age" },
+                "skos:notation": "age"
+                }
+            },
+            {
+                "qb:dimension": {
+                "@id": "http://gss-data.org.uk/def/dimension/observation-status",
+                "@type": "qb:DimensionProperty",
+                "rdfs:label": "ashe sex",
+                "rdfs:range": { "@id": "http://gss-data.org.uk/def/classes/observation-status"},
+                "qb:codeList": {"@id": "http://gss-data.org.uk/def/concept-scheme/observation-status" },
+                "skos:notation": "observation-status"
+              }
+            },
+            {
+              "qb:attribute": {
+                    "@id": "http://purl.org/linked-data/sdmx/2009/code#unitMult",
+                    "@type": "qb:AttributeProperty",
+                    "rdfs:label": "Unit Multiplier"
+                  },
+                  "qb:componentAttachment": {
+                    "@id": "qb:MeasureProperty"
+                  },
+                  "qb:componentRequired": true
+            },
+            {
+              "qb:dimension": {
+              "@id": "http://purl.org/linked-data/cube#measureType",
+              "@type": "qb:MeasureType",
+              "rdfs:range": {"@id": "qb:MeasureProperty"}
+                },
+              "skos:notation": "measure-type"
+            },
+            {
+              "qb:measure": {
+                  "@id": "http://gss-data.org.uk/def/measure/percentage",
+                  "@type": [
+                      "owl:DatatypeProperty",
+                      "qb:MeasureProperty"
+                  ],
+                  "http://purl.org/linked-data/sdmx/2009/code#unitMeasure": {
+                      "@id": "http://gss-data.org.uk/def/percentage"
+                      },
+                  "rdfs:label": "Percentage",
+                  "rdfs:range": {
+                      "@id": "http://gss-data.org.uk/def/percentage"
+                  },
+                  "skos:notation": "percentage"
+                }
+            },
+            {
+            "qb:attribute": {
+              "@id": "dc:spatial"
+            },
+            "qb:componentAttachment": {
+              "@id": "qb:DataSet"
+            },
+            "qb:componentRequired": true
+            }
+      ]}
+  }
