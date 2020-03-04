@@ -6,6 +6,8 @@ To do this we're going to create a csvw representation of the dataset (in compli
 
 We're approaching this on step by step basis, with the intention to create a learning resource as much as an example. As such, each example is included in it's own self contained directory, while this document will walk through how we've expanded our initial CSVW file with additional detail each time (anyone already familiar with CSVW and RDF can skip straight to example 5).
 
+Please note: This is intended to be a walkthrough of "what" we're doing, with the technical implementation (i.e "the how") being covered in more detail elsewhere (as technology and solutions will vary from team to team). The COGS project however, is intended to be a collaborative and cross departmental initiative so readers are encouraged to [Join The Conversation](#join-the-conversation).
+
 This document will also be broken up with additional information sections as needed.
 
 - [Info: Prefixes](#info-prefixes)
@@ -16,6 +18,7 @@ This document will also be broken up with additional information sections as nee
 - [Example 3: Transformation](#example-3-transformation)
 - [Example 4: The DSD](#example-4-the-dsd)
 - [Example 5: Additional Metadata](#example-5-additional-metadata)
+- [Join The Conversation](#join-the-conversation)
 
 
 ### Info: Prefixes
@@ -322,3 +325,21 @@ Joe <http://www.example.org/vocabulary#name> "Joe";
 You'll notice that the second triple has only two statements. That's because the `;` character is indicating that an element of the previous line will be reused (in this case, the variable defined by `Joe`)
 
 These techniques should provide the basics to understand the .trig file included with example 5.
+
+
+### Join The Conversation
+
+The stated goal of the COGS project is as follows:
+
+```
+Revolutionising how UK Government Statistical Data is made available on the Web by creating a repository of 5* Linked Open Data Statistics.
+```
+
+This will not be done easily, nor can it be done in isolation, as such the "**C**onnected" in **C**OGS is as much about connecting people and organisations as it is about connecting data (nobody is climbing this mountain alone).
+
+As such we are always actively looking for partners in our joint mission, and new voices to join the conversation around linked open data statistics and the future of government statistics.
+
+So please do get in touch:
+
+* For general inquiries:  cogs@statistics.gov.uk
+* For technical questions around data transformation:  cogs.tech@statistics.gov.uk
