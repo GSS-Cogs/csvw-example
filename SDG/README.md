@@ -2,9 +2,9 @@
 
 This document is a walkthrough of how we can create five star linked open data using SDG (sustainable development goals) data.
 
-To do this we're going to create a csvw representation of the dataset (in compliance with the specification for CSV on the web https://w3c.github.io/csvw/](https://w3c.github.io/csvw/). This CSVW will then be used to generate the RDF.
+To do this we're going to create a csvw representation of the dataset (in compliance with the specification for CSV on the web https://w3c.github.io/csvw/](https://w3c.github.io/csvw/). This CSVW can then be used to generate five star liked open data via any standard compliant tools (for example [https://github.com/Swirrl/csv2rdf](https://github.com/Swirrl/csv2rdf)).
 
-We're approaching this on step by step basis, with the intention to create a learning resource as much as an example. As such, each example is included in it's own self contained directory, while this document will walk through how we've expanded our initial CSVW file with additional detail each time (anyone already familiar with CSVW and RDF can skip straight to example 5).
+We're approaching this on step by step basis, with the intention to create a learning resource as much as an example. As such, each example is included in it's own self contained directory, while this document will walk through how we've expanded our initial CSVW file with additional detail each time.
 
 Please note: This is intended to be a walkthrough of "what" we're doing, with the technical implementation (i.e "the how") being covered in more detail elsewhere (as technology and solutions will vary from team to team). For further details or to get involved please [Join The Conversation](#join-the-conversation).
 
@@ -84,7 +84,9 @@ To make our data transformable we need to make a few basic formatting changes to
 
 - Age Column: we'll replace the blank entries (denoting all ages) with 'Total'.
 
-- I'm going to change the column name `Time` to the more common (for linked data) `Reference Period`.
+- I've changed the column name `Time` to the more common (for linked data) `Reference Period`.
+
+- I've changed the `Unit Measure` column label to `Measure Type`
 
 
 ### Example 2. Codelists as external files
