@@ -1,160 +1,128 @@
 {
   "@context": [
-      "http://www.w3.org/ns/csvw",
-      {
-        "@language": "en"
-      }
+    "http://www.w3.org/ns/csvw",
+    {
+      "@language": "en"
+    }
   ],
   "tables": [
-      {
-        "url": "age.csv",
-        "tableSchema": "codelist-schema.json",
-        "suppressOutput": true
-      },
-      {
-        "url": "sex.csv",
-        "tableSchema": "codelist-schema.json",
-        "suppressOutput": true
-      },
-      {
-        "url": "reference-period.csv",
-        "tableSchema": "codelist-schema.json",
-        "suppressOutput": true
-      },
-      {
-        "url": "observation-status.csv",
-        "tableSchema": "codelist-schema.json",
-        "suppressOutput": true
-      },
-      {
-        "url": "unit-multiplier.csv",
-        "tableSchema": "codelist-schema.json",
-        "suppressOutput": true
-      },
-      {
-        "url": "Measure Type.csv",
-        "tableSchema": "codelist-schema.json",
-        "suppressOutput": true
-      },
-      {
-        "url": "indicator_1-2-1.csv",
-        "dc:title": "SDG One to one indicators",
-        "dcat:keyword": [
-          "prison", "estate", "register", "MOJ"
-        ],
-        "dc:publisher": {
-          "schema:name": "SDG Example",
-          "schema:url": {
-            "@id": "http://example.org"
-          }
-        },
-        "dc:license": {
-          "@id": "http://opendefinition.org/licenses/cc-by/"
-        },
-        "dc:modified": {
-          "@value": "2020-02-20",
-          "@type": "xsd:date"
-        },
-        "tableSchema": {
-          "columns": [
-            {
-              "titles": "Value",
-              "required": false,
-              "name": "value",
-              "datatype": "number"
-            },
-            {
-              "titles": "Sex",
-              "required": true,
-              "name": "sex",
-              "dc:description": "",
-              "datatype": {
-                "base": "string",
-                "format": "^(M|F|T)$"
-              }
-            },
-            {
-              "titles": "Age",
-              "required": true,
-              "name": "age",
-              "dc:description": "",
-              "datatype": "number"
-            },
-            {
-              "titles": "Reference Period",
-              "required": true,
-              "name": "reference_period",
-              "dc:description": "",
-              "datatype": "number"
-            },
-            {
-              "titles": "Observation Status",
-              "required": true,
-              "name": "observation_status",
-              "dc:description": "",
-              "datatype": "string"
-            },
-            {
-              "titles": "Unit Multiplier",
-              "required": true,
-              "name": "unit_multiplier",
-              "dc:description": "",
-              "datatype": "string"
-            },
-            {
-              "titles": "Measure Type",
-              "required": true,
-              "name": "measure_type",
-              "dc:description": "",
-              "datatype": "string"
+    {
+      "url": "http://gss-data.org.uk/codelists/reference-period.csv",
+      "tableSchema": "https://gss-cogs.github.io/ref_common/codelist-schema.json",
+      "suppressOutput": true
+    },
+    {
+      "url": "http://gss-data.org.uk/codelists/sex.csv",
+      "tableSchema": "https://gss-cogs.github.io/ref_common/codelist-schema.json",
+      "suppressOutput": true
+    },
+    {
+      "url": "http://gss-data.org.uk/codelists/age.csv",
+      "tableSchema": "https://gss-cogs.github.io/ref_common/codelist-schema.json",
+      "suppressOutput": true
+    },
+    {
+      "url": "http://gss-data.org.uk/codelists/observation-status.csv",
+      "tableSchema": "https://gss-cogs.github.io/ref_common/codelist-schema.json",
+      "suppressOutput": true
+    },
+    {
+      "url": "indicator_1-2-1.csv",
+      "tableSchema": {
+        "columns": [
+          {
+            "titles": "Reference Period",
+            "required": true,
+            "name": "reference_period",
+            "datatype": {
+              "format": "^(year/[0-9]{4}|gregorian-interval/.*|month/[0-9]{4}-[0-9]{2}|day/[0-9]{4}-[0-9]{2}-[0-9]{2}|quarter/[0-9]{4}-Q[1-4]|government-year/[0-9]{4}-[0-9]{4})$"
             }
-          ],
-        "primaryKey": "GID",
-        "aboutUrl": "#gid-{GID}"
-        }
-    }],
-    "ForeignKeys": [
-      {
-        "columnReference": "Age",
-        "reference": {
-          "resource": "age.csv",
-          "columnReference": "Notation"
-        }
-      },
-      {
-        "columnReference": "Sex",
-        "reference": {
-          "resource": "sex.csv",
-          "columnReference": "Notation"
-        }
-      },
-      {
-        "columnReference": "Reference Period",
-        "reference": {
-          "resource": "reference-period.csv",
-          "columnReference": "Notation"
-        }
-      },
-      {
-        "columnReference": "Observation Status",
-        "reference": {
-          "resource": "age.csv",
-          "columnReference": "Notation"
-        }
-      },
-      {
-        "columnReference": "Unit Multiplier",
-        "reference": {
-          "resource": "unit-multiplier.csv",
-          "columnReference": "Notation"
-        }
-      },
-      {
-        "columnReference": "Measure Type",
-        "reference": {
-          "resource": "measure-type.csv",
-          "columnReference": "Notation"
-        }
-      },
-]},
-}
+          },
+          {
+            "titles": "Sex",
+            "required": true,
+            "name": "sex",
+            "datatype": {
+              "format": "^(M|F|T|U|N)$"
+            }
+          },
+          {
+            "titles": "Age",
+            "required": true,
+            "name": "age",
+            "datatype": "string",
+          },
+          {
+            "titles": "Observation status",
+            "required": true,
+            "name": "observation_status",
+            "datatype": "string",
+          },
+          {
+            "titles": "Unit multiplier",
+            "required": false,
+            "name": "unit_multiplier",
+            "datatype": "string",
+          },
+          {
+            "titles": "Measure Type",
+            "required": true,
+            "name": "measure_type",
+            "datatype": "string",
+          },
+          {
+            "titles": "Value",
+            "required": false,
+            "name": "value",
+            "datatype": "number",
+          },
+          {
+            "name": "dataset_ref",
+            "virtual": true,
+          },
+          {
+            "name": "qbtype",
+            "virtual": true,
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columnReference": "reference_period",
+            "reference": {
+              "resource": "http://gss-data.org.uk/codelists/reference-period.csv",
+              "columnReference": "notation"
+            }
+          },
+          {
+            "columnReference": "sex",
+            "reference": {
+              "resource": "http://gss-data.org.uk/codelists/sex.csv",
+              "columnReference": "notation"
+            }
+          },
+          {
+            "columnReference": "age",
+            "reference": {
+              "resource": "http://gss-data.org.uk/codelists/age.csv",
+              "columnReference": "notation"
+            }
+          },
+          {
+            "columnReference": "observation_status",
+            "reference": {
+              "resource": "http://gss-data.org.uk/codelists/observation-status.csv",
+              "columnReference": "notation"
+            }
+          }
+        ],
+        "primaryKey": [
+          "reference_period",
+          "sex",
+          "age",
+          "observation_status",
+          "measure_type"
+        ],
+        "aboutUrl": "http://gss-data.org.uk/gss-data.org.uk/sdg-example-dataset/{reference_period}/{sex}/{age}/{observation_status}/{measure_type}"
+      }
+    }
+  ]}

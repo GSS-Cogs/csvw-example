@@ -39,31 +39,31 @@ Consider the included example 1.
 - Each `tableSchema` has a number of `columns`
 - Each `column` has a `datatype`.
 
-You can validate using simple types within the datatype filed (i.e "number", "string") as well as use an additional `format` field for basic pattern matching (as per the following example: where we are confirming all codes in the Sex column to are either M, F or T).
+You can validate using simple types within the datatype filed (i.e "number", "string") as well as use an additional `format` field for basic pattern matching (as per the following example: where we are confirming all codes in the Sex column are one of M, F, T, U, N).
 
 ```json
 "tableSchema": {
   "columns": [
-    {
-      "titles": "Value",
-      "required": false,
-      "name": "value",
-      "datatype": "number"
-    },
-    {
-      "titles": "Sex",
-      "required": true,
-      "name": "sex",
-      "dc:description": "",
-      "datatype": {
-        "base": "string",
-        "format": "^(M|F|T)$"
-      }
-    }]
+  {
+    "titles": "Sex",
+    "required": true,
+    "name": "sex",
+    "datatype": {
+      "format": "^(M|F|T|U|N)$"
+    }
+  },
+  {
+    "titles": "Age",
+    "required": true,
+    "name": "age",
+    "datatype": "string",
+  }]
   }
 ```
 
 The above pattern matching is done using regular expressions (more information on these can be found at [https://blog.usejournal.com/regular-expressions-a-complete-beginners-tutorial-c7327b9fd8eb](https://blog.usejournal.com/regular-expressions-a-complete-beginners-tutorial-c7327b9fd8eb)).
+
+*Please note - in the provided example1 there's a particularly complicated regex for reference period, this is boiler plate for validating against common RDF expressions of time indicated here: https://github.com/epimorphics/IntervalServer/blob/master/interval-uris.md#uri-set-and-dataset-descriptions.*
 
 There are a few tools you can use to validate your csvw using these datatype entries (and the csvw on the whole). For the COGS project we're using csvlint via a docker image.
 
@@ -95,13 +95,13 @@ Example snippet (please note, as the example are all local files in the same dir
 ```json
 "tables": [
 {
-  "url": "age.csv",
-  "tableSchema": "codelist-schema.json",
+  "url": "http://gss-data.org.uk/codelists/sex.csv",
+  "tableSchema": "https://gss-cogs.github.io/ref_common/codelist-schema.json",
   "suppressOutput": true
 },
 {
-  "url": "sex.csv",
-  "tableSchema": "codelist-schema.json",
+  "url": "http://gss-data.org.uk/codelists/age.csv",
+  "tableSchema": "https://gss-cogs.github.io/ref_common/codelist-schema.json",
   "suppressOutput": true
 }]
 ```
@@ -119,16 +119,16 @@ Consider the following example:
 ```json
 "foreignKeys": [
 {
-  "columnReference": "Age",
+  "columnReference": "age",
   "reference": {
-    "resource": "age.csv",
-    "columnReference": "Notation"
+    "resource": "http://gss-data.org.uk/codelists/age.csv",
+    "columnReference": "notation"
   }
-}]
+},]
 ```
 
 This is actually telling us the following:
-- we're importing the `resource` age.csv (again this would a full url in practice)
+- we're importing the `resource` age.csv
 - the `Age` column of our observation file (denoted by the first `columnReference` field) ...
 - maps to the `Notation` column of the imported resource (as denoted by the **indented** `columnReference` field).
 
@@ -165,48 +165,48 @@ Let's look at a `column` entry (as touched on in example 1: validation) that's b
 
 ```json
 {
-    "titles": "Observation Status",
-    "required": true,
-    "name": "observation_status",
-    "datatype": "string",
-    "propertyUrl": "http://gss-data.org.uk/def/dimension/observation-status",
-    "valueUrl": "http://gss-data.org.uk/def/concept/observation-status/{observation_status}"
-    },
+  "titles": "Observation status",
+  "required": true,
+  "name": "observation_status",
+  "datatype": "string",
+  "propertyUrl": "http://gss-data.org.uk/def/dimension/observation-status",
+  "valueUrl": "http://gss-data.org.uk/def/concept/observation-status/{observation_status}"
+}
 ```
 
 You can see we've added two additional fields:
 
-- propertyUrl: the "thing" that we're describing.
+- propertyUrl: the "thing" that we're describing (in this case an ad hoc dimension).
 - valueUrl: the location of the individual codes & labels (collectively, the concepts) that sit within that "thing".
 
-If you consider the `valueUrl`, it's literally just information from a codelist.csv we would just make available on the web. Ideally we would reuse them, but the principle point of definition is the `propertyUrl` field.
+If you consider the `valueUrl`, it is (or can be) just information derived from a codelist.csv such as we've already created.
 
-The `propertyUrl` is broader, in that it's the mechanism to bring in shared definitions. In this example it's an ad-hoc definition (ideally, where these are created they are also curated and reused across multiple resources).
+The `propertyUrl` is broader, in that it's the mechanism to linked shared concepts, even where exact codes to do match up across datasets. In this example it's an ad-hoc definition (ideally, where these are created they are also curated and reused across multiple resources).
 
 As an alternate approach, let's see about bringing in an pre-existing property definition.
 
 ```json
 {
-    "titles": "Age",
-    "required": true,
-    "name": "age",
-    "datatype": "string",
-    "propertyUrl": "http://purl.org/linked-data/sdmx/2009/dimension#age",
-    "valueUrl": "http://gss-data.org.uk/def/concept/age/{age}"
-    },
+  "titles": "Age",
+  "required": true,
+  "name": "age",
+  "datatype": "string",
+  "propertyUrl": "http://purl.org/linked-data/sdmx/2009/dimension#age",
+  "valueUrl": "http://gss-data.org.uk/def/concept/age/{age}"
+},
 ```
 
-So even though I need to provide custom age codes via the `valueUrl` I'm still able to use a common SDMX propertyUrl for the age dimension (http://purl.org/linked-data/sdmx/2009/dimension#age) - which will create better linkage between my dataset and other other data sets using this property.
+So even though I'll still need to provide custom age codes via the `valueUrl` I'm able to use a common SDMX propertyUrl for the age dimension (http://purl.org/linked-data/sdmx/2009/dimension#age) - which will create better linkage between my dataset and other other data sets using this property.
 
 In the case of the attached example 3, I've used a mixture of both these approaches.
 
 ### Example 4: The DSD
 
-The DSD (Data Structure Definition) is probably the most confusing looking part of the csvw - but - also probably the simplest to do, consisting as it does of simple repeating patterns.
+The DSD (Data Structure Definition) is probably the most confusing looking part of the csvw - but - significantly easier to grasp than if looks at first glance.
 
-As such, other than explicitly stating a few things a human could just infer from the earlier example, we're only actually adding a small amount of additional information.
+The principle thing to understand, other than explicitly stating a few things a human could just infer from the earlier example, we're only actually adding a very small amount of additional information.
 
-There are effectively three types of component that make up your linked data cube (`Dimension`, `Measure`, `Attribute`), so our main goal is to differentiate which of those components each column of our csv actually represents.
+There are effectively three types of component that make up your linked data cube (`Dimension`, `Measure`, `Attribute`), so *our main goal is to differentiate which of those components each column of our csv actually represents*.
 
 For more information on the differences between these three component types, please see [https://www.w3.org/TR/vocab-data-cube/#cubes-model](https://www.w3.org/TR/vocab-data-cube/#cubes-model).
 
@@ -214,69 +214,53 @@ First, lets's look an example `Dimension` component as it appears in the dsd:
 
 ```json
 {
+  "@id": "http://gss-data.org.uk/sdg-example-dataset/component/age",
+  "@type": "qb:ComponentSpecification",
+  "qb:componentProperty": {
+    "@id": "http://purl.org/linked-data/sdmx/2009/dimension#age"
+  },
   "qb:dimension": {
-    "@id": "http://purl.org/linked-data/sdmx/2009/dimension#refPeriod",
+    "@id": "http://purl.org/linked-data/sdmx/2009/dimension#age",
     "@type": "qb:DimensionProperty",
-    "rdfs:label": "Reference Period",
-    "rdfs:range": {"@id": "http://www.w3.org/2006/time#Interval"},
-    "qb:codeList": {"@id": "http://gss-data.org.uk/def/concept-scheme/refPeriod" }
+    "rdfs:label": "Age",
+    "rdfs:range": {
+      "@id": "http://gss-data.org.uk/def/classes/age/age"
     }
-},
+  }
+}
 ```
 
-In terms of what we've needed to do here:
+In terms of what we're looking at here:
 
-We need to declare it's a dimension.
-We need to declare a a range and codelist for that dimension. In this case I've just used common definitions. Though in cases where it's a resource you yourself have created you can typically infer both of these from the information we already have (so for example, if your id is eg /dimension/example, your range would be /classes/example and your codelist would be /concept-schema/example). See the included example 4 to see this idea in action.
+We need to declare that it is a component (the upper block).
+We need to declare that it is a dimension, as well as confirm it's label and give it a range (the lower block).
 
-Nest, let's look at an `Attribute` property:
+For both `Attribute` and `Measure` we follow the same pattern switching in `qb:attribute, qb:AttributeProperty` and `qb:measure, qb:MeasureProperty` respectively.
 
-```json
-"qb:attribute": {
-          "@id": "http://purl.org/linked-data/sdmx/2009/code#unitMult",
-          "@type": "qb:AttributeProperty",
-          "rdfs:label": "Unit Multiplier"
-        },
-        "qb:componentAttachment": {
-          "@id": "qb:MeasureProperty"
-        },
-        "qb:componentRequired": true
-      }
-```
-
-With this, all we're really doing is pointing to the standard SDMX 2009 unit multiplier definition.
-
-Next let's look at an `Measure` component as it appears in the DSD.
-
-- *Note: the linked data cube specification has special handling for measures. So first you define a 'Measure Type' dimension, then you can populate it with individual measures as required. Example follows.*
+The principle other key thing to be aware of is the RDF datacube specs handling of measure types. Consider the following example:
 
 ```json
 {
+  "@id": "http://gss-data.org.uk/sdg-example-dataset/component/measure_type",
+  "@type": "qb:ComponentSpecification",
+  "qb:componentProperty": {
+    "@id": "http://purl.org/linked-data/cube#measureType"
+  },
   "qb:dimension": {
-  "@id": "http://purl.org/linked-data/cube#measureType",
-  "@type": "qb:MeasureType",
-  "rdfs:range": {"@id": "qb:MeasureProperty"}
-    },
-  "skos:notation": "measure-type"
-},
-{
-  "qb:measure": {
-      "@id": "http://gss-data.org.uk/def/measure/percentage",
-      "@type": [
-          "owl:DatatypeProperty",
-          "qb:MeasureProperty"
-      ],
-      "http://purl.org/linked-data/sdmx/2009/code#unitMeasure": {
-          "@id": "http://gss-data.org.uk/def/percentage"
-          },
-      "rdfs:label": "Percentage",
-      "rdfs:range": {
-          "@id": "http://gss-data.org.uk/def/percentage"
-      },
-      "skos:notation": "percentage"
+    "@id": "http://purl.org/linked-data/cube#measureType",
+    "@type": "qb:DimensionProperty",
+    "rdfs:label": "Measure Type",
+    "rdfs:range": {
+      "@id": "qb:MeasureProperty"
     }
-},
+  }
+}
 ```
+
+This indicates that the dimension `Measure Type` has a range of `qb:MeasureProperty`, this is indicative of the specs special handling for measure types.
+
+
+**If you specify a component dimension as http://purl.org/linked-data/cube#measureType, all measures within that cube are assumed to reside within that dimension.**
 
 As per the previous example I've used a common RDF SDMX definition (for measure type) combined with our "home grown" resources to define the range.
 
