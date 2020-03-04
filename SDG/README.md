@@ -6,7 +6,7 @@ To do this we're going to create a csvw representation of the dataset (in compli
 
 We're approaching this on step by step basis, with the intention to create a learning resource as much as an example. As such, each example is included in it's own self contained directory, while this document will walk through how we've expanded our initial CSVW file with additional detail each time (anyone already familiar with CSVW and RDF can skip straight to example 5).
 
-Please note: This is intended to be a walkthrough of "what" we're doing, with the technical implementation (i.e "the how") being covered in more detail elsewhere (as technology and solutions will vary from team to team). The COGS project however, is intended to be a collaborative and cross departmental initiative so readers are encouraged to [Join The Conversation](#join-the-conversation).
+Please note: This is intended to be a walkthrough of "what" we're doing, with the technical implementation (i.e "the how") being covered in more detail elsewhere (as technology and solutions will vary from team to team). For further details or to get involved please [Join The Conversation](#join-the-conversation).
 
 This document will also be broken up with additional information sections as needed.
 
