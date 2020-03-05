@@ -79,10 +79,12 @@ docker run -v /:/workspace -w /workspace gsscogs/csvlint csvlint <PATH_TO_YOUR_S
 ### Info: Observation File Changes
 
 For our observation file (which I'm calling "combined_source.csv" for this example) we've combined two data sources. 
-* 
-Patients Registered at a GP Practice - December 2019: Single year of age (GP practice-females)
-* 
-Patients Registered at a GP Practice - December 2019: Single year of age (GP practice-male)
+
+- Patients Registered at a GP Practice - December 2019: Single year of age (GP practice-females)
+
+- Patients Registered at a GP Practice - December 2019: Single year of age (GP practice-male)
+
+This combined file is present in all examples, but has been compressed due to save space/time (just unzip when working with a given examples).
 
 We've also made a few basic formatting changes to the data (we'll explain the rationale as we go), as follows:
 
