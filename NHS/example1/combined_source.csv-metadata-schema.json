@@ -1,0 +1,84 @@
+{
+  "@context": [
+    "http://www.w3.org/ns/csvw",
+    {
+      "@language": "en"
+    }
+  ],
+  "tables": [
+    {
+      "url": "combined_source.csv",
+      "tableSchema": {
+        "columns": [
+          {
+            "titles": "Period",
+            "required": true,
+            "name": "period",
+            "datatype": {
+              "format": "^(year/[0-9]{4}|gregorian-interval/.*|month/[0-9]{4}-[0-9]{2}|day/[0-9]{4}-[0-9]{2}-[0-9]{2}|quarter/[0-9]{4}-Q[1-4]|government-year/[0-9]{4}-[0-9]{4})$"
+            }
+          },
+          {
+            "titles": "Area",
+            "required": true,
+            "name": "area",
+            "datatype": "string"
+          },
+          {
+            "titles": "Org Code",
+            "required": true,
+            "name": "org_code",
+            "datatype": "string"
+          },
+          {
+            "titles": "Sex",
+            "required": true,
+            "name": "sex",
+            "datatype": {
+              "format": "^(M|F|T)$"
+            }
+          },
+          {
+            "titles": "Age",
+            "required": true,
+            "name": "age",
+            "datatype": "string"
+          },
+          {
+            "titles": "Value",
+            "required": false,
+            "name": "value",
+            "datatype": "number"
+          },
+          {
+            "titles": "Measure Type",
+            "required": true,
+            "name": "measure_type",
+            "datatype": "string"
+          },
+          {
+            "name": "dataset_ref",
+            "virtual": true,
+            "propertyUrl": "qb:dataSet",
+            "valueUrl": "http://gss-data.org.uk/nhs-example-dataset"
+          },
+          {
+            "name": "qbtype",
+            "virtual": true,
+            "propertyUrl": "rdf:type",
+            "valueUrl": "qb:Observation"
+          }
+        ],
+        "primaryKey": [
+          "period",
+          "area",
+          "org_code",
+          "sex",
+          "age",
+          "measure_type"
+        ],
+        "aboutUrl": "http://gss-data.org.uk/gss-data.org.uk/nhs-example-dataset/{period}/{area}/{org_code}/{sex}/{age}/{measure_type}"
+      }
+    }
+  ]
+}
