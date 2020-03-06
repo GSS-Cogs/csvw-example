@@ -97,7 +97,7 @@ One advantage of csvw is you can use it represent more than one csv - allowing y
 
 Example snippet:
 
-*Please note, I've generated the example using our base url eg `http://gss-data.org.uk/codelists/sex.csv` as the aim is for these resources to be located on the web, though technically the path to the csv is literally just `sex.csv` (i.e theyre in the same folder as the schema right now)*
+*Please note, I've generated the example using our base url eg `http://gss-data.org.uk/codelists/sex.csv` as the aim is for these resources to be located on the web, though technically the path to the csv is literally just `sex.csv` at the moment (i.e they're in the same folder as the schema right now)*
 
 ```json
 "tables": [
@@ -131,7 +131,7 @@ Consider the following example:
     "resource": "http://gss-data.org.uk/codelists/age.csv",
     "columnReference": "notation"
   }
-},]
+}]
 ```
 
 This is actually telling us the following:
@@ -268,8 +268,6 @@ This indicates that the dimension `Measure Type` has a range of `qb:MeasurePrope
 
 
 **If you specify a component dimension as http://purl.org/linked-data/cube#measureType, all measures within that cube are assumed to reside within that dimension.**
-
-As per the previous example I've used a common RDF SDMX definition (for measure type) combined with our "home grown" resources to define the range.
 
 These component definitions, combined with some boiler plate gets you to a fully described DSD (please see the included example 4).
 
