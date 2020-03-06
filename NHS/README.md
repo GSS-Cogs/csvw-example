@@ -1,6 +1,6 @@
 ### NHS Digital: 5 Star Linked Open Data
 
-This document is a walkthrough of how we can represent NHS digital data with csvw, in such a way as it supports conversation to RDF.
+This document is a walkthrough of how we can represent NHS digital data with csvw, in such a way as it supports conversion to RDF.
 
 To do this we're going to create a csvw representation of the dataset (in compliance with the specification for CSV on the web https://w3c.github.io/csvw/](https://w3c.github.io/csvw/). This CSVW can then be used to generate five star liked open data via any standard compliant tools (for example [https://github.com/Swirrl/csv2rdf](https://github.com/Swirrl/csv2rdf)).
 
