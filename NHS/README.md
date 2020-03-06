@@ -107,7 +107,10 @@ All columns in a flattened dataset represent items from a list of concepts (or a
 
 One advantage of csvw is you can use it represent more than one csv - allowing you to link directly to a csvs codelists by including them as additional tables in the datasets metadata.
 
-Example snippet (please note, as the example are all local files in the same directory our "urls" are just a filename, usually these would be full urls pointing to real web resources):
+Example snippet:
+
+*Please note, I've generated the example using our base url `http://gss-data.org.uk/codelists` as the aim is for these resources to be located on the web, though technically the path to the csv is literally just `sex.csv` (i.e theyre in the same folder as the schema right now)*
+
 
 ```json
 "tables": [
