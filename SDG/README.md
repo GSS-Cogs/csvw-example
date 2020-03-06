@@ -42,7 +42,7 @@ Consider the included example 1.
 - Each `tableSchema` has a number of `columns`
 - Each `column` has a `datatype`.
 
-You can validate using simple types within the datatype filed (i.e "number", "string") as well as use an additional `format` field for basic pattern matching (as per the following example: where we are confirming all codes in the Sex column are one of M, F, T, U, N).
+You can validate using simple types within the datatype field (i.e "number", "string") as well as use an additional `format` field for basic pattern matching (as per the following example: where we are confirming all codes in the Sex column are one of M, F, T, U, N).
 
 ```json
 "tableSchema": {
@@ -80,7 +80,7 @@ docker run -v /:/workspace -w /workspace gsscogs/csvlint csvlint <PATH_TO_YOUR_S
 
 To make our data transformable we need to make a few basic formatting changes to the data on the observation file (we'll explain the rationale as we go), as follows:
 
-- Sex Column: we're switching Male, Female, "" () entries to M, F, T respectively (to match the common SDMX definition: http://purl.org/linked-data/sdmx/2009/code)
+- Sex Column: we're switching the sex entries to M, F, T (total - in place of blanks) to match the common SDMX definition: http://purl.org/linked-data/sdmx/2009/code.
 
 - Age Column: we'll replace the blank entries (denoting all ages) with 'Total'.
 
