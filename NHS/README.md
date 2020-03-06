@@ -42,7 +42,7 @@ Consider the included example 1.
 - Each `tableSchema` has a number of `columns`
 - Each `column` has a `datatype`.
 
-You can validate using simple types within the datatype filed (i.e "number", "string") as well as use an additional `format` field for basic pattern matching (as per the following example: where we are confirming all codes in the Sex column are one of M, F, T, U, N).
+You can validate using simple types within the datatype filed (i.e "number", "string") as well as use an additional `format` field for basic pattern matching (as per the following example: where we are confirming all codes in the Sex column are one of M, F).
 
 ```json
 "tableSchema": {
