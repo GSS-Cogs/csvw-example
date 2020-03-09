@@ -73,7 +73,7 @@ There are a few tools you can use to validate your csvw using these datatype ent
 To run this locally you need to have [docker](https://docs.docker.com/install/) installed, then:
 
 ```
-docker run -v /:/workspace -w /workspace gsscogs/csvlint csvlint <PATH_TO_YOUR_SCHEMA_JSON>
+docker run -v $PWD/:/workspace -w /workspace gsscogs/csvlint csvlint <PATH_TO_YOUR_SCHEMA_JSON>
 ```
 
 ### Info: Observation File Changes
