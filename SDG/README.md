@@ -188,7 +188,7 @@ You can see we've added two additional fields:
 
 If you consider the `valueUrl`, it is (or can be) just information derived from a codelist.csv such as we've already created.
 
-The `propertyUrl` is broader, in that it's the mechanism to linked shared concepts, even where exact codes to do match up across datasets. In this example it's an ad-hoc definition (ideally, where these are created they are also curated and reused across multiple resources).
+The `propertyUrl` is broader, in that it's the mechanism to linked shared concepts, even where exact codes do not match up across datasets. In this example it's an ad-hoc definition (ideally, where these are created they are also curated and reused across multiple resources).
 
 As an alternate approach, let's see about bringing in an pre-existing property definition.
 
