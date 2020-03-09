@@ -353,4 +353,5 @@ This will not be done easily, nor can it be done in isolation, as such the "**C*
 
 As such we are always actively looking for partners in our joint mission, and new voices to join the conversation around linked open data statistics and the future of government statistics.
 
-So please do get in touch.
+So please do get in touch via [darren.barnes@gsscogs.uk](darren.barnes@gsscogs.uk)
+
