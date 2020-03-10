@@ -94,7 +94,7 @@ We've also made a few basic formatting changes to the data (we'll explain the ra
 
 - I've added a `Measure Type` of `Count` as it's required.
 
-- I've changed `EXTRACT_DATE` to `Period` and reformmatted to `day/2019-Dec-01` as per: https://github.com/epimorphics/IntervalServer/blob/master/interval-uris.md#uri-set-and-dataset-descriptions
+- I've changed `EXTRACT_DATE` to `Period` and reformmatted to `day/2019-12-01` as per: https://github.com/epimorphics/IntervalServer/blob/master/interval-uris.md#uri-set-and-dataset-descriptions
 
 - I've rename `NUMBER_OF_PATIENTS` to `Value` and `ONS_CCG_CODE` to `Area` to better match existing linked data resources.
 
