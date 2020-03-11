@@ -23,6 +23,7 @@ ns1:metadata {
         pmd:graph <http://gss-data.org.uk/graph/indicator-1-2-1> ;
         dct:creator gov:office-for-national-statistics ;
         dct:issued "2020-03-01"^^xsd:date ;
+        dct:title "Example SDG Dataset"@en ;
         dct:license <http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/> ;
         dct:modified "2020-03-01T12:23:54.625866+00:00"^^xsd:dateTime ;
         dct:publisher gov:office-for-national-statistics ;

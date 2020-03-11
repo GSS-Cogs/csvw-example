@@ -1,0 +1,112 @@
+{
+  "@context": [
+    "http://www.w3.org/ns/csvw",
+    {
+      "@language": "en"
+    }
+  ],
+  "tables": [
+    {
+      "url": "http://gss-data.org.uk/codelists/probation-area.csv",
+      "tableSchema": "https://gss-cogs.github.io/ref_common/codelist-schema.json",
+      "suppressOutput": true
+    },
+    {
+      "url": "http://gss-data.org.uk/codelists/period.csv",
+      "tableSchema": "https://gss-cogs.github.io/ref_common/codelist-schema.json",
+      "suppressOutput": true
+    },
+    {
+      "url": "http://gss-data.org.uk/codelists/sex.csv",
+      "tableSchema": "https://gss-cogs.github.io/ref_common/codelist-schema.json",
+      "suppressOutput": true
+    },
+    {
+      "url": "probation-caseload_all-supervision.csv",
+      "tableSchema": {
+        "columns": [
+          {
+            "titles": "Probation Area",
+            "required": true,
+            "name": "probation_area",
+            "datatype": "string"
+          },
+          {
+            "titles": "Area",
+            "required": true,
+            "name": "area",
+            "datatype": "string"
+          },
+          {
+            "titles": "Value",
+            "required": false,
+            "name": "value",
+            "datatype": "number"
+          },
+          {
+            "titles": "Period",
+            "required": true,
+            "name": "period",
+            "datatype": {
+              "format": "^(year/[0-9]{4}|gregorian-interval/.*|month/[0-9]{4}-[0-9]{2}|day/[0-9]{4}-[0-9]{2}-[0-9]{2}|quarter/[0-9]{4}-Q[1-4]|government-year/[0-9]{4}-[0-9]{4})$"
+            }
+          },
+          {
+            "titles": "Measure Type",
+            "required": true,
+            "name": "measure_type",
+            "datatype": "string"
+          },
+          {
+            "titles": "Sex",
+            "required": true,
+            "name": "sex",
+            "datatype": {
+              "format": "^(M|F)$"
+            }
+          },
+          {
+            "name": "dataset_ref",
+            "virtual": true,
+            "propertyUrl": "qb:dataSet"
+          },
+          {
+            "name": "qbtype",
+            "virtual": true,
+            "propertyUrl": "rdf:type"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columnReference": "probation_area",
+            "reference": {
+              "resource": "http://gss-data.org.uk/codelists/probation-area.csv",
+              "columnReference": "notation"
+            }
+          },
+          {
+            "columnReference": "period",
+            "reference": {
+              "resource": "http://gss-data.org.uk/codelists/period.csv",
+              "columnReference": "notation"
+            }
+          },
+          {
+            "columnReference": "sex",
+            "reference": {
+              "resource": "http://gss-data.org.uk/codelists/sex.csv",
+              "columnReference": "notation"
+            }
+          }
+        ],
+        "primaryKey": [
+          "probation",
+          "area",
+          "period",
+          "measure_type",
+          "sex"
+        ],
+        "aboutUrl": "http://gss-data.org.uk/gss-data.org.uk/moj-example-dataset/{probation}/{area}/{period}/{measure_type}/{sex}"
+      }
+    }
+  ]}

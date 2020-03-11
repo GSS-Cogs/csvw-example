@@ -7,7 +7,7 @@
   ],
   "tables": [
     {
-      "url": "http://gss-data.org.uk/codelists/period.csv",
+      "url": "http://gss-data.org.uk/codelists/area.csv",
       "tableSchema": "https://gss-cogs.github.io/ref_common/codelist-schema.json",
       "suppressOutput": true
     },
@@ -110,13 +110,6 @@
         "foreignKeys": [
           {
             "columnReference": "period",
-            "reference": {
-              "resource": "http://gss-data.org.uk/codelists/period.csv",
-              "columnReference": "notation"
-            }
-          },
-          {
-            "columnReference": "area",
             "reference": {
               "resource": "http://gss-data.org.uk/codelists/period.csv",
               "columnReference": "notation"

@@ -1,0 +1,223 @@
+{
+  "@context": [
+    "http://www.w3.org/ns/csvw",
+    {
+      "@language": "en"
+    }
+  ],
+  "tables": [
+    {
+      "url": "http://gss-data.org.uk/codelists/probation-area.csv",
+      "tableSchema": "https://gss-cogs.github.io/ref_common/codelist-schema.json",
+      "suppressOutput": true
+    },
+    {
+      "url": "http://gss-data.org.uk/codelists/period.csv",
+      "tableSchema": "https://gss-cogs.github.io/ref_common/codelist-schema.json",
+      "suppressOutput": true
+    },
+    {
+      "url": "http://gss-data.org.uk/codelists/sex.csv",
+      "tableSchema": "https://gss-cogs.github.io/ref_common/codelist-schema.json",
+      "suppressOutput": true
+    },
+    {
+      "url": "probation-caseload_all-supervision.csv",
+      "tableSchema": {
+        "columns": [
+          {
+            "titles": "Probation Area",
+            "required": true,
+            "name": "probation_area",
+            "datatype": "string",
+            "propertyUrl": "http://gss-data.org.uk/def/dimension/probation-area",
+            "valueUrl": "http://gss-data.org.uk/def/concept/probation-area/{probation_area}"
+          },
+          {
+            "titles": "Area",
+            "required": true,
+            "name": "area",
+            "datatype": "string",
+            "propertyUrl": "http://purl.org/linked-data/sdmx/2009/dimension#refArea",
+            "valueUrl": "http://statistics.data.gov.uk/id/statistical-geography/{area}"
+          },
+          {
+            "titles": "Value",
+            "required": false,
+            "name": "value",
+            "datatype": "number",
+            "propertyUrl": "http://gss-data.org.uk/def/measure/{measure_type}"
+          },
+          {
+            "titles": "Period",
+            "required": true,
+            "name": "period",
+            "datatype": {
+              "format": "^(year/[0-9]{4}|gregorian-interval/.*|month/[0-9]{4}-[0-9]{2}|day/[0-9]{4}-[0-9]{2}-[0-9]{2}|quarter/[0-9]{4}-Q[1-4]|government-year/[0-9]{4}-[0-9]{4})$"
+            },
+            "propertyUrl": "http://purl.org/linked-data/sdmx/2009/dimension#refPeriod",
+            "valueUrl": "http://reference.data.gov.uk/id/{+period}"
+          },
+          {
+            "titles": "Measure Type",
+            "required": true,
+            "name": "measure_type",
+            "datatype": "string",
+            "propertyUrl": "http://purl.org/linked-data/cube#measureType",
+            "valueUrl": "http://gss-data.org.uk/def/measure/{measure_type}"
+          },
+          {
+            "titles": "Sex",
+            "required": true,
+            "name": "sex",
+            "datatype": {
+              "format": "^(M|F)$"
+            },
+            "propertyUrl": "http://purl.org/linked-data/sdmx/2009/dimension#sex",
+            "valueUrl": "http://purl.org/linked-data/sdmx/2009/code#sex-{sex}"
+          },
+          {
+            "name": "dataset_ref",
+            "virtual": true,
+            "propertyUrl": "qb:dataSet",
+            "valueUrl": "http://gss-data.org.uk/moj-example-dataset"
+          },
+          {
+            "name": "qbtype",
+            "virtual": true,
+            "propertyUrl": "rdf:type",
+            "valueUrl": "qb:Observation"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columnReference": "probation_area",
+            "reference": {
+              "resource": "http://gss-data.org.uk/codelists/probation-area.csv",
+              "columnReference": "notation"
+            }
+          },
+          {
+            "columnReference": "period",
+            "reference": {
+              "resource": "http://gss-data.org.uk/codelists/period.csv",
+              "columnReference": "notation"
+            }
+          },
+          {
+            "columnReference": "sex",
+            "reference": {
+              "resource": "http://gss-data.org.uk/codelists/sex.csv",
+              "columnReference": "notation"
+            }
+          }
+        ],
+        "primaryKey": [
+          "probation",
+          "area",
+          "period",
+          "measure_type",
+          "sex"
+        ],
+        "aboutUrl": "http://gss-data.org.uk/gss-data.org.uk/moj-example-dataset/{probation}/{area}/{period}/{measure_type}/{sex}"
+      }
+    }
+  ],
+  "@id": "http://gss-data.org.uk/moj-example-dataset#tablegroup",
+  "prov:hadDerivation": {
+    "@id": "http://gss-data.org.uk/moj-example-dataset",
+    "@type": [
+      "qb:DataSet"
+    ],
+    "qb:structure": {
+      "@id": "http://gss-data.org.uk/moj-example-dataset/structure",
+      "@type": "qb:DataStructureDefinition",
+      "qb:component": [
+        {
+          "@id": "http://gss-data.org.uk/moj-example-dataset/component/probation",
+          "@type": "qb:ComponentSpecification",
+          "qb:componentProperty": {
+            "@id": "http://gss-data.org.uk/def/dimension/probation-area"
+          },
+          "qb:dimension": {
+            "@id": "http://gss-data.org.uk/def/dimension/probation-area",
+            "@type": "qb:DimensionProperty",
+            "rdfs:label": "Probation Area",
+            "rdfs:range": {
+              "@id": "http://gss-data.org.uk/def/classes/probation-area/probation_area"
+            }
+          }
+        },
+        {
+          "@id": "http://gss-data.org.uk/moj-example-dataset/component/area",
+          "@type": "qb:ComponentSpecification",
+          "qb:componentProperty": {
+            "@id": "http://purl.org/linked-data/sdmx/2009/dimension#refArea"
+          },
+          "qb:dimension": {
+            "@id": "http://purl.org/linked-data/sdmx/2009/dimension#refArea",
+            "@type": "qb:DimensionProperty",
+            "rdfs:label": "Area"
+          }
+        },
+        {
+          "@id": "http://gss-data.org.uk/moj-example-dataset/component/period",
+          "@type": "qb:ComponentSpecification",
+          "qb:componentProperty": {
+            "@id": "http://purl.org/linked-data/sdmx/2009/dimension#refPeriod"
+          },
+          "qb:dimension": {
+            "@id": "http://purl.org/linked-data/sdmx/2009/dimension#refPeriod",
+            "@type": "qb:DimensionProperty",
+            "rdfs:label": "Period",
+            "rdfs:range": {
+              "@id": "http://reference.data.gov.uk/def/intervals/Interval"
+            }
+          }
+        },
+        {
+          "@id": "http://gss-data.org.uk/moj-example-dataset/component/measure_type",
+          "@type": "qb:ComponentSpecification",
+          "qb:componentProperty": {
+            "@id": "http://purl.org/linked-data/cube#measureType"
+          },
+          "qb:dimension": {
+            "@id": "http://purl.org/linked-data/cube#measureType",
+            "@type": "qb:DimensionProperty",
+            "rdfs:label": "Measure Type",
+            "rdfs:range": {
+              "@id": "qb:MeasureProperty"
+            }
+          }
+        },
+        {
+          "@id": "http://gss-data.org.uk/moj-example-dataset/component/sex",
+          "@type": "qb:ComponentSpecification",
+          "qb:componentProperty": {
+            "@id": "http://purl.org/linked-data/sdmx/2009/dimension#sex"
+          },
+          "qb:dimension": {
+            "@id": "http://purl.org/linked-data/sdmx/2009/dimension#sex",
+            "@type": "qb:DimensionProperty",
+            "rdfs:label": "Sex",
+            "rdfs:range": {
+              "@id": "http://purl.org/linked-data/sdmx/2009/code#Sex"
+            }
+          }
+        },
+        {
+          "@id": "http://gss-data.org.uk/moj-example-dataset/component/count-of-offenders-supervised",
+          "@type": "qb:ComponentSpecification",
+          "qb:componentProperty": {
+            "@id": "http://gss-data.org.uk/def/measure/count-of-offenders-supervised"
+          },
+          "qb:measure": {
+            "@id": "http://gss-data.org.uk/def/measure/count-of-offenders-supervised",
+            "@type": "qb:MeasureProperty",
+            "rdfs:label": "Count of offenders supervised"
+          }
+        }
+      ]
+    }
+  }
+}

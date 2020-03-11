@@ -1,0 +1,63 @@
+{
+  "@context": [
+    "http://www.w3.org/ns/csvw",
+    {
+      "@language": "en"
+    }
+  ],
+  "tables": [
+    {
+      "url": "probation-caseload_all-supervision.csv",
+      "tableSchema": {
+        "columns": [
+          {
+            "titles": "Probation Area",
+            "required": true,
+            "name": "probation",
+            "datatype": "string"
+          },
+          {
+            "titles": "Area",
+            "required": true,
+            "name": "area",
+            "datatype": "string"
+          },
+          {
+            "titles": "Value",
+            "required": false,
+            "name": "value"
+          },
+          {
+            "titles": "Period",
+            "required": true,
+            "name": "period",
+            "datatype": {
+              "format": "^(year/[0-9]{4}|gregorian-interval/.*|month/[0-9]{4}-[0-9]{2}|day/[0-9]{4}-[0-9]{2}-[0-9]{2}|quarter/[0-9]{4}-Q[1-4]|government-year/[0-9]{4}-[0-9]{4})$"
+            }
+          },
+          {
+            "titles": "Measure Type",
+            "required": true,
+            "name": "measure_type",
+            "datatype": "string"
+          },
+          {
+            "titles": "Sex",
+            "required": true,
+            "name": "sex",
+            "datatype": {
+              "format": "^(M|F)$"
+            }
+          },
+          {
+            "name": "dataset_ref",
+            "virtual": true
+          },
+          {
+            "name": "qbtype",
+            "virtual": true
+          }
+        ]
+      }
+    }
+  ]}
