@@ -3,7 +3,7 @@
 
 The following document is walkthrough of using csvw but without direct reference to a specific example. The intention is to delve more into the _why_ than the _how_. 
 
-For example uses see the accompanying examples.
+For example uses see the accompanying example repos.
 
 
 - [CSVW Walkthrough](#csvw-walkthrough)
