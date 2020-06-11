@@ -1,6 +1,6 @@
 # CSVW Walkthrough
 
-The following document is walkthrough of using csvw but without direct reference to a specific example. The intention is to delve more into the _why_ than the _how_. 
+The following document is walkthrough of using csvw but without direct reference to a specific example. The intention is to delve more into the _why_ than the _how_.
 
 - [CSVW Walkthrough](#csvw-walkthrough)
   - [Fundementals](#fundementals)
@@ -8,7 +8,7 @@ The following document is walkthrough of using csvw but without direct reference
     - [CSVW Data Validation](#csvw-data-validation)
     - [External File References](#external-file-references)
   - [The Relationship Between Csvw and Linked Data](#the-relationship-between-csvw-and-linked-data)
-      - [A brief note on urls](#a-brief-note-on-urls)
+  - [A brief note on urls](#a-brief-note-on-urls)
   - [Extension 1](#extension-1)
     - [Extending A Schema With Concept Definfitions](#extending-a-schema-with-concept-definfitions)
   - [Extension 2](#extension-2)
@@ -17,8 +17,17 @@ The following document is walkthrough of using csvw but without direct reference
   - [Extension 3](#extension-3)
     - [Adding Full Semantic Meaning](#adding-full-semantic-meaning)
   - [Putting it all together](#putting-it-all-together)
-  
-  
+
+  - [Extension 1](#extension-1)
+    - [Extending A Schema With Concept Definfitions](#extending-a-schema-with-concept-definfitions)
+  - [Extension 2](#extension-2)
+    - [Defining Properties and Values](#defining-properties-and-values)
+      - [propertyUrl](#propertyurl)
+  - [Extension 3](#extension-3)
+    - [Adding Full Semantic Meaning](#adding-full-semantic-meaning)
+  - [Putting it all together](#putting-it-all-together)
+
+
 ## Fundementals
 
 ### Prefixes
@@ -27,7 +36,7 @@ For ease of use, csvw uses a system of known prefixes to define fields without c
 
 For example the field `title` represents the property `title` as defined by the dc (**d**ublin **c**ore) vocabulary, which can be viewed here: https://www.dublincore.org/specifications/dublin-core/dcmi-terms/
 
-Csvw supports a range of predefined properties imported as part of its context, a full list of 
+Csvw supports a range of predefined properties imported as part of its context, a full list of
 the csvw vocabulary can be found here: [https://www.w3.org/ns/csvw](https://www.w3.org/ns/csvw)
 
 To make us of this pre-defined context you include the `@context` key in your csvw file, example:
@@ -39,7 +48,7 @@ To make us of this pre-defined context you include the `@context` key in your cs
           "@language": "en"
           }
       ],
-} 
+}
 ```
 
 This idea of context is inderited from json-ld where it is defined as follows: `In some cases, when describing an attribute of an entity, it is tempting to using string values which have no independent meaning. Such values often are used for well known things. A JSON-LD context can define a term for such values, which allow them to appear as strings within the message, but be associated with specific identifiers.`
@@ -214,7 +223,7 @@ The guidance up to this point has been deliberately general information, so appl
 
 ####  A brief note on urls
 
-We can't really get into url representations of data without touching on linked data and there's an important nuance to understand here. 
+We can't really get into url representations of data without touching on linked data and there's an important nuance to understand here.
 
 Linked data is really all about **name spaces**. Every resource in the world of linked data should be **uniquely identifiable** and transparently available to everyone.
 
@@ -222,11 +231,21 @@ Since every url on the world wide web **is already** uniquely identifiable and a
 
 To be clear, you *should* also use a url that tells you a little something about the thing being defined, or at very least you have a place you *could* provide that information, but it's this principle of "definition by public namepace" that underpins what we're doing here.
 
-In other words, `first and foremost make everything identifiable, you can always expand on the definition (and even harmonise your references) later`. 
+In other words, `first and foremost make everything identifiable, you can always expand on the definition (and even harmonise your references) later`.
 
-The following sections details how you can expand on the fundementals to start bringing in these additional elements of semantic definition. 
+The following sections details how you can expand on the fundementals to start bringing in these additional elements of semantic definition.
 
 -----
+
+<div class="warning'>
+
+## :warning Implentation Warning:
+
+At this point we're straying into how you can use the csvw framework to create a fully semantically described dataset.
+
+Since that's an implementation detail (and those details tend to evolve with time) you *can* do it this way, but before you go to far down that rabbit hole it's probably worth starting a conversation (via darren.barnes@gsscogs.uk) in case we can share a newer or easier way to get to the same place.
+
+</div>
 
 ## Extension 1
 
@@ -257,7 +276,7 @@ The `valueUrl` provides definitions of the concepts or dimension-items that resi
 
 The formatting of the `valueUrl`, eg `/age/{age}` is representing all the values within the age column. So for every given unique value in the age column its effectively referencing a url of `http://gss-data.org.uk/def/concept/age/{whichever value from the age column we're talking about}`.
 
-Note - you'll see we're using a common SDMX dimension for the age concept and switching to our own specific resource for the ages with it. This is a typical approach for extending the linkage between datasets (not many datasets will use our exact age ranges and definitions - but most people can agree on what the general concept of "age" means). 
+Note - you'll see we're using a common SDMX dimension for the age concept and switching to our own specific resource for the ages with it. This is a typical approach for extending the linkage between datasets (not many datasets will use our exact age ranges and definitions - but most people can agree on what the general concept of "age" means).
 
 Despite the example, you can also supply home grown `propertyUrls` as well should you be tackling a more niche concept, a concept not described elsewhere or where your using a different definition than peer organisations.
 
@@ -296,7 +315,7 @@ In the context of a column of data, the property (as identified bythe propertyUR
 
 So the next step will be capturing this information and making it availible at the provided urls.
 
-`Property Example 1`: the generic SDMX property definition for age we referenced previously can be seen here: [http://purl.org/linked-data/sdmx/2009/dimension#age](http://purl.org/linked-data/sdmx/2009/dimension#age) and is very much a simple dump of basic SDMX attriutes written in an RDF form (that nonetheless provides the three principle pieces of information listed above). 
+`Property Example 1`: the generic SDMX property definition for age we referenced previously can be seen here: [http://purl.org/linked-data/sdmx/2009/dimension#age](http://purl.org/linked-data/sdmx/2009/dimension#age) and is very much a simple dump of basic SDMX attriutes written in an RDF form (that nonetheless provides the three principle pieces of information listed above).
 
 You'll notice this page also covers a number of concepts at a very basic level, this is perfectly valid and may even be a good starting point.
 
@@ -318,4 +337,3 @@ So at this point we have a csvw schema that fully describes the concepts and cod
 So with the work so far we have a fully semantically described schema for a dataset as represented by a csv file. This means that we have everything required to convert the data into fully declared RDF triples.
 
 `TODO - some guidence on tooling, csv2rdf etc`
-
