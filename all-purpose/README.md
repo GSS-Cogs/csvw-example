@@ -1,61 +1,42 @@
-# CSVW Walkthrough
+# CSVW Maturity Levels
 
 The following document is walkthrough of using csvw but without direct reference to a specific example. The intention is to delve more into the _why_ than the _how_.
 
-- [CSVW Walkthrough](#csvw-walkthrough)
-  - [Fundementals](#fundementals)
-    - [Prefixes](#prefixes)
-    - [CSVW Data Validation](#csvw-data-validation)
-    - [External File References](#external-file-references)
-  - [The Relationship Between Csvw and Linked Data](#the-relationship-between-csvw-and-linked-data)
+The following is broken down into two section:
+
+1.) A walkthrough of the different levels of maturity you can reach while using csvv.
+
+2.) Supplementary material that will be referenced from the main text as appropriate places. 
+
+
+
+- [CSVW Maturity Levels](#csvw-maturity-levels)
+  - [Level 0: Tidy CSV with no JSON](#level-0-tidy-csv-with-no-json)
+  - [Level 1: The addition of dataset metadata as JSON](#level-1-the-addition-of-dataset-metadata-as-json)
+  - [Level 2: The addition of a table schema](#level-2-the-addition-of-a-table-schema)
+  - [Level 3: The addition of external tables, foreign keys and primary keys](#level-3-the-addition-of-external-tables-foreign-keys-and-primary-keys)
+  - [Level 4: The addition of the transform definition](#level-4-the-addition-of-the-transform-definition)
+    - [Defining Properties and Values](#defining-properties-and-values)
+      - [propertyUrl](#propertyurl)
+    - [Defining an 'about' url](#defining-an-about-url)
+  - [Level 5: The addition of a dataset structure definition.](#level-5-the-addition-of-a-dataset-structure-definition)
+- [Supplementary](#supplementary)
+  - [Prefixes Explained](#prefixes-explained)
   - [A brief note on urls](#a-brief-note-on-urls)
-  - [Extension 1](#extension-1)
-    - [Extending A Schema With Concept Definfitions](#extending-a-schema-with-concept-definfitions)
-  - [Extension 2](#extension-2)
-    - [Defining Properties and Values](#defining-properties-and-values)
-      - [propertyUrl](#propertyurl)
-  - [Extension 3](#extension-3)
-    - [Adding Full Semantic Meaning](#adding-full-semantic-meaning)
-  - [Putting it all together](#putting-it-all-together)
-
-  - [Extension 1](#extension-1)
-    - [Extending A Schema With Concept Definfitions](#extending-a-schema-with-concept-definfitions)
-  - [Extension 2](#extension-2)
-    - [Defining Properties and Values](#defining-properties-and-values)
-      - [propertyUrl](#propertyurl)
-  - [Extension 3](#extension-3)
-    - [Adding Full Semantic Meaning](#adding-full-semantic-meaning)
-  - [Putting it all together](#putting-it-all-together)
+  - [CSVW Validation](#csvw-validation)
+  - [Output Tooling](#output-tooling)
 
 
-## Fundementals
-
-### Prefixes
-
-For ease of use, csvw uses a system of known prefixes to define fields without cluttering files with endless url references.
-
-For example the field `title` represents the property `title` as defined by the dc (**d**ublin **c**ore) vocabulary, which can be viewed here: https://www.dublincore.org/specifications/dublin-core/dcmi-terms/
-
-Csvw supports a range of predefined properties imported as part of its context, a full list of
-the csvw vocabulary can be found here: [https://www.w3.org/ns/csvw](https://www.w3.org/ns/csvw)
-
-To make us of this pre-defined context you include the `@context` key in your csvw file, example:
-
-```json
-"@context": [
-          "http://www.w3.org/ns/csvw",
-          {
-          "@language": "en"
-          }
-      ],
-}
-```
-
-This idea of context is inderited from json-ld where it is defined as follows: `In some cases, when describing an attribute of an entity, it is tempting to using string values which have no independent meaning. Such values often are used for well known things. A JSON-LD context can define a term for such values, which allow them to appear as strings within the message, but be associated with specific identifiers.`
+## Level 0: Tidy CSV with no JSON
 
 
------
-### CSVW Data Validation
+TODO - some information about csv flat files, one obs per line etc.
+
+
+
+## Level 1: The addition of dataset metadata as JSON
+
+## Level 2: The addition of a table schema 
 
 By using the csvw context we get access to defined classes that can be used to fully describe a csv file. You can view these classes at [https://www.w3.org/ns/csvw#class-definitions](https://www.w3.org/ns/csvw#class-definitions).
 
@@ -92,7 +73,7 @@ The above pattern matching (i.e `"^(M|F)$"`) is done using regular expressions (
 
 -----
 
-### External File References
+## Level 3: The addition of external tables, foreign keys and primary keys
 
 Csvw allows for a single csvw.json file to define more than one data table. This is to permit clear linkage to external data sources.
 
@@ -217,39 +198,7 @@ You get an english language schema fully describing the columns of a csv (with b
 
 -----
 
-## The Relationship Between Csvw and Linked Data
-
-The guidance up to this point has been deliberately general information, so applies to **all** csvw files, regardless of the eventual goals of their creation.
-
-####  A brief note on urls
-
-We can't really get into url representations of data without touching on linked data and there's an important nuance to understand here.
-
-Linked data is really all about **name spaces**. Every resource in the world of linked data should be **uniquely identifiable** and transparently available to everyone.
-
-Since every url on the world wide web **is already** uniquely identifiable and available to everyone, then the use of csvw (which is really just a user friendly way of defining things via urls) moves you firmly in the direction of fully linked data.
-
-To be clear, you *should* also use a url that tells you a little something about the thing being defined, or at very least you have a place you *could* provide that information, but it's this principle of "definition by public namepace" that underpins what we're doing here.
-
-In other words, `first and foremost make everything identifiable, you can always expand on the definition (and even harmonise your references) later`.
-
-The following sections details how you can expand on the fundementals to start bringing in these additional elements of semantic definition.
-
------
-
-<div class="warning'>
-
-## :warning Implentation Warning:
-
-At this point we're straying into how you can use the csvw framework to create a fully semantically described dataset.
-
-Since that's an implementation detail (and those details tend to evolve with time) you *can* do it this way, but before you go to far down that rabbit hole it's probably worth starting a conversation (via darren.barnes@gsscogs.uk) in case we can share a newer or easier way to get to the same place.
-
-</div>
-
-## Extension 1
-
-### Extending A Schema With Concept Definfitions
+## Level 4: The addition of the transform definition
 
 We'll start with how to incorporate concept definitions in your csvw schemas.
 
@@ -296,11 +245,6 @@ Is also a perfectly valid definition, abeit one with less linkage (as we're usin
 
 Note - it's both valid and fairly common to start with home-grown definitons of everything (much like the `gss-data.org.uk` namespace we're using in the examples) and work on harmonising your data references later, once you know what you want to use it's ultimately changing a value in a  single field.
 
-
------
-
-## Extension 2
-
 ### Defining Properties and Values
 
 So the next question is, what exactly are the `propertyUrl` and `valueUrls` that we've started including in the previous stage?
@@ -325,14 +269,54 @@ Either will work, but unless you have access to a RDF platform then it's probabl
 
 For a much more detailed look into properties and how they (will eventually) help inform the data structure definition of a semantically defined dataset please see: [https://www.w3.org/TR/vocab-data-cube/#dsd](https://www.w3.org/TR/vocab-data-cube/#dsd)
 
+### Defining an 'about' url
 
-## Extension 3
-
-### Adding Full Semantic Meaning
+## Level 5: The addition of a dataset structure definition.
 
 So at this point we have a csvw schema that fully describes the concepts and codelists it's referencing, so that last thing to accomplish is to provide the missing details of a full dataset strcuture defintion.
 
-## Putting it all together
+# Supplementary
+
+## Prefixes Explained
+
+For ease of use, csvw uses a system of known prefixes to define fields without cluttering files with endless url references.
+
+For example the field `title` represents the property `title` as defined by the dc (**d**ublin **c**ore) vocabulary, which can be viewed here: https://www.dublincore.org/specifications/dublin-core/dcmi-terms/
+
+Csvw supports a range of predefined properties imported as part of its context, a full list of
+the csvw vocabulary can be found here: [https://www.w3.org/ns/csvw](https://www.w3.org/ns/csvw)
+
+To make us of this pre-defined context you include the `@context` key in your csvw file, example:
+
+```json
+"@context": [
+          "http://www.w3.org/ns/csvw",
+          {
+          "@language": "en"
+          }
+      ],
+}
+```
+
+
+-----
+
+##  A brief note on urls
+
+We can't really get into url representations of data without touching on linked data and there's an important nuance to understand here.
+
+Linked data is really all about **name spaces**. Every resource in the world of linked data should be **uniquely identifiable** and transparently available to everyone.
+
+Since every url on the world wide web **is already** uniquely identifiable and available to everyone, then the use of csvw (which is really just a user friendly way of defining things via urls) moves you firmly in the direction of fully linked data.
+
+To be clear, you *should* also use a url that tells you a little something about the thing being defined, or at very least you have a place you *could* provide that information, but it's this principle of "definition by public namepace" that underpins what we're doing here.
+
+In other words, `first and foremost make everything identifiable, you can always expand on the definition (and even harmonise your references) later`.
+
+-----
+## CSVW Validation
+
+## Output Tooling
 
 So with the work so far we have a fully semantically described schema for a dataset as represented by a csv file. This means that we have everything required to convert the data into fully declared RDF triples.
 
