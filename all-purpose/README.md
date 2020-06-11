@@ -15,7 +15,7 @@ The following document is walkthrough of using csvw but without direct reference
     - [Defining Properties and Values](#defining-properties-and-values)
       - [propertyUrl](#propertyurl)
   - [Extension 3](#extension-3)
-    - [Adding Full Sementic Meaning](#adding-full-sementic-meaning)
+    - [Adding Full Semantic Meaning](#adding-full-semantic-meaning)
   - [Putting it all together](#putting-it-all-together)
   
   
@@ -309,7 +309,7 @@ For a much more detailed look into properties and how they (will eventually) hel
 
 ## Extension 3
 
-### Adding Full Sementic Meaning
+### Adding Full Semantic Meaning
 
 So at this point we have a csvw schema that fully describes the concepts and codelists it's referencing, so that last thing to accomplish is to provide the missing details of a full dataset strcuture defintion.
 
