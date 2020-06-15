@@ -6,8 +6,6 @@ The following document is walkthrough of using csvw and the maturity levels of i
 
 2.) Optional supplementary material that will be referenced from the main text at appropriate places. 
 
-
-
 - [CSVW Maturity Levels](#csvw-maturity-levels)
   - [Level 0: Tidy CSV with no JSON](#level-0-tidy-csv-with-no-json)
   - [Level 1: The addition of dataset metadata as JSON](#level-1-the-addition-of-dataset-metadata-as-json)
@@ -23,6 +21,7 @@ The following document is walkthrough of using csvw and the maturity levels of i
   - [Tooling](#tooling)
     - [Validation vis csvlint](#validation-vis-csvlint)
   - [CSVW Fully 5* Open Data Compliant Example](#csvw-fully-5-open-data-compliant-example)
+  - [Join The Conversation](#join-the-conversation)
 
 
 ## Level 0: Tidy CSV with no JSON
@@ -239,7 +238,7 @@ For example, lets extend the previous example to hold information about codelist
 
 You'll notice that I've include one of the `url` references as `my-example.csv`, the lack of a full path is because **that is the csv file that this csvw schema is accompanying**. It's also worth noting that the tableSchema entries can themsevles be remote resources and can be freely reused where appropriate.
 
-Then there is the `primaryKey` field. One crucial requirement of tidy data is that **each oberserable data point should be uniquely identifiable**. The job of the primary key is to list the dimensional options that make each observation unique. In other words - the `primaryKey` field in our example is specifiying that **a composite key of the values within the "age and "sex" columns will identify one (and only one) obervable data point**.
+Then there is the `primaryKey` field. One crucial requirement of tidy data is that **each oberserable data point should be uniquely identifiable**. The job of the primary key is to list the dimensional options that make each observation unique. In other words - the `primaryKey` field in our example is specifiying that **a composite key of the values within the "age and "sex" columns will identify one (and only one) observable data point**.
 
 
 Lastly, we need to establish the link between the referenced codelst csvs and the principle csv (i.e "my-example.csv") that we're describing. We do this via the declaration of `Foreign Keys`.
@@ -509,7 +508,7 @@ The following example has both a `Dimension` column and an `Attribute` column de
 }
 ```
 
-Beyond component definitions, one key thing to be aware of is the RDF datacube specs handling of measure types.
+One key thing to be aware of is the RDF datacube specs handling of measure types.
 
 If you specify a component dimension as `http://purl.org/linked-data/cube#measureType` then **all measures within that cube are assumed to reside within that dimension**. This allows you to include multiple measures in your dataset and differentiate them with a simple column.
 
@@ -885,3 +884,16 @@ The following has been included purely as an "end goal" example rather than anyt
   }
 }
 ```
+## Join The Conversation
+
+This resource was created by the COGS project, the stated goal of which is:
+
+```
+Revolutionising how UK Government Statistical Data is made available on the Web by creating a repository of 5* Linked Open Data Statistics.
+```
+
+This will not be done easily, nor can it be done in isolation, as such the "Connected" in COGS is as much about connecting people and organisations as it is about connecting data (nobody is climbing this mountain alone).
+
+As such we are always actively looking for partners in our joint mission, and new voices to join the conversation around linked open data statistics and the future of government statistics.
+
+So please do get in touch via `darren.barnes@gsscogs.uk`.
