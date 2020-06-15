@@ -886,7 +886,7 @@ The following has been included purely as an "end goal" example rather than anyt
 ```
 ## Join The Conversation
 
-This resource was created by the COGS project, the stated goal of which is:
+This resource was created by the COGS (**C**onnected **O**pen **G**overnment **S**tatistics) project, the stated goal of which is:
 
 ```
 Revolutionising how UK Government Statistical Data is made available on the Web by creating a repository of 5* Linked Open Data Statistics.
