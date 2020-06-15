@@ -73,7 +73,7 @@ Allows you to express the title, the data issued (and the schema the date is usi
 
 eg `dc:title` resolves to [http://purl.org/dc/terms/title](http://purl.org/dc/terms/title) which will lead you to a specific (and public) definition of the exact meaning of the word `title` in this context.
 
-The following is more extensive example of using csvw to capture metadata about a dataset (please note - the `url` field is just indicating the location of the csv being defined - in this case "observations.csv" and in the same location).
+The following is more extensive example of using csvw to capture metadata about a dataset (please note - the `url` field is just indicating the location of the csv table being defined - in this case "observations.csv" and in the same location).
 
 ```json
 
@@ -133,7 +133,7 @@ The following is more extensive example of using csvw to capture metadata about 
 }
 ```
 
-As a general point its worth remembering that _any_ semantically defined metadata is a step forward and that a josn metadata schema can easily be expanded upon.
+As a general point its worth remembering that _any_ semantically defined metadata is a step forward and that a json metadata schema can easily be expanded upon.
 
 ## Level 2: The addition of a table schema 
 
@@ -143,10 +143,15 @@ Example: For a given csvw file
 
 - The schema references 1 or more `tables` as an array of type `table`.
 - Each `table` has a `tableSchema`
-- Each `tableSchema` has `columns` as an array of `columns`
+- Each `tableSchema` has `columns` as an array of `column`
 - Each `column` is represented by a hashmap of one or more fields (themselves defined classes used to describe the properties of individual columns), eg `titles`, `required`, `name` etc
 
-The following is a snipped from a csvw file that includes a table schema.
+It's important to understand a rule of csvw here - all fields in a csvw json file should be one of:
+
+- a plain field defined within the csvw vocabulary (this examples)
+- a prefixed field referencing one of the included supplementary vocabularies (as described for maturity level 1).
+
+The following is a snippet that uses the former to describe a table schema.
 
 ```json
 "tableSchema": {
@@ -168,11 +173,11 @@ The following is a snipped from a csvw file that includes a table schema.
   }
 ```
 
-You'll notice there's a datatype field, this is a simple mechanism for providing basic data validation.
+You'll notice this snippet includes a datatype field, this is a simple mechanism for providing basic data validation.
 
-In the example above pattern matching (i.e `"^(M|F)$"`) is done using regular expressions (more information on these can be found at https://blog.usejournal.com/regular-expressions-a-complete-beginners-tutorial-c7327b9fd8eb) where as the other column is simply stated as containing the type `string`.
+This includes pattern matching (i.e `"^(M|F)$"`) using regular expressions (more information on these can be found at https://blog.usejournal.com/regular-expressions-a-complete-beginners-tutorial-c7327b9fd8eb) and a simple statment of the "age" columna as type `string`.
 
-Both can be used to validate the provided contents of the columns in question (for more information see the included supplementary section on csvw tooling).
+Both can be used to validate the provided contents of the columns in question (for more information on how you can implement said validation, please see the included supplementary section on csvw tooling).
 
 -----
 
