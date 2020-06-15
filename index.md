@@ -498,9 +498,9 @@ The following example has both a `Dimension` column and an `Attribute` column de
 
 Beyond component definitions, one key thing to be aware of is the RDF datacube specs handling of measure types.
 
-If you specify a component dimension as http://purl.org/linked-data/cube#measureType then **all measures within that cube are assumed to reside within that dimension**. This allows you to include multiple measures in your dataset and differentiate them with a simple column.
+If you specify a component dimension as `http://purl.org/linked-data/cube#measureType` then **all measures within that cube are assumed to reside within that dimension**. This allows you to include multiple measures in your dataset and differentiate them with a simple column.
 
-The following example shows how to declare this special dimension and define one of the measures that reside within it (in this case percent).
+The following example shows how to declare this special dimension and define one of the measures that reside within it (in this case a measure of type count).
 
 ```json
 { 
