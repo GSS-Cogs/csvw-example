@@ -19,7 +19,7 @@ The following document is walkthrough of using csvw and the maturity levels of i
     - [Defining an 'about' url](#defining-an-about-url)
   - [Level 5: The addition of a dataset structure definition.](#level-5-the-addition-of-a-dataset-structure-definition)
 - [Supplementary](#supplementary)
-  - [Prefixes Explained](#prefixes-explained)
+  - [REMOVE OR USE](#remove-or-use)
   - [A brief note on urls](#a-brief-note-on-urls)
   - [CSVW Validation](#csvw-validation)
   - [Output Tooling](#output-tooling)
@@ -41,6 +41,99 @@ While this doesn't provide supporting metadata, it does make the dataset easily 
 
 
 ## Level 1: The addition of dataset metadata as JSON
+
+For ease of use, csvw uses a system of known prefixes to define fields without cluttering files with endless url references.
+
+The csvw spec makes use of several pertinent vocabularies as shown below:
+
+
+| Prefix | Namespace | Description |
+| ------------- | ------------- | ------------- |
+| csvw:  | [http://www.w3.org/ns/csvw#](http://www.w3.org/ns/csvw#) | The principle csvw vocabulary, provides the requried definitions to define a csv.
+| rdf:  | [http://www.w3.org/1999/02/22-rdf-syntax-ns#](http://www.w3.org/1999/02/22-rdf-syntax-ns#) | The RDF Schema.
+| rdfs: | [http://www.w3.org/2000/01/rdf-schema#](http://www.w3.org/2000/01/rdf-schema#) | The RDF vocabulary (which makes use of the schema - see above)
+| xsd: | [http://www.w3.org/2001/XMLSchema#](http://www.w3.org/2001/XMLSchema#) | The XML Schema namespace
+| dc: | [http://purl.org/dc/terms/](http://purl.org/dc/terms/) | Specification of all metadata terms maintained by the Dublin Core Metadata Initiative. Includes an extensive vocabulary.
+| dcat: | [http://www.w3.org/ns/dcat#](http://www.w3.org/ns/dcat#) | The Data Catalogue vocabulary.
+| prov: | [http://www.w3.org/ns/prov#](http://www.w3.org/ns/prov#) | Supports the interchange of provenance on the web.
+
+This use of these prefixes allows you to easily express semantically defined metadata via your json file, for example:
+
+```json
+{
+  "dc:title": "Trade in goods",
+  "dc:issued": {
+      "@value": "2020-04-08",
+      "@type": "http://www.w3.org/2001/XMLSchema#date"
+    },
+}
+```
+
+Allows you to express the title, the data issued (and the schema the date is using) in a relatively terse way.
+
+eg `dc:title` resolves to [http://purl.org/dc/terms/title](http://purl.org/dc/terms/title) which will lead you to a specific (and public) definition of the exact meaning of the word `title` in this context.
+
+The following is more extensive example of using csvw to capture metadata about a dataset (please note - the `url` field is just indicating the location of the csv being defined - in this case "observations.csv" and in the same location).
+
+```json
+
+{
+  "@context": [
+    "http://www.w3.org/ns/csvw",
+    {
+      "@language": "en"
+    }
+  ],
+  "tables": [
+    {
+      "url": "observations.csv"
+    }
+  ],
+  "@id": "http://gss-data.org.uk/data/gss_data/trade/ons-trade-in-goods#tablegroup",
+  "prov:hadDerivation": {
+    "@id": "http://gss-data.org.uk/data/gss_data/trade/ons-trade-in-goods",
+    "@type": "dcat:Dataset",
+    "dc:publisher": {
+      "@id": "https://www.gov.uk/government/organisations/office-for-national-statistics"
+    },
+    "dc:title": "Trade in goods: country-by-commodity imports and exports",
+    "dcat:landingPage": {
+      "@id": "https://www.ons.gov.uk/economy/nationalaccounts/balanceofpayments/datasets/uktradecountrybycommodityimports"
+    },
+    "rdfs:label": "Trade in goods: country-by-commodity imports and exports",
+    "dc:creator": {
+      "@id": "https://www.gov.uk/government/organisations/office-for-national-statistics"
+    },
+    "dc:issued": {
+      "@value": "2020-04-08",
+      "@type": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "dc:license": {
+      "@id": "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+    },
+    "dc:modified": {
+      "@value": "2020-04-17T15:09:09.835868+00:00",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "dc:description": {
+      "@value": "Monthly import country-by-commodity data on the UK's trade in goods, including trade by all countries and selected commodities, non-seasonally adjusted.",
+      "@type": "https://www.w3.org/ns/iana/media-types/text/markdown#Resource"
+    },
+    "dcat:contactPoint": {
+      "@id": "mailto:trade@ons.gov.uk"
+    },
+    "dcat:theme": {
+      "@id": "http://gss-data.org.uk/def/concept/statistics-authority-themes/business-industry-trade-energy"
+    },
+    "rdfs:comment": "Monthly import and export country-by-commodity data on the UK's trade in goods, including trade by all countries and selected commodities, non-seasonally adjusted.",
+    "void:sparqlEndpoint": {
+      "@id": "http://gss-data.org.uk/sparql"
+    }
+  }
+}
+```
+
+As a general point its worth remembering that _any_ semantically defined metadata is a step forward and that a josn metadata schema can easily be expanded upon.
 
 ## Level 2: The addition of a table schema 
 
@@ -235,7 +328,7 @@ The `valueUrl` provides definitions of the concepts or dimension-items that resi
 
 The formatting of the `valueUrl`, eg `/age/{age}` is representing all the values within the age column. So for every given unique value in the age column its effectively referencing a url of `http://gss-data.org.uk/def/concept/age/{whichever value from the age column we're talking about}`.
 
-Note - you'll see we're using a common SDMX dimension for the age concept and switching to our own specific resource for the ages with it. This is a typical approach for extending the linkage between datasets (not many datasets will use our exact age ranges and definitions - but most people can agree on what the general concept of "age" means).
+Note - you'll see we're using a common SDMX dimension for the age concept and switching to our own specific resource for the ages within it. This is a typical approach for extending the linkage between datasets (not many datasets will use our exact age ranges and definitions - but most people can agree on what the general concept of "age" means).
 
 Despite the example, you can also supply home grown `propertyUrls` as well should you be tackling a more niche concept, a concept not described elsewhere or where your using a different definition than peer organisations.
 
@@ -287,7 +380,7 @@ So at this point we have a csvw schema that fully describes the concepts and cod
 
 # Supplementary
 
-## Prefixes Explained
+## REMOVE OR USE
 
 For ease of use, csvw uses a system of known prefixes to define fields without cluttering files with endless url references.
 
