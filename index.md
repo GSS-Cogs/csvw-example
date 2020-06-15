@@ -17,10 +17,11 @@ The following document is walkthrough of using csvw and the maturity levels of i
     - [Defining Properties and Values](#defining-properties-and-values)
       - [Defining a `propertyUrl`](#defining-a-propertyurl)
       - [Defining a `valueURL`](#defining-a-valueurl)
-    - [The `about` url](#the-about-url)
+    - [The `aboutUrl`](#the-abouturl)
   - [Level 5: The addition of a dataset structure definition.](#level-5-the-addition-of-a-dataset-structure-definition)
 - [Supplementary](#supplementary)
   - [Tooling](#tooling)
+    - [Validation vis csvlint](#validation-vis-csvlint)
   - [CSVW Fully 5* Open Data Compliant Example](#csvw-fully-5-open-data-compliant-example)
 
 
@@ -410,7 +411,17 @@ One the surface of it the `valueURL` seems like it'd be a more specfic defintion
 
 Smply put - in the majority of scenarios simply having a namespace for each value will be sufficiant at this stage. So even if the namespace for the value eg `/age/{17}` simpley says `17` that's perfectly fine (again the `valueURL` is more concerned with value **identification** than **definition**).
 
-### The `about` url
+### The `aboutUrl`
+
+As defined by [https://www.w3.org/ns/csvw](https://www.w3.org/ns/csvw) the `aboutUrl` is **A URI template property that MAY be used to indicate what a cell contains information about**.
+
+In practice, for a tidy csv it's equivilent to a unique identifier for any given observation in the dataset.
+
+So given our example of a dataset with dimensions of `Age` and `Sex` it would be:
+
+`http://the-url-that-uniquely-identifiers-my-dataset/{age}/{sex}`
+
+And will always include one argument (eg `/{age}`) for each non-observational column within the csv.
 
 ## Level 5: The addition of a dataset structure definition.
 
@@ -545,17 +556,23 @@ The following example shows how to declare this special dimension and define one
 For more information on the rdf datacube spec please see [https://www.w3.org/TR/vocab-data-cube/](https://www.w3.org/TR/vocab-data-cube/).
 
 # Supplementary
+
 ## Tooling
 
-So with the work so far we have a fully semantically described schema for a dataset as represented by a csv file. This means that we have everything required to convert the data into fully declared RDF triples.
+### Validation vis csvlint
 
-`TODO - some guidence on tooling, csv2rdf etc`
+There are a few tools you can use to validate your csvw using these datatype entries provided by the `column` definitions (and the csvw on the whole). One example would be a tool called csvlint (more details of which can be found here: [https://github.com/Data-Liberation-Front/csvlint.rb](https://github.com/Data-Liberation-Front/csvlint.rb)).
+
+We currently run this through a docker image for our own work via:
+
+`docker run -v $PWD/:/workspace -w /workspace gsscogs/csvlint csvlint -s <PATH_TO_YOUR_CSVW.json>`
+
 
 ## CSVW Fully 5* Open Data Compliant Example
 
 The following is a csvw file providing definitions equivilent to a 5* linked open dataset (as-in, you could generate a fully described RDF output of the data just from the csv plus this csvw).
 
-The following has been included purely as an "end goal" example rather than anything to strive for immediately (and please note - most of the below would be provided gradually or by automation - this is **not** something a single person should ever sit down to try and create manually.
+The following has been included purely as an "end goal" example rather than anything to strive for immediately (and please note - most of the below would be provided gradually or by automation - this is **not** something a single person should ever sit down to try and create manually).
 
 ```json
 {
@@ -633,7 +650,7 @@ The following has been included purely as an "end goal" example rather than anyt
       "suppressOutput": true
     },
     {
-      "url": "combined_source.csv",
+      "url": "observations.csv",
       "tableSchema": {
         "columns": [
           {
