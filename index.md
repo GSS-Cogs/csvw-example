@@ -19,8 +19,7 @@ The following document is walkthrough of using csvw and the maturity levels of i
       - [Defining a `valueURL`](#defining-a-valueurl)
     - [The `about` url](#the-about-url)
   - [Level 5: The addition of a dataset structure definition.](#level-5-the-addition-of-a-dataset-structure-definition)
-- [Supplementary](#supplementary)
-  - [Output Tooling](#output-tooling)
+  - [Tooling](#tooling)
 
 
 ## Level 0: Tidy CSV with no JSON
@@ -413,11 +412,137 @@ Smply put - in the majority of scenarios simply having a namespace for each valu
 
 ## Level 5: The addition of a dataset structure definition.
 
-So at this point we have a csvw schema that fully describes the concepts and codelists it's referencing, so that last thing to accomplish is to provide the missing details of a full dataset strcuture defintion.
+So at this point we have a csvw schema that fully describes the concepts and codelists it's referencing, so that last thing to accomplish is to provide a full dataset structure defintion.
 
-# Supplementary
+Please note - the addition of a dsd is the last step is creating a fulll semantically supplied definition. Once this step is implemented you will have all the information required to convert the csv directly to RDF linked data should you need to (i.e your csv + csvw outputs will be functionally equivelant to RDF outputs).
 
-## Output Tooling
+The principle thing to understand here, other than explicitly stating a few things a human could just infer from the earlier examples is **we're only actually adding a very small amount of additional information** in the form of defining the components of our dataset.
+
+There are effectively three types of component that make up a data cube, as follows:
+
+| Component | Description
+| ------------- | ------------- 
+| Dimension | The dimension components serve to identify the observations. A set of values for all the dimension components is sufficient to identify a single observation. Examples of dimensions include the time to which the observation applies, or a geographic region which the observation covers.
+| Measure | The measure components represent the phenomenon being observed.
+| Attribute | The attribute components allow us to qualify and interpret the observed value(s). They enable specification of the units of measure, any scaling factors and metadata such as the status of the observation (e.g. estimated, provisional).
+
+Please note - these definitions are taken directly from the rdf data cube model at [https://www.w3.org/TR/vocab-data-cube/#cubes-model](https://www.w3.org/TR/vocab-data-cube/#cubes-model).
+
+First, lets's look an example Dimension component as it appears in the dsd:
+
+```json
+{
+  "@id": "http://gss-data.org.uk/sdg-example-dataset/component/age",
+  "@type": "qb:ComponentSpecification",
+  "qb:componentProperty": {
+    "@id": "http://purl.org/linked-data/sdmx/2009/dimension#age"
+  },
+  "qb:dimension": {
+    "@id": "http://purl.org/linked-data/sdmx/2009/dimension#age",
+    "@type": "qb:DimensionProperty",
+    "rdfs:label": "Age",
+    "rdfs:range": {
+      "@id": "http://gss-data.org.uk/def/classes/age/age"
+    }
+  }
+}
+```
+In terms of what we're looking at here:
+
+We need to declare that it is a component (the upper block). We need to declare that it is a dimension, as well as confirm it's label and give it a range (the lower block).
+
+For attributes we follow the same pattern, simply using `qb:attribute`, `qb:AttributeProperty` in place of `qb:dimension` and `qb:DimensionProperty` repectively.
+
+The following example has both a `Dimension` column and an `Attribute` column defined.
+
+```json
+{ 
+  "qb:structure": {
+      "@id": "http://gss-data.org.uk/my-example-dataset/structure",
+      "@type": "qb:DataStructureDefinition",
+      "qb:component": [
+          {
+            "@id": "http://gss-data.org.uk/sdg-example-dataset/component/age",
+            "@type": "qb:ComponentSpecification",
+            "qb:componentProperty": {
+              "@id": "http://purl.org/linked-data/sdmx/2009/dimension#age"
+                },
+                "qb:dimension": {
+                "@id": "http://purl.org/linked-data/sdmx/2009/dimension#age",
+                "@type": "qb:DimensionProperty",
+                "rdfs:label": "Age",
+                "rdfs:range": {
+                  "@id": "http://gss-data.org.uk/def/classes/age/age"
+                  }
+                }
+          },
+          {
+            "@id": "http://gss-data.org.uk/sdg-example-dataset/component/unit_multiplier",
+            "@type": "qb:ComponentSpecification",
+            "qb:componentProperty": {
+              "@id": "http://purl.org/linked-data/sdmx/2009/attribute#unitMult"
+                },
+                "qb:attribute": {
+                "@id": "http://purl.org/linked-data/sdmx/2009/attribute#unitMult",
+                "@type": "qb:AttributeProperty",
+                "rdfs:label": "Unit multiplier",
+                "rdfs:range": {
+                  "@id": "http://gss-data.org.uk/def/classes/unit-multiplier/unit_multiplier"
+                  }
+                }
+          }
+      ]
+  }
+}
+```
+
+Beyond component definitions, one key thing to be aware of is the RDF datacube specs handling of measure types.
+
+If you specify a component dimension as http://purl.org/linked-data/cube#measureType then **all measures within that cube are assumed to reside within that dimension**. This allows you to include multiple measures in your dataset and differentiate them with a simple column.
+
+The following example shows how to declare this special dimension and define one of the measures that reside within it (in this case percent).
+
+```json
+{ 
+  "qb:structure": {
+      "@id": "http://gss-data.org.uk/my-example-dataset/structure",
+      "@type": "qb:DataStructureDefinition",
+      "qb:component": [
+      {
+        "@id": "http://gss-data.org.uk/sdg-example-dataset/component/measure_type",
+        "@type": "qb:ComponentSpecification",
+        "qb:componentProperty": {
+        "@id": "http://purl.org/linked-data/cube#measureType"
+            },
+        "qb:dimension": {
+          "@id": "http://purl.org/linked-data/cube#measureType",
+          "@type": "qb:DimensionProperty",
+          "rdfs:label": "Measure Type",
+            "rdfs:range": {
+              "@id": "qb:MeasureProperty"
+            }
+          },
+      },
+      {
+          "@id": "http://gss-data.org.uk/nhs-example-dataset/component/count",
+          "@type": "qb:ComponentSpecification",
+          "qb:componentProperty": {
+            "@id": "http://gss-data.org.uk/def/measure/count"
+          },
+          "qb:measure": {
+            "@id": "http://gss-data.org.uk/def/measure/count",
+            "@type": "qb:MeasureProperty",
+            "rdfs:label": "Count"
+          }
+      }
+      ]
+  }
+}
+```
+
+For more information on the rdf datacube spec please see [https://www.w3.org/TR/vocab-data-cube/](https://www.w3.org/TR/vocab-data-cube/).
+
+## Tooling
 
 So with the work so far we have a fully semantically described schema for a dataset as represented by a csv file. This means that we have everything required to convert the data into fully declared RDF triples.
 
