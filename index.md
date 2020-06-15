@@ -1,12 +1,10 @@
 # CSVW Maturity Levels
 
-The following document is walkthrough of using csvw but without direct reference to a specific example. The intention is to delve more into the _why_ than the _how_.
+The following document is walkthrough of using csvw and the maturity levels of it's adoption. This guide is broken down into two principle section:
 
-The following is broken down into two section:
+1.) A walkthrough of the different levels of maturity you can reach while using csvw.
 
-1.) A walkthrough of the different levels of maturity you can reach while using csvv.
-
-2.) Supplementary material that will be referenced from the main text as appropriate places. 
+2.) Optional supplementary material that will be referenced from the main text at appropriate places. 
 
 
 
@@ -29,9 +27,17 @@ The following is broken down into two section:
 
 ## Level 0: Tidy CSV with no JSON
 
+A "tidy" csv is a version of data that has been rendered flat and into a a-one-observation per line form.
 
-TODO - some information about csv flat files, one obs per line etc.
+So this untidy data...
 
+![not tidy](images/nottidy.png)
+
+Looks like this as a tidy data
+
+![tidy](images/tidy.png)
+
+While this doesn't provide supporting metadata, it does make the dataset easily digestible by machines and should be considered a crucial initial step.
 
 
 ## Level 1: The addition of dataset metadata as JSON
@@ -47,7 +53,7 @@ Example: For a given csvw file
 - Each `tableSchema` has `columns` as an array of `columns`
 - Each `column` is represented by a hashmap of one or more fields (themselves defined classes used to describe the properties of individual columns), eg `titles`, `required`, `name` etc
 
-The following is a snipped from a csvw file that holds the necessary information to validate the files content.
+The following is a snipped from a csvw file that includes a table schema.
 
 ```json
 "tableSchema": {
@@ -69,7 +75,11 @@ The following is a snipped from a csvw file that holds the necessary information
   }
 ```
 
-The above pattern matching (i.e `"^(M|F)$"`) is done using regular expressions (more information on these can be found at https://blog.usejournal.com/regular-expressions-a-complete-beginners-tutorial-c7327b9fd8eb).
+You'll notice there's a datatype field, this is a simple mechanism for providing basic data validation.
+
+In the example above pattern matching (i.e `"^(M|F)$"`) is done using regular expressions (more information on these can be found at https://blog.usejournal.com/regular-expressions-a-complete-beginners-tutorial-c7327b9fd8eb) where as the other column is simply stated as containing the type `string`.
+
+Both can be used to validate the provided contents of the columns in question (for more information see the included supplementary section on csvw tooling).
 
 -----
 
