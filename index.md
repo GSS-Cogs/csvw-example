@@ -19,7 +19,9 @@ The following document is walkthrough of using csvw and the maturity levels of i
       - [Defining a `valueURL`](#defining-a-valueurl)
     - [The `about` url](#the-about-url)
   - [Level 5: The addition of a dataset structure definition.](#level-5-the-addition-of-a-dataset-structure-definition)
+- [Supplementary](#supplementary)
   - [Tooling](#tooling)
+  - [CSVW Fully 5* Open Data Compliant Example](#csvw-fully-5-open-data-compliant-example)
 
 
 ## Level 0: Tidy CSV with no JSON
@@ -542,8 +544,327 @@ The following example shows how to declare this special dimension and define one
 
 For more information on the rdf datacube spec please see [https://www.w3.org/TR/vocab-data-cube/](https://www.w3.org/TR/vocab-data-cube/).
 
+# Supplementary
 ## Tooling
 
 So with the work so far we have a fully semantically described schema for a dataset as represented by a csv file. This means that we have everything required to convert the data into fully declared RDF triples.
 
 `TODO - some guidence on tooling, csv2rdf etc`
+
+## CSVW Fully 5* Open Data Compliant Example
+
+The following is a csvw file providing definitions equivilent to a 5* linked open dataset (as-in, you could generate a fully described RDF output of the data just from the csv plus this csvw).
+
+The following has been included purely as an "end goal" example rather than anything to strive for immediately (and please note - most of the below would be provided gradually or by automation - this is **not** something a single person should ever sit down to try and create manually.
+
+```json
+{
+  "@context": [
+    "http://www.w3.org/ns/csvw",
+    {
+      "@language": "en"
+    }
+  ],
+  "@id": "http://gss-data.org.uk/data/gss_data/trade/ons-trade-in-goods#tablegroup",
+  "prov:hadDerivation": {
+    "@id": "http://gss-data.org.uk/data/gss_data/trade/ons-trade-in-goods",
+    "@type": "dcat:Dataset",
+    "dc:publisher": {
+      "@id": "https://www.gov.uk/government/organisations/office-for-national-statistics"
+    },
+    "dc:title": "Trade in goods: country-by-commodity imports and exports",
+    "dcat:landingPage": {
+      "@id": "https://www.ons.gov.uk/economy/nationalaccounts/balanceofpayments/datasets/uktradecountrybycommodityimports"
+    },
+    "rdfs:label": "Trade in goods: country-by-commodity imports and exports",
+    "dc:creator": {
+      "@id": "https://www.gov.uk/government/organisations/office-for-national-statistics"
+    },
+    "dc:issued": {
+      "@value": "2020-04-08",
+      "@type": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "dc:license": {
+      "@id": "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+    },
+    "dc:modified": {
+      "@value": "2020-04-17T15:09:09.835868+00:00",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "dc:description": {
+      "@value": "Monthly import country-by-commodity data on the UK's trade in goods, including trade by all countries and selected commodities, non-seasonally adjusted.",
+      "@type": "https://www.w3.org/ns/iana/media-types/text/markdown#Resource"
+    },
+    "dcat:contactPoint": {
+      "@id": "mailto:trade@ons.gov.uk"
+    },
+    "dcat:theme": {
+      "@id": "http://gss-data.org.uk/def/concept/statistics-authority-themes/business-industry-trade-energy"
+    },
+    "rdfs:comment": "Monthly import and export country-by-commodity data on the UK's trade in goods, including trade by all countries and selected commodities, non-seasonally adjusted.",
+    "void:sparqlEndpoint": {
+      "@id": "http://gss-data.org.uk/sparql"
+    }
+  },
+  "tables": [
+    {
+      "url": "http://gss-data.org.uk/codelists/period.csv",
+      "tableSchema": "https://gss-cogs.github.io/ref_common/codelist-schema.json",
+      "suppressOutput": true
+    },
+    {
+      "url": "http://gss-data.org.uk/codelists/period.csv",
+      "tableSchema": "https://gss-cogs.github.io/ref_common/codelist-schema.json",
+      "suppressOutput": true
+    },
+    {
+      "url": "http://gss-data.org.uk/codelists/org-code.csv",
+      "tableSchema": "https://gss-cogs.github.io/ref_common/codelist-schema.json",
+      "suppressOutput": true
+    },
+    {
+      "url": "http://gss-data.org.uk/codelists/sex.csv",
+      "tableSchema": "https://gss-cogs.github.io/ref_common/codelist-schema.json",
+      "suppressOutput": true
+    },
+    {
+      "url": "http://gss-data.org.uk/codelists/age.csv",
+      "tableSchema": "https://gss-cogs.github.io/ref_common/codelist-schema.json",
+      "suppressOutput": true
+    },
+    {
+      "url": "combined_source.csv",
+      "tableSchema": {
+        "columns": [
+          {
+            "titles": "Period",
+            "required": true,
+            "name": "period",
+            "datatype": {
+              "format": "^(year/[0-9]{4}|gregorian-interval/.*|month/[0-9]{4}-[0-9]{2}|day/[0-9]{4}-[0-9]{2}-[0-9]{2}|quarter/[0-9]{4}-Q[1-4]|government-year/[0-9]{4}-[0-9]{4})$"
+            },
+            "propertyUrl": "http://purl.org/linked-data/sdmx/2009/dimension#refPeriod",
+            "valueUrl": "http://reference.data.gov.uk/id/{+period}"
+          },
+          {
+            "titles": "Area",
+            "required": true,
+            "name": "area",
+            "datatype": "string",
+            "propertyUrl": "http://purl.org/linked-data/sdmx/2009/dimension#refArea",
+            "valueUrl": "http://statistics.data.gov.uk/id/statistical-geography/{area}"
+          },
+          {
+            "titles": "Org Code",
+            "required": true,
+            "name": "org_code",
+            "datatype": "string",
+            "propertyUrl": "http://gss-data.org.uk/def/dimension/org_code",
+            "valueUrl": "http://gss-data.org.uk/def/concept/org-code/{org_code}"
+          },
+          {
+            "titles": "Sex",
+            "required": true,
+            "name": "sex",
+            "datatype": {
+              "format": "^(M|F|T)$"
+            },
+            "propertyUrl": "http://purl.org/linked-data/sdmx/2009/dimension#sex",
+            "valueUrl": "http://purl.org/linked-data/sdmx/2009/code#sex-{sex}"
+          },
+          {
+            "titles": "Age",
+            "required": true,
+            "name": "age",
+            "datatype": "string",
+            "propertyUrl": "http://purl.org/linked-data/sdmx/2009/dimension#age",
+            "valueUrl": "http://gss-data.org.uk/def/concept/ages/{age}"
+          },
+          {
+            "titles": "Value",
+            "required": false,
+            "name": "value",
+            "datatype": "number",
+            "propertyUrl": "http://gss-data.org.uk/def/measure/{measure_type}"
+          },
+          {
+            "titles": "Measure Type",
+            "required": true,
+            "name": "measure_type",
+            "datatype": "string",
+            "propertyUrl": "http://purl.org/linked-data/cube#measureType",
+            "valueUrl": "http://gss-data.org.uk/def/measure/{measure_type}"
+          },
+          {
+            "name": "dataset_ref",
+            "virtual": true,
+            "propertyUrl": "qb:dataSet",
+            "valueUrl": "http://gss-data.org.uk/nhs-example-dataset"
+          },
+          {
+            "name": "qbtype",
+            "virtual": true,
+            "propertyUrl": "rdf:type",
+            "valueUrl": "qb:Observation"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "columnReference": "period",
+            "reference": {
+              "resource": "http://gss-data.org.uk/codelists/period.csv",
+              "columnReference": "notation"
+            }
+          },
+          {
+            "columnReference": "area",
+            "reference": {
+              "resource": "http://gss-data.org.uk/codelists/period.csv",
+              "columnReference": "notation"
+            }
+          },
+          {
+            "columnReference": "org_code",
+            "reference": {
+              "resource": "http://gss-data.org.uk/codelists/org-code.csv",
+              "columnReference": "notation"
+            }
+          },
+          {
+            "columnReference": "sex",
+            "reference": {
+              "resource": "http://gss-data.org.uk/codelists/sex.csv",
+              "columnReference": "notation"
+            }
+          },
+          {
+            "columnReference": "age",
+            "reference": {
+              "resource": "http://gss-data.org.uk/codelists/age.csv",
+              "columnReference": "notation"
+            }
+          }
+        ],
+        "primaryKey": [
+          "period",
+          "area",
+          "org_code",
+          "sex",
+          "age",
+          "measure_type"
+        ],
+        "aboutUrl": "http://gss-data.org.uk/gss-data.org.uk/nhs-example-dataset/{period}/{area}/{org_code}/{sex}/{age}/{measure_type}"
+      }
+    }
+  ],
+  "@id": "http://gss-data.org.uk/nhs-example-dataset#tablegroup",
+  "prov:hadDerivation": {
+    "@id": "http://gss-data.org.uk/nhs-example-dataset",
+    "@type": [
+      "qb:DataSet"
+    ],
+    "qb:structure": {
+      "@id": "http://gss-data.org.uk/nhs-example-dataset/structure",
+      "@type": "qb:DataStructureDefinition",
+      "qb:component": [
+        {
+          "@id": "http://gss-data.org.uk/nhs-example-dataset/component/period",
+          "@type": "qb:ComponentSpecification",
+          "qb:componentProperty": {
+            "@id": "http://purl.org/linked-data/sdmx/2009/dimension#refPeriod"
+          },
+          "qb:dimension": {
+            "@id": "http://purl.org/linked-data/sdmx/2009/dimension#refPeriod",
+            "@type": "qb:DimensionProperty",
+            "rdfs:label": "Period",
+            "rdfs:range": {
+              "@id": "http://reference.data.gov.uk/def/intervals/Interval"
+            }
+          }
+        },
+        {
+          "@id": "http://gss-data.org.uk/nhs-example-dataset/component/area",
+          "@type": "qb:ComponentSpecification",
+          "qb:componentProperty": {
+            "@id": "http://purl.org/linked-data/sdmx/2009/dimension#refArea"
+          },
+          "qb:dimension": {
+            "@id": "http://purl.org/linked-data/sdmx/2009/dimension#refArea",
+            "@type": "qb:DimensionProperty",
+            "rdfs:label": "Area"
+          }
+        },
+        {
+          "@id": "http://gss-data.org.uk/nhs-example-dataset/component/org_code",
+          "@type": "qb:ComponentSpecification",
+          "qb:componentProperty": {
+            "@id": "http://gss-data.org.uk/def/dimension/org_code"
+          },
+          "qb:dimension": {
+            "@id": "http://gss-data.org.uk/def/dimension/org_code",
+            "@type": "qb:DimensionProperty",
+            "rdfs:label": "Org Code",
+            "rdfs:range": {
+              "@id": "http://gss-data.org.uk/def/classes/org-code/org-code"
+            }
+          }
+        },
+        {
+          "@id": "http://gss-data.org.uk/nhs-example-dataset/component/sex",
+          "@type": "qb:ComponentSpecification",
+          "qb:componentProperty": {
+            "@id": "http://purl.org/linked-data/sdmx/2009/dimension#sex"
+          },
+          "qb:dimension": {
+            "@id": "http://purl.org/linked-data/sdmx/2009/dimension#sex",
+            "@type": "qb:DimensionProperty",
+            "rdfs:label": "Sex",
+            "rdfs:range": {
+              "@id": "http://purl.org/linked-data/sdmx/2009/code#Sex"
+            }
+          }
+        },
+        {
+          "@id": "http://gss-data.org.uk/nhs-example-dataset/component/age",
+          "@type": "qb:ComponentSpecification",
+          "qb:componentProperty": {
+            "@id": "http://purl.org/linked-data/sdmx/2009/dimension#age"
+          },
+          "qb:dimension": {
+            "@id": "http://purl.org/linked-data/sdmx/2009/dimension#age",
+            "@type": "qb:DimensionProperty",
+            "rdfs:label": "Age"
+          }
+        },
+        {
+          "@id": "http://gss-data.org.uk/nhs-example-dataset/component/measure_type",
+          "@type": "qb:ComponentSpecification",
+          "qb:componentProperty": {
+            "@id": "http://purl.org/linked-data/cube#measureType"
+          },
+          "qb:dimension": {
+            "@id": "http://purl.org/linked-data/cube#measureType",
+            "@type": "qb:DimensionProperty",
+            "rdfs:label": "Measure Type",
+            "rdfs:range": {
+              "@id": "qb:MeasureProperty"
+            }
+          }
+        },
+        {
+          "@id": "http://gss-data.org.uk/nhs-example-dataset/component/count",
+          "@type": "qb:ComponentSpecification",
+          "qb:componentProperty": {
+            "@id": "http://gss-data.org.uk/def/measure/count"
+          },
+          "qb:measure": {
+            "@id": "http://gss-data.org.uk/def/measure/count",
+            "@type": "qb:MeasureProperty",
+            "rdfs:label": "Count"
+          }
+        }
+      ]
+    }
+  }
+}
+```
