@@ -17,12 +17,9 @@ The following document is walkthrough of using csvw and the maturity levels of i
     - [Defining Properties and Values](#defining-properties-and-values)
       - [Defining a `propertyUrl`](#defining-a-propertyurl)
       - [Defining a `valueURL`](#defining-a-valueurl)
-      - [Defining an `about` url](#defining-an-about-url)
+    - [The `about` url](#the-about-url)
   - [Level 5: The addition of a dataset structure definition.](#level-5-the-addition-of-a-dataset-structure-definition)
 - [Supplementary](#supplementary)
-  - [REMOVE OR USE](#remove-or-use)
-  - [A brief note on urls](#a-brief-note-on-urls)
-  - [CSVW Validation](#csvw-validation)
   - [Output Tooling](#output-tooling)
 
 
@@ -45,7 +42,19 @@ While this doesn't provide supporting metadata, it does make the dataset easily 
 
 For ease of use, csvw uses a system of known prefixes to define fields without cluttering files with endless url references.
 
-The csvw spec makes use of several pertinent vocabularies as shown below:
+To make us of this pre-defined context you include the `@context` key in your csvw file, example:
+
+```json
+"@context": [
+          "http://www.w3.org/ns/csvw",
+          {
+          "@language": "en"
+          }
+      ],
+}
+```
+
+The csvw spec makes use of (and imports the prefixes for) several pertinent vocabularies as shown below:
 
 
 | Prefix | Namespace | Description |
@@ -347,7 +356,7 @@ The `propertyUrl` can broadly be thought of as the concept list or dimension thi
 
 The `valueUrl` provides definitions of the concepts or dimension-items that reside within these them.
 
-The formatting of the `valueUrl`, eg `/age/{age}` is representing all the values within the age column. So for every given unique value in the age column its effectively referencing a url of `http://gss-data.org.uk/def/concept/age/{whichever value from the age column we're talking about}`.
+The formatting of the `valueUrl` in our example, eg `/age/{age}` is representing all the values within the age column. So for every given unique value in the age column its effectively referencing a url of `http://gss-data.org.uk/def/concept/age/{whichever value from the age column we're talking about}`.
 
 Note - you'll see we're using a common SDMX dimension for the age concept and switching to our own specific resource for the ages within it. This is a typical approach for extending the linkage between datasets (not many datasets will use our exact age ranges and definitions - but most people can agree on what the general concept of "age" means).
 
@@ -400,52 +409,13 @@ One the surface of it the `valueURL` seems like it'd be a more specfic defintion
 
 Smply put - in the majority of scenarios simply having a namespace for each value will be sufficiant at this stage. So even if the namespace for the value eg `/age/{17}` simpley says `17` that's perfectly fine (again the `valueURL` is more concerned with value **identification** than **definition**).
 
-#### Defining an `about` url
+### The `about` url
 
 ## Level 5: The addition of a dataset structure definition.
 
 So at this point we have a csvw schema that fully describes the concepts and codelists it's referencing, so that last thing to accomplish is to provide the missing details of a full dataset strcuture defintion.
 
 # Supplementary
-
-## REMOVE OR USE
-
-For ease of use, csvw uses a system of known prefixes to define fields without cluttering files with endless url references.
-
-For example the field `title` represents the property `title` as defined by the dc (**d**ublin **c**ore) vocabulary, which can be viewed here: https://www.dublincore.org/specifications/dublin-core/dcmi-terms/
-
-Csvw supports a range of predefined properties imported as part of its context, a full list of
-the csvw vocabulary can be found here: [https://www.w3.org/ns/csvw](https://www.w3.org/ns/csvw)
-
-To make us of this pre-defined context you include the `@context` key in your csvw file, example:
-
-```json
-"@context": [
-          "http://www.w3.org/ns/csvw",
-          {
-          "@language": "en"
-          }
-      ],
-}
-```
-
-
------
-
-##  A brief note on urls
-
-We can't really get into url representations of data without touching on linked data and there's an important nuance to understand here.
-
-Linked data is really all about **name spaces**. Every resource in the world of linked data should be **uniquely identifiable** and transparently available to everyone.
-
-Since every url on the world wide web **is already** uniquely identifiable and available to everyone, then the use of csvw (which is really just a user friendly way of defining things via urls) moves you firmly in the direction of fully linked data.
-
-To be clear, you *should* also use a url that tells you a little something about the thing being defined, or at very least you have a place you *could* provide that information, but it's this principle of "definition by public namepace" that underpins what we're doing here.
-
-In other words, `first and foremost make everything identifiable, you can always expand on the definition (and even harmonise your references) later`.
-
------
-## CSVW Validation
 
 ## Output Tooling
 
