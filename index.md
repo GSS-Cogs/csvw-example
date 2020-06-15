@@ -15,8 +15,9 @@ The following document is walkthrough of using csvw and the maturity levels of i
   - [Level 3: The addition of external tables, foreign keys and primary keys](#level-3-the-addition-of-external-tables-foreign-keys-and-primary-keys)
   - [Level 4: The addition of the transform definition](#level-4-the-addition-of-the-transform-definition)
     - [Defining Properties and Values](#defining-properties-and-values)
-      - [propertyUrl](#propertyurl)
-    - [Defining an 'about' url](#defining-an-about-url)
+      - [Defining a `propertyUrl`](#defining-a-propertyurl)
+      - [Defining a `valueURL`](#defining-a-valueurl)
+      - [Defining an `about` url](#defining-an-about-url)
   - [Level 5: The addition of a dataset structure definition.](#level-5-the-addition-of-a-dataset-structure-definition)
 - [Supplementary](#supplementary)
   - [REMOVE OR USE](#remove-or-use)
@@ -372,7 +373,7 @@ Note - it's both valid and fairly common to start with home-grown definitons of 
 
 So the next question is, what exactly are the `propertyUrl` and `valueUrls` that we've started including in the previous stage?
 
-#### propertyUrl
+#### Defining a `propertyUrl`
 
 In the context of a column of data, the property (as identified bythe propertyURL) encapsulates several pieces of information:
 
@@ -384,15 +385,22 @@ So the next step will be capturing this information and making it availible at t
 
 `Property Example 1`: the generic SDMX property definition for age we referenced previously can be seen here: [http://purl.org/linked-data/sdmx/2009/dimension#age](http://purl.org/linked-data/sdmx/2009/dimension#age) and is very much a simple dump of basic SDMX attriutes written in an RDF form (that nonetheless provides the three principle pieces of information listed above).
 
-You'll notice this page also covers a number of concepts at a very basic level, this is perfectly valid and may even be a good starting point.
+You'll notice this page also covers a number of concepts at a very basic level, this form of multi-definition resource is perfectly valid.
 
-`Property Example 2`: a property definition taken from an RDF centric data platform can be seen here [](). This is more in depth and extends the base information in a way that adds value for users (i.e it allows more in the way of cross-querying datasets).
+`Property Example 2`: a property definition taken from an RDF centric data platform can be seen here [](). This is more in depth and extends the base information in a way that adds value for users (it provides more information that could be used to cross-query datasets).
 
-Either will work, but unless you have access to a RDF platform then it's probably the most practical to start with a variation of the former and build on it.
+Either will work, with the exact implementation being subject to individual use cases and resource.
 
 For a much more detailed look into properties and how they (will eventually) help inform the data structure definition of a semantically defined dataset please see: [https://www.w3.org/TR/vocab-data-cube/#dsd](https://www.w3.org/TR/vocab-data-cube/#dsd)
 
-### Defining an 'about' url
+
+#### Defining a `valueURL`
+
+One the surface of it the `valueURL` seems like it'd be a more specfic defintion as its tied to a specific concept within a concept list - but - it's important to remember the aim here is slightly different. We already have a property definition, so the primary goal is in making values distinguishable rather than providing a fine grained definition (to be clear that does add value and is worth pursuing where possible, but it's definetly a secondary goal).
+
+Smply put - in the majority of scenarios simply having a namespace for each value will be sufficiant at this stage. So even if the namespace for the value eg `/age/{17}` simpley says `17` that's perfectly fine (again the `valueURL` is more concerned with value **identification** than **definition**).
+
+#### Defining an `about` url
 
 ## Level 5: The addition of a dataset structure definition.
 
