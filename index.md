@@ -49,11 +49,11 @@ The csvw spec makes use of several pertinent vocabularies as shown below:
 
 | Prefix | Namespace | Description |
 | ------------- | ------------- | ------------- |
-| csvw:  | [http://www.w3.org/ns/csvw#](http://www.w3.org/ns/csvw#) | The principle csvw vocabulary, provides the requried definitions to define a csv.
+| csvw:  | [http://www.w3.org/ns/csvw#](http://www.w3.org/ns/csvw#) | The principle csvw vocabulary, provides the requried definitions to define a data table.
 | rdf:  | [http://www.w3.org/1999/02/22-rdf-syntax-ns#](http://www.w3.org/1999/02/22-rdf-syntax-ns#) | The RDF Schema.
 | rdfs: | [http://www.w3.org/2000/01/rdf-schema#](http://www.w3.org/2000/01/rdf-schema#) | The RDF vocabulary (which makes use of the schema - see above)
 | xsd: | [http://www.w3.org/2001/XMLSchema#](http://www.w3.org/2001/XMLSchema#) | The XML Schema namespace
-| dc: | [http://purl.org/dc/terms/](http://purl.org/dc/terms/) | Specification of all metadata terms maintained by the Dublin Core Metadata Initiative. Includes an extensive vocabulary.
+| dc: | [http://purl.org/dc/terms/](http://purl.org/dc/terms/) | Specification of all metadata terms maintained by the Dublin Core Metadata Initiative. Includes an extensive metadata vocabulary.
 | dcat: | [http://www.w3.org/ns/dcat#](http://www.w3.org/ns/dcat#) | The Data Catalogue vocabulary.
 | prov: | [http://www.w3.org/ns/prov#](http://www.w3.org/ns/prov#) | Supports the interchange of provenance on the web.
 
@@ -133,7 +133,7 @@ The following is more extensive example of using csvw to capture metadata about 
 }
 ```
 
-As a general point its worth remembering that _any_ semantically defined metadata is a step forward and that a json metadata schema can easily be expanded upon.
+As a general point its worth remembering that _any_ semantically defined metadata is a step forward and that any json metadata schema can easily be expanded upon (i.e the above is an example goal, not necesserily where you'd need to start).
 
 ## Level 2: The addition of a table schema 
 
@@ -179,6 +179,8 @@ This includes pattern matching (i.e `"^(M|F)$"`) using regular expressions (more
 
 Both can be used to validate the provided contents of the columns in question (for more information on how you can implement said validation, please see the included supplementary section on csvw tooling).
 
+Please note - in this example the distinction between the name and title fields seem somewhat redundant (which is fair - in a deliberately simple example) but be aware that they serve as effectively the label (title) and identifer (name) so it's a destinction that becomes increasingly important for more complex scenarios where they won't necessarily be the same.
+
 -----
 
 ## Level 3: The addition of external tables, foreign keys and primary keys
@@ -215,11 +217,18 @@ For example, lets extend the previous example to hold information about codelist
          "name": "age",
          "datatype": "string"
        }]
-    }
+    },
+  "primaryKey": [
+      "age",
+      "sex"
+    ]
 }
 ```
 
 You'll notice that I've include one of the `url` references as `my-example.csv`, the lack of a full path is because **that is the csv file that this csvw schema is accompanying**. It's also worth noting that the tableSchema entries can themsevles be remote resources and can be freely reused where appropriate.
+
+Then there is the `primaryKey` field. One crucial requirement of tidy data is that **each oberserable data point should be uniquely identifiable**. The job of the primary key is to list the dimensional options that make each observation unique. In other words - the `primaryKey` field in our example is specifiying that **a composite key of the values within the "age and "sex" columns will identify one (and only one) obervable data point**.
+
 
 Lastly, we need to establish the link between the referenced codelst csvs and the principle csv (i.e "my-example.csv") that we're describing. We do this via the declaration of `Foreign Keys`.
 
@@ -284,25 +293,31 @@ So when you put it all together ...
        }]
     }
 },
+{
 "foreignKeys": [
   {
   "columnReference": "age",
   "reference": {
     "resource": "http://gss-data.org.uk/codelists/age.csv",
     "columnReference": "notation"
-  },
+    },
+  }
   {
   "columnReference": "sex",
   "reference": {
     "resource": "http://gss-data.org.uk/codelists/sex.csv",
     "columnReference": "notation"
+      }
   }
-  }
-]
-
+],
+"primaryKey": [
+      "age",
+      "sex"
+    ]
+}
 ```
 
-You get an english language schema fully describing the columns of a csv (with basic data validation) as well as linking to both the data and schema of associated csv files representing the codes and codelists in use.
+You get an english language schema fully describing the columns of a machine readable csv (with the potential for basic data validation) as well as links to both the data and schema of associated csv files representing the codes and codelists in use.
 
 -----
 
