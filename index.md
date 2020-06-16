@@ -21,12 +21,13 @@ The following document is walkthrough of using csvw and the maturity levels of i
   - [Tooling](#tooling)
     - [Validation vis csvlint](#validation-vis-csvlint)
   - [CSVW Fully 5* Open Data Compliant Example](#csvw-fully-5-open-data-compliant-example)
+  - [Additional Reading](#additional-reading)
   - [Join The Conversation](#join-the-conversation)
 
 
 ## Level 0: Tidy CSV with no JSON
 
-A "tidy" csv is a version of data that has been rendered flat and into a a-one-observation per line form.
+A "tidy" csv is a version of data that has been rendered flat and into a one observation per line form.
 
 So this untidy data...
 
@@ -51,7 +52,7 @@ To make us of this pre-defined context you include the `@context` key in your cs
           {
           "@language": "en"
           }
-      ],
+      ]
 }
 ```
 
@@ -80,14 +81,41 @@ This use of these prefixes allows you to easily express semantically defined met
 }
 ```
 
-Allows you to express the title, the data issued (and the schema the date is using) in a relatively terse way.
+Allows you to express the title, the data issued (and the schema the date is using) in a relatively terse way while keeping to fully described and publically availible definitions.
 
 eg `dc:title` resolves to [http://purl.org/dc/terms/title](http://purl.org/dc/terms/title) which will lead you to a specific (and public) definition of the exact meaning of the word `title` in this context.
 
-The following is more extensive example of using csvw to capture metadata about a dataset (please note - the `url` field is just indicating the location of the csv table being defined - in this case "observations.csv" and in the same location).
+Please note - in the following examples the `url` field is just indicating the location of the csv table being defined (i.e in the same directory/location).
+
+The following a relatively simple metadata example:
 
 ```json
+{
+ "@context": [
+    "http://www.w3.org/ns/csvw",
+    {
+      "@language": "en"
+    }
+  ],
+  "tables": [
+    {
+      "url": "observations.csv"
+    }
+  ],
+  "dc:title": "Tree Operations",
+  "dcat:keyword": ["tree", "street", "maintenance"],
+  "dc:publisher": {
+    "schema:name": "Example Municipality",
+    "schema:url": {"@id": "http://example.org"}
+  },
+  "dc:license": {"@id": "http://opendefinition.org/licenses/cc-by/"},
+  "dc:modified": {"@value": "2010-12-31", "@type": "xsd:date"}
+}
+```
 
+The following is a more exhaustive example (but using the same principles).
+
+```json
 {
   "@context": [
     "http://www.w3.org/ns/csvw",
@@ -884,6 +912,17 @@ The following has been included purely as an "end goal" example rather than anyt
   }
 }
 ```
+
+## Additional Reading
+
+For further information fon the principles explained in this document see:
+
+| Resource | Url | 
+| ------------- | ------------- | 
+| The csvw primer | [https://www.w3.org/TR/tabular-data-primer/](https://www.w3.org/TR/tabular-data-primer/) |
+| The RDF Data Cube Model | [https://www.w3.org/TR/vocab-data-cube/#cubes-model](https://www.w3.org/TR/vocab-data-cube/#cubes-model) |
+| Metadata vocabulary for Metadata | [https://www.w3.org/TR/tabular-metadata/](https://www.w3.org/TR/tabular-metadata/) |
+
 ## Join The Conversation
 
 This resource was created by the COGS (**C**onnected **O**pen **G**overnment **S**tatistics) project, the stated goal of which is:
