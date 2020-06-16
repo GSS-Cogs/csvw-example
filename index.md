@@ -74,10 +74,12 @@ This use of these prefixes allows you to easily express semantically defined met
 ```json
 {
   "dc:title": "Trade in goods",
-  "dc:issued": {
-      "@value": "2020-04-08",
-      "@type": "http://www.w3.org/2001/XMLSchema#date"
-    },
+  "prov:hadDerivation": {
+    "dc:issued": {
+        "@value": "2020-04-08",
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+    }
+  }
 }
 ```
 
@@ -102,14 +104,16 @@ The following a relatively simple metadata example:
       "url": "observations.csv"
     }
   ],
-  "dc:title": "Tree Operations",
-  "dcat:keyword": ["tree", "street", "maintenance"],
-  "dc:publisher": {
-    "schema:name": "Example Municipality",
-    "schema:url": {"@id": "http://example.org"}
-  },
-  "dc:license": {"@id": "http://opendefinition.org/licenses/cc-by/"},
-  "dc:modified": {"@value": "2010-12-31", "@type": "xsd:date"}
+  "prov:hadDerivation": {
+      "dc:title": "Tree Operations",
+      "dcat:keyword": ["tree", "street", "maintenance"],
+      "dc:publisher": {
+        "schema:name": "Example Municipality",
+        "schema:url": {"@id": "http://example.org"}
+      },
+      "dc:license": {"@id": "http://opendefinition.org/licenses/cc-by/"},
+      "dc:modified": {"@value": "2010-12-31", "@type": "xsd:date"}
+  }
 }
 ```
 
@@ -610,46 +614,6 @@ The following has been included purely as an "end goal" example rather than anyt
     }
   ],
   "@id": "http://gss-data.org.uk/data/gss_data/trade/ons-trade-in-goods#tablegroup",
-  "prov:hadDerivation": {
-    "@id": "http://gss-data.org.uk/data/gss_data/trade/ons-trade-in-goods",
-    "@type": "dcat:Dataset",
-    "dc:publisher": {
-      "@id": "https://www.gov.uk/government/organisations/office-for-national-statistics"
-    },
-    "dc:title": "Trade in goods: country-by-commodity imports and exports",
-    "dcat:landingPage": {
-      "@id": "https://www.ons.gov.uk/economy/nationalaccounts/balanceofpayments/datasets/uktradecountrybycommodityimports"
-    },
-    "rdfs:label": "Trade in goods: country-by-commodity imports and exports",
-    "dc:creator": {
-      "@id": "https://www.gov.uk/government/organisations/office-for-national-statistics"
-    },
-    "dc:issued": {
-      "@value": "2020-04-08",
-      "@type": "http://www.w3.org/2001/XMLSchema#date"
-    },
-    "dc:license": {
-      "@id": "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-    },
-    "dc:modified": {
-      "@value": "2020-04-17T15:09:09.835868+00:00",
-      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
-    },
-    "dc:description": {
-      "@value": "Monthly import country-by-commodity data on the UK's trade in goods, including trade by all countries and selected commodities, non-seasonally adjusted.",
-      "@type": "https://www.w3.org/ns/iana/media-types/text/markdown#Resource"
-    },
-    "dcat:contactPoint": {
-      "@id": "mailto:trade@ons.gov.uk"
-    },
-    "dcat:theme": {
-      "@id": "http://gss-data.org.uk/def/concept/statistics-authority-themes/business-industry-trade-energy"
-    },
-    "rdfs:comment": "Monthly import and export country-by-commodity data on the UK's trade in goods, including trade by all countries and selected commodities, non-seasonally adjusted.",
-    "void:sparqlEndpoint": {
-      "@id": "http://gss-data.org.uk/sparql"
-    }
-  },
   "tables": [
     {
       "url": "http://gss-data.org.uk/codelists/period.csv",
@@ -801,12 +765,48 @@ The following has been included purely as an "end goal" example rather than anyt
       }
     }
   ],
-  "@id": "http://gss-data.org.uk/nhs-example-dataset#tablegroup",
   "prov:hadDerivation": {
     "@id": "http://gss-data.org.uk/nhs-example-dataset",
     "@type": [
       "qb:DataSet"
     ],
+     "@type": "dcat:Dataset",
+    "dc:publisher": {
+      "@id": "https://www.gov.uk/government/organisations/office-for-national-statistics"
+    },
+    "dc:title": "Trade in goods: country-by-commodity imports and exports",
+    "dcat:landingPage": {
+      "@id": "https://www.ons.gov.uk/economy/nationalaccounts/balanceofpayments/datasets/uktradecountrybycommodityimports"
+    },
+    "rdfs:label": "Trade in goods: country-by-commodity imports and exports",
+    "dc:creator": {
+      "@id": "https://www.gov.uk/government/organisations/office-for-national-statistics"
+    },
+    "dc:issued": {
+      "@value": "2020-04-08",
+      "@type": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "dc:license": {
+      "@id": "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+    },
+    "dc:modified": {
+      "@value": "2020-04-17T15:09:09.835868+00:00",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "dc:description": {
+      "@value": "Monthly import country-by-commodity data on the UK's trade in goods, including trade by all countries and selected commodities, non-seasonally adjusted.",
+      "@type": "https://www.w3.org/ns/iana/media-types/text/markdown#Resource"
+    },
+    "dcat:contactPoint": {
+      "@id": "mailto:trade@ons.gov.uk"
+    },
+    "dcat:theme": {
+      "@id": "http://gss-data.org.uk/def/concept/statistics-authority-themes/business-industry-trade-energy"
+    },
+    "rdfs:comment": "Monthly import and export country-by-commodity data on the UK's trade in goods, including trade by all countries and selected commodities, non-seasonally adjusted.",
+    "void:sparqlEndpoint": {
+      "@id": "http://gss-data.org.uk/sparql"
+    },
     "qb:structure": {
       "@id": "http://gss-data.org.uk/nhs-example-dataset/structure",
       "@type": "qb:DataStructureDefinition",
