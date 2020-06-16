@@ -921,7 +921,7 @@ For further information fon the principles explained in this document see:
 | ------------- | ------------- | 
 | The csvw primer | [https://www.w3.org/TR/tabular-data-primer/](https://www.w3.org/TR/tabular-data-primer/) |
 | The RDF Data Cube Model | [https://www.w3.org/TR/vocab-data-cube/#cubes-model](https://www.w3.org/TR/vocab-data-cube/#cubes-model) |
-| Metadata vocabulary for Metadata | [https://www.w3.org/TR/tabular-metadata/](https://www.w3.org/TR/tabular-metadata/) |
+| Metadata Vocabulary For Tabula Data | [https://www.w3.org/TR/tabular-metadata/](https://www.w3.org/TR/tabular-metadata/) |
 
 ## Join The Conversation
 
