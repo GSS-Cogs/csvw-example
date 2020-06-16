@@ -1,6 +1,6 @@
 # CSVW Maturity Levels
 
-The following document is walkthrough of using csvw and the maturity levels of it's adoption. This guide is broken down into two principle section:
+The following document is a walkthrough of using csvw and the maturity levels of it's adoption. This guide is broken down into two principle section:
 
 1.) A walkthrough of the different levels of maturity you can reach while using csvw.
 
