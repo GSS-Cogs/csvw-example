@@ -438,7 +438,7 @@ For a much more detailed look into properties and how they (will eventually) hel
 
 #### Defining a `valueURL`
 
-One the surface of it the `valueURL` seems like it'd be a more specfic definition as its tied to a specific concept within a concept list - but - it's important to remember the aim here is slightly different. We already have a property definition, so the primary goal is in making values distinguishable rather than providing a fine grained definition (to be clear that does add value and is worth pursuing where possible, but it's definetly a secondary goal).
+One the surface of it the `valueURL` seems like it'd be a more specific definition as its tied to a specific concept within a concept list - but - it's important to remember the aim here is slightly different. We already have a property definition, so the primary goal is in making values distinguishable rather than providing a fine grained definition (to be clear that does add value and is worth pursuing where possible, but it's definetly a secondary goal).
 
 Smply put - in the majority of scenarios simply having a namespace for each value will be sufficiant at this stage. So even if the namespace for the value eg `/age/{17}` simpley says `17` that's perfectly fine (again the `valueURL` is more concerned with value **identification** than **definition**).
 
