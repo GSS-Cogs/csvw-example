@@ -429,7 +429,7 @@ So the next step will be capturing this information and making it availible at t
 
 You'll notice this page also covers a number of concepts at a very basic level, this form of multi-definition resource is perfectly valid.
 
-`Property Example 2`: a property definition taken from an RDF centric data platform can be seen here [](). This is more in depth and extends the base information in a way that adds value for users (it provides more information that could be used to cross-query datasets).
+`Property Example 2`: a property definition taken from an RDF centric data platform can be seen here [http://gss-data.org.uk/concept?uri=http%3A%2F%2Fgss-data.org.uk%2Fdef%2Fconcept%2Fdwp-household-composition%2Fadult-male-under-state-pension-age](http://gss-data.org.uk/concept?uri=http%3A%2F%2Fgss-data.org.uk%2Fdef%2Fconcept%2Fdwp-household-composition%2Fadult-male-under-state-pension-age). This is more in depth and extends the base information in a way that adds value for users (it provides more information that could be used to cross-query datasets).
 
 Either will work, with the exact implementation being subject to individual use cases and resource.
 
