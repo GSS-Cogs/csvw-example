@@ -268,7 +268,7 @@ For example, lets extend the previous example to hold information about codelist
 }
 ```
 
-You'll notice that I've include one of the `url` references as `my-example.csv`, the lack of a full path is because **that is the csv file that this csvw schema is accompanying**. It's also worth noting that the tableSchema entries can themsevles be remote resources and can be freely reused where appropriate.
+You'll notice that I've include one of the `url` references as `my-example.csv`, the lack of a full path is because **that is the csv file that this csvw schema is accompanying**. It's also worth noting that the tableSchema entries can themselves be remote resources and can be freely reused where appropriate.
 
 Then there is the `primaryKey` field. One crucial requirement of tidy data is that **each oberserable data point should be uniquely identifiable**. The job of the primary key is to list the dimensional options that make each observation unique. In other words - the `primaryKey` field in our example is specifiying that **a composite key of the values within the "age and "sex" columns will identify one (and only one) observable data point**.
 
@@ -409,7 +409,7 @@ In other words ...
 ```
 Is also a perfectly valid definition, abeit one with less linkage (as we're using a home-grown property).
 
-Note - it's both valid and fairly common to start with home-grown definitons of everything (much like the `gss-data.org.uk` namespace we're using in the examples) and work on harmonising your data references later, once you know what you want to use it's ultimately changing a value in a  single field.
+Note - it's both valid and fairly common to start with home-grown definitons of everything (much like the `gss-data.org.uk` namespace we're using in the examples) and work on harmonising your data references later, once you know what you want to use it's ultimately changing a value in a single field.
 
 ### Defining Properties and Values
 
@@ -438,7 +438,7 @@ For a much more detailed look into properties and how they (will eventually) hel
 
 #### Defining a `valueURL`
 
-One the surface of it the `valueURL` seems like it'd be a more specfic defintion as its tied to a specific concept within a concept list - but - it's important to remember the aim here is slightly different. We already have a property definition, so the primary goal is in making values distinguishable rather than providing a fine grained definition (to be clear that does add value and is worth pursuing where possible, but it's definetly a secondary goal).
+One the surface of it the `valueURL` seems like it'd be a more specfic definition as its tied to a specific concept within a concept list - but - it's important to remember the aim here is slightly different. We already have a property definition, so the primary goal is in making values distinguishable rather than providing a fine grained definition (to be clear that does add value and is worth pursuing where possible, but it's definetly a secondary goal).
 
 Smply put - in the majority of scenarios simply having a namespace for each value will be sufficiant at this stage. So even if the namespace for the value eg `/age/{17}` simpley says `17` that's perfectly fine (again the `valueURL` is more concerned with value **identification** than **definition**).
 
@@ -456,7 +456,7 @@ And will always include one argument (eg `/{age}`) for each non-observational co
 
 ## Level 5: The addition of a dataset structure definition.
 
-So at this point we have a csvw schema that fully describes the concepts and codelists it's referencing, so that last thing to accomplish is to provide a full dataset structure defintion.
+So at this point we have a csvw schema that fully describes the concepts and codelists it's referencing, so that last thing to accomplish is to provide a dataset structure defintion.
 
 Please note - the addition of a dsd is the last step is creating a fulll semantically supplied definition. Once this step is implemented you will have all the information required to convert the csv directly to RDF linked data should you need to (i.e your csv + csvw outputs will be functionally equivelant to RDF outputs).
 
