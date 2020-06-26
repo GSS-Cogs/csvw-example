@@ -44,7 +44,7 @@ While this doesn't provide supporting metadata, it does make the dataset easily 
 
 For ease of use, csvw uses a system of known prefixes to define fields without cluttering files with endless url references.
 
-To make us of this pre-defined context you include the `@context` key in your csvw file, example:
+To make use of this pre-defined context you include the `@context` key in your csvw file, example:
 
 ```json
 "@context": [
